@@ -25,6 +25,7 @@
 		163F0979181D161200A28D63 /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F0978181D161200A28D63 /* PersonalBasicInfo.m */; };
 		163F097C181D161200A28D63 /* PersonalDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F097B181D161200A28D63 /* PersonalDetails.m */; };
 		163F097F181D161200A28D63 /* PersonalFirstTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F097E181D161200A28D63 /* PersonalFirstTimeRecord.m */; };
+		163F0982181DDED300A28D63 /* PeopleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F0981181DDED300A28D63 /* PeopleListView.m */; };
 		16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872BF17FE954700561887 /* PersonalBasicInfoView.m */; };
 		16D872C317FE98CC00561887 /* PersonalDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872C217FE98CC00561887 /* PersonalDetailInfoView.m */; };
 		16D872C617FE991400561887 /* PersonalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872C517FE991400561887 /* PersonalActivityView.m */; };
@@ -74,6 +75,8 @@
 		163F097B181D161200A28D63 /* PersonalDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDetails.m; sourceTree = "<group>"; };
 		163F097D181D161200A28D63 /* PersonalFirstTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFirstTimeRecord.h; sourceTree = "<group>"; };
 		163F097E181D161200A28D63 /* PersonalFirstTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalFirstTimeRecord.m; sourceTree = "<group>"; };
+		163F0980181DDED300A28D63 /* PeopleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleListView.h; sourceTree = "<group>"; };
+		163F0981181DDED300A28D63 /* PeopleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleListView.m; sourceTree = "<group>"; };
 		16D872BE17FE954700561887 /* PersonalBasicInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfoView.h; sourceTree = "<group>"; };
 		16D872BF17FE954700561887 /* PersonalBasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfoView.m; sourceTree = "<group>"; };
 		16D872C117FE98CC00561887 /* PersonalDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDetailInfoView.h; sourceTree = "<group>"; };
@@ -147,22 +150,15 @@
 		16166D5C17F4678300AEEC4C /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				163F0983181DDEFA00A28D63 /* UI */,
 				163F096C181CD8E200A28D63 /* Utils */,
 				16D872CE17FFA29300561887 /* Data */,
-				16D872CA17FFA24500561887 /* UI */,
+				16D872CA17FFA24500561887 /* UI_Utils */,
 				16166D6517F4678300AEEC4C /* AppDelegate.h */,
 				16166D6617F4678300AEEC4C /* AppDelegate.m */,
 				16166D6817F4678300AEEC4C /* Main.storyboard */,
 				16166D7117F4678300AEEC4C /* Images.xcassets */,
 				16166D5D17F4678300AEEC4C /* Supporting Files */,
-				16D872BE17FE954700561887 /* PersonalBasicInfoView.h */,
-				16D872BF17FE954700561887 /* PersonalBasicInfoView.m */,
-				16D872C117FE98CC00561887 /* PersonalDetailInfoView.h */,
-				16D872C217FE98CC00561887 /* PersonalDetailInfoView.m */,
-				16D872C417FE991400561887 /* PersonalActivityView.h */,
-				16D872C517FE991400561887 /* PersonalActivityView.m */,
-				16D872C717FE9A0A00561887 /* WaitingListView.h */,
-				16D872C817FE9A0A00561887 /* WaitingListView.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -205,13 +201,30 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		16D872CA17FFA24500561887 /* UI */ = {
+		163F0983181DDEFA00A28D63 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				163F0980181DDED300A28D63 /* PeopleListView.h */,
+				163F0981181DDED300A28D63 /* PeopleListView.m */,
+				16D872BE17FE954700561887 /* PersonalBasicInfoView.h */,
+				16D872BF17FE954700561887 /* PersonalBasicInfoView.m */,
+				16D872C117FE98CC00561887 /* PersonalDetailInfoView.h */,
+				16D872C217FE98CC00561887 /* PersonalDetailInfoView.m */,
+				16D872C417FE991400561887 /* PersonalActivityView.h */,
+				16D872C517FE991400561887 /* PersonalActivityView.m */,
+				16D872C717FE9A0A00561887 /* WaitingListView.h */,
+				16D872C817FE9A0A00561887 /* WaitingListView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		16D872CA17FFA24500561887 /* UI_Utils */ = {
 			isa = PBXGroup;
 			children = (
 				16D872CB17FFA28B00561887 /* MakingChoiceView.h */,
 				16D872CC17FFA28B00561887 /* MakingChoiceView.m */,
 			);
-			name = UI;
+			name = UI_Utils;
 			sourceTree = "<group>";
 		};
 		16D872CE17FFA29300561887 /* Data */ = {
@@ -345,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
 				163F097C181D161200A28D63 /* PersonalDetails.m in Sources */,
 				16166D6717F4678300AEEC4C /* AppDelegate.m in Sources */,
 				16D872C917FE9A0A00561887 /* WaitingListView.m in Sources */,
