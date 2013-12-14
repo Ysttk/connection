@@ -15,3 +15,7 @@ NSString* HomeRoleC[] = {
 NSString* SkillLevelC[] = {
     @"专家", @"精通", @"普通",
 };
+
+NSString* BuddyTypeC[] = {
+    @"同学", @"战友", @"工作", @"生活", @"亲戚",
+};

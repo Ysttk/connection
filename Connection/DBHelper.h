@@ -1,5 +1,5 @@
 //
-//  Constant.h
+//  DBHelper.h
 //  Connection
 //
 //  Created by 寿宝江 on 13-12-14.
@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 
-extern NSString* HomeRoleC[];
-extern NSString* SkillLevelC[];
-extern NSString* BuddyTypeC[];
+@interface DBHelper : NSObject
+
++ (NSManagedObjectContext*) getContext;
+
+@end

@@ -10,6 +10,7 @@
 #define Connection_Utils_h
 
 #import "JsonHelper.h"
+#import "DBHelper.h"
 
 
 #endif

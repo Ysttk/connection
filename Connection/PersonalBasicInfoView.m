@@ -8,6 +8,7 @@
 
 #import "PersonalBasicInfoView.h"
 
+
 @interface PersonalBasicInfoView ()
 
 @end
@@ -23,6 +24,11 @@
 
     self.isEditMode = true;
     return self;
+}
+
+- (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
+{
+    _basicInfo = basicInfo;
 }
 
 - (void) showEmptyTextView: (UITextView*) textView :(bool) isShow
@@ -178,7 +184,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -186,8 +192,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    id dest = [segue destinationViewController];
+    [dest setBasicInfo:_basicInfo];
 }
 
- */
+
 
 @end

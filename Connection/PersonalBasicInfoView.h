@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalBasicInfo.h"
 
 @interface PersonalBasicInfoView : UITableViewController
 
@@ -23,5 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *m_EducationBackgroud;
 @property (weak, nonatomic) IBOutlet UITableViewCell *m_ConnectionCell;
 
-@property bool isEditMode;
+@property (nonatomic, assign) bool isEditMode;
+
+@property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @end

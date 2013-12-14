@@ -17,6 +17,8 @@
 		160CF738185B55ED00CDEFCE /* CCareerField.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF737185B55ED00CDEFCE /* CCareerField.m */; };
 		160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF73E185BF20B00CDEFCE /* JsonHelper.m */; };
 		160CF742185BFF0300CDEFCE /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF741185BFF0300CDEFCE /* Constant.m */; };
+		160CF746185C227A00CDEFCE /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF745185C227A00CDEFCE /* DBHelper.m */; };
+		160CF749185C2F5900CDEFCE /* PeopleInfoBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF748185C2F5900CDEFCE /* PeopleInfoBarController.m */; };
 		16166D5717F4678300AEEC4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5617F4678300AEEC4C /* Foundation.framework */; };
 		16166D5917F4678300AEEC4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5817F4678300AEEC4C /* CoreGraphics.framework */; };
 		16166D5B17F4678300AEEC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5A17F4678300AEEC4C /* UIKit.framework */; };
@@ -82,6 +84,10 @@
 		160CF740185BFF0300CDEFCE /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		160CF741185BFF0300CDEFCE /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		160CF743185C1D7A00CDEFCE /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		160CF744185C227A00CDEFCE /* DBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHelper.h; sourceTree = "<group>"; };
+		160CF745185C227A00CDEFCE /* DBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHelper.m; sourceTree = "<group>"; };
+		160CF747185C2F5900CDEFCE /* PeopleInfoBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleInfoBarController.h; sourceTree = "<group>"; };
+		160CF748185C2F5900CDEFCE /* PeopleInfoBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleInfoBarController.m; sourceTree = "<group>"; };
 		16166D5317F4678300AEEC4C /* Connection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16166D5617F4678300AEEC4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		16166D5817F4678300AEEC4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -299,6 +305,8 @@
 				16FBC894185A821200721A59 /* PSerialize.h */,
 				160CF73D185BF20B00CDEFCE /* JsonHelper.h */,
 				160CF73E185BF20B00CDEFCE /* JsonHelper.m */,
+				160CF744185C227A00CDEFCE /* DBHelper.h */,
+				160CF745185C227A00CDEFCE /* DBHelper.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -316,6 +324,8 @@
 				16D872C517FE991400561887 /* PersonalActivityView.m */,
 				16D872C717FE9A0A00561887 /* WaitingListView.h */,
 				16D872C817FE9A0A00561887 /* WaitingListView.m */,
+				160CF747185C2F5900CDEFCE /* PeopleInfoBarController.h */,
+				160CF748185C2F5900CDEFCE /* PeopleInfoBarController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -497,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				160CF746185C227A00CDEFCE /* DBHelper.m in Sources */,
 				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
 				160CF732185B533A00CDEFCE /* CSkill.m in Sources */,
 				160CF726185B4B9700CDEFCE /* CExperience.m in Sources */,
@@ -526,6 +537,7 @@
 				160CF72C185B4F0700CDEFCE /* CHomeMember.m in Sources */,
 				16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */,
 				16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */,
+				160CF749185C2F5900CDEFCE /* PeopleInfoBarController.m in Sources */,
 				16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

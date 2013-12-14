@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 #import "PersonalBasicInfo.h"
 #import "PersonalDetails.h"
+#import "Connection.h"
 
 @interface PeopleListView ()
 
@@ -115,15 +116,13 @@
 
 - (void) updatePeopleList
 {
-    AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext* context = [delegate managedObjectContext];
+    NSManagedObjectContext* context = [DBHelper getContext];
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription* descript  = [NSEntityDescription entityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
     [fetchRequest setEntity:descript];
     NSError* error;
     NSArray* array = [context executeFetchRequest:fetchRequest error:&error];
     self.personalInfoArray = array;
-
 }
 
 /*
