@@ -11,4 +11,7 @@
 
 @interface CEducation : NSObject <PSerialize>
 @property (nonatomic, retain) NSMutableArray* items;
+
+- (NSString*) toString;
+
 @end

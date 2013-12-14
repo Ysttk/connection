@@ -39,6 +39,16 @@
     return TRUE;
 }
 
+- (NSString*) toString
+{
+    NSMutableString* str = [[NSMutableString alloc] init];
+    for (CEducationItem* item in _items) {
+        [str appendString:[item toString]];
+        [str appendString:@"\n"];
+    }
+    return str;
+}
+
 
 
 @end

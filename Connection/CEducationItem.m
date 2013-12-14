@@ -59,4 +59,17 @@
     _school = [dic valueForKey:@"school"];
     return TRUE;
 }
+
+- (NSString*) toString
+{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSMutableString* str = [[NSMutableString alloc] init];
+    [str appendString:[formatter stringFromDate:_from]];
+    [str appendString:@"到"];
+    [str appendString:[formatter stringFromDate:_to]];
+    [str appendString:@"    "];
+    [str appendString:_school];
+    return str;
+}
 @end

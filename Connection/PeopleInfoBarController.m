@@ -43,6 +43,10 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if (_peopleBasicInfo == nil) {
+        NSManagedObjectContext* context = [DBHelper getContext];
+        _peopleBasicInfo = (PersonalBasicInfo*) [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
+    }
     id dest = [segue destinationViewController];
     [dest setBasicInfo:_peopleBasicInfo];
 }

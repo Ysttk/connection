@@ -14,4 +14,6 @@
 @property (nonatomic, retain) NSDate* from;
 @property (nonatomic, retain) NSDate* to;
 @property (nonatomic, retain) NSString* school;
+
+- (NSString*) toString;
 @end

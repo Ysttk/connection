@@ -7,6 +7,7 @@
 //
 
 #import "PersonalBasicInfoView.h"
+#import "CEducation.h"
 
 
 @interface PersonalBasicInfoView ()
@@ -29,6 +30,22 @@
 - (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
 {
     _basicInfo = basicInfo;
+    [self reloadPeopleBasicInfo];
+}
+
+- (void) reloadPeopleBasicInfo
+{
+    [_m_Name setText:_basicInfo.name];
+    [_m_Age setText:[NSString stringWithFormat:@"%d",[Utils getAgeFromBirthday:_basicInfo.birthday]]];
+    [_m_EnglishName setText:_basicInfo.english_name];
+    [_m_Phone setText:_basicInfo.phone];
+    [_m_Email setText:_basicInfo.email];
+    [_m_Birthday setText:[Utils getDateString:_basicInfo.birthday]];
+    
+    //formate education information
+    CEducation* education = [[CEducation alloc] init];
+    [education deserialize:_basicInfo.education];
+    [_m_EducationBackgroud setText:[education toString]];
 }
 
 - (void) showEmptyTextView: (UITextView*) textView :(bool) isShow
