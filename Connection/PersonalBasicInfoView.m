@@ -20,17 +20,87 @@
     if (self) {
         // Custom initialization
     }
-    int a[2];
-    for (int i=-1;i<3; i++)
-        a[i]++;
+
+    self.isEditMode = true;
     return self;
+}
+
+- (void) showEmptyTextView: (UITextView*) textView :(bool) isShow
+{
+    if (([textView.text compare:@""] == NSOrderedSame) && ! isShow)
+        textView.hidden = YES;
+    else
+        textView.hidden = NO;
+    
+}
+
+- (void) showEmptyTextField: (UITextField*) textField :(bool) isShow
+{
+    if (([textField.text compare:@""] == NSOrderedSame) && !isShow)
+        textField.hidden = YES;
+    else
+        textField.hidden = NO;
+}
+
+- (void) showEmptyTextFieldWithLabel: (UILabel*) label :(UITextField*) textField :(bool) isShow
+{
+    if (([textField.text compare:@""] == NSOrderedSame) && !isShow) {
+        textField.hidden = YES;
+        label.hidden = YES;
+    } else {
+        textField.hidden = NO;
+        label.hidden = NO;
+    }
+}
+
+- (void) UpdateStatusItem
+{
+    if (! _isEditMode)
+        [_m_StatusActionButton setTitle:@"编辑"];
+    else
+        [_m_StatusActionButton setTitle:@"完成"];
+}
+
+- (void) UpdateEditMode
+{
+    
+    bool isShowEmpty, isEditable;
+    if (_isEditMode)
+        isEditable = isShowEmpty = true;
+    else
+        isEditable = isShowEmpty = false;
+    
+    [_m_Name setEnabled:isEditable];
+    [self showEmptyTextField:_m_Name :isShowEmpty];
+    
+    [_m_Age setEnabled:isEditable];
+    [self showEmptyTextField:_m_Age :isShowEmpty];
+    
+    [_m_EnglishName setEnabled:isEditable];
+    [self showEmptyTextField:_m_EnglishName :isShowEmpty];
+    
+    [_m_Phone setEnabled:isEditable];
+    [self showEmptyTextFieldWithLabel:_m_PhoneLbl :_m_Phone :isShowEmpty];
+    
+    [_m_Email setEnabled:isEditable];
+    [self showEmptyTextFieldWithLabel:_m_EmailLbl :_m_Email :isShowEmpty];
+    
+    [_m_Birthday setEnabled:isEditable];
+    [self showEmptyTextField:_m_Birthday :isShowEmpty];
+    
+    [_m_EducationBackgroud setEditable:isEditable];
+    [self showEmptyTextView:_m_EducationBackgroud :isShowEmpty];
+    
+    [self UpdateStatusItem];
+    
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
+    [self UpdateStatusItem];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -38,12 +108,21 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (IBAction)StatusButtonClick:(id)sender {
+    _isEditMode = ! _isEditMode;
+    [self UpdateEditMode];
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
+
+
+
 
 #pragma mark - Table view data source
 

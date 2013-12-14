@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PeopleListView : UITableViewController
+{
+}
+
+@property (nonatomic, retain) NSArray* personalInfoArray;
+
 
 @end

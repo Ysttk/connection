@@ -1,13 +1,15 @@
 //
-//  CSerializeArray.h
+//  DataHelper.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-10-27.
+//  Created by 寿宝江 on 13-11-4.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface CSerializeArray : NSObject
+@interface DataHelper : NSObject
+{
 
+}
 @end

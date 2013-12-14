@@ -7,12 +7,18 @@
 //
 
 #import "PeopleListView.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
+#import "PersonalBasicInfo.h"
+#import "PersonalDetails.h"
 
 @interface PeopleListView ()
 
 @end
 
 @implementation PeopleListView
+
+@synthesize personalInfoArray = _personalInfoArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,6 +33,7 @@
 {
     [super viewDidLoad];
 
+    [self updatePeopleList];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,16 +51,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    //return 2;
+    return [_personalInfoArray count];
+}
+
+- (NSDateComponents*) getDateComponents:(NSDate*) date
+{
+    NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSInteger flag = NSYearCalendarUnit |
+    NSMonthCalendarUnit |
+    NSDayCalendarUnit |
+    NSWeekdayCalendarUnit |
+    NSHourCalendarUnit  |
+    NSMinuteCalendarUnit  |
+    NSSecondCalendarUnit;
+    NSDateComponents* components = [calendar components:flag fromDate:date];
+    return components;
+}
+
+- (NSInteger)getYear:(NSDate*) date
+{
+    NSDateComponents* components = [self getDateComponents:date];
+    int year = [components year];
+    return year;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,9 +88,42 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    NSInteger index = indexPath.row;
+    PersonalBasicInfo* info = _personalInfoArray[index];
     // Configure the cell...
+    NSArray* labels = (NSArray*)cell.contentView.subviews;
+    UILabel* name = (UILabel*)labels[0];
+    [name setText:info.name];
+    
+    NSDate* now = [NSDate date];
+    NSInteger personalAge = [self getYear:now] - [self getYear:info.birthday];
+    UILabel* age = labels[1];
+    [age setText:[NSString stringWithFormat:@"%d", personalAge]];
+    
+    UILabel* buddy_close = labels[2];
+    [buddy_close setText:info.buddy_closer_type];
+    
+    UILabel* buddy_type = labels[3];
+    [buddy_type setText:info.buddy_type];
+    
+    UILabel* career = labels[4];
+    NSString* careerStr = [NSString stringWithFormat:@"%@·%@·%@", info.my_details.profession, info.my_details.company, info.my_details.position];
+    [career setText:careerStr];
     
     return cell;
+}
+
+- (void) updatePeopleList
+{
+    AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [delegate managedObjectContext];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription* descript  = [NSEntityDescription entityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
+    [fetchRequest setEntity:descript];
+    NSError* error;
+    NSArray* array = [context executeFetchRequest:fetchRequest error:&error];
+    self.personalInfoArray = array;
+
 }
 
 /*

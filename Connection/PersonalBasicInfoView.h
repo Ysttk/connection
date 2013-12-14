@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface PersonalBasicInfoView : UITableViewController
-@property (weak, nonatomic) IBOutlet UITextField *m_Name;
-@property (weak, nonatomic) IBOutlet UITextField *m_Mobile;
-@property (weak, nonatomic) IBOutlet UITextField *m_City;
-@property (weak, nonatomic) IBOutlet UITextField *m_Birthday;
-@property (weak, nonatomic) IBOutlet UITextField *m_Age;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *m_StatusActionButton;
+@property (weak, nonatomic) IBOutlet UITextField *m_Name;
+@property (weak, nonatomic) IBOutlet UITextField *m_Age;
+@property (weak, nonatomic) IBOutlet UITextField *m_EnglishName;
+@property (weak, nonatomic) IBOutlet UITextField *m_Phone;
+
+@property (weak, nonatomic) IBOutlet UITextField *m_Email;
+@property (weak, nonatomic) IBOutlet UILabel *m_PhoneLbl;
+@property (weak, nonatomic) IBOutlet UILabel *m_EmailLbl;
+@property (weak, nonatomic) IBOutlet UITextField *m_Birthday;
+@property (weak, nonatomic) IBOutlet UITextView *m_EducationBackgroud;
+@property (weak, nonatomic) IBOutlet UITableViewCell *m_ConnectionCell;
+
+@property bool isEditMode;
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonalDetailInfoView : UITableViewController
+@interface PersonalCareer : UITableViewController
     <UIPickerViewDelegate,
     UIPickerViewDataSource,
     UIToolbarDelegate>

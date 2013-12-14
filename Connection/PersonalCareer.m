@@ -6,14 +6,14 @@
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#import "PersonalDetailInfoView.h"
+#import "PersonalCareer.h"
 
-@interface PersonalDetailInfoView ()
+@interface PersonalCareer ()
 
 
 @end
 
-@implementation PersonalDetailInfoView
+@implementation PersonalCareer
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,7 +44,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-
+/*
     _picker = [[UIPickerView alloc] init];
     [_picker setDataSource:self];
     [_picker setDelegate:self];
@@ -69,12 +69,13 @@
     self.lovingSport.inputAccessoryView = self.pickerToolbar;
     self.lovingDrink.inputAccessoryView = self.pickerToolbar;
     self.lovingSmork.inputAccessoryView = self.pickerToolbar;
+ */
 }
 - (IBAction)BeginEditSport:(id)sender {
-    [_picker reloadAllComponents];
+    //[_picker reloadAllComponents];
 }
 - (IBAction)BeginEditPlace:(id)sender {
-    [_picker reloadAllComponents];
+    //[_picker reloadAllComponents];
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
