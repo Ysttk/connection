@@ -16,6 +16,7 @@
 		160CF735185B55DF00CDEFCE /* CCareer.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF734185B55DF00CDEFCE /* CCareer.m */; };
 		160CF738185B55ED00CDEFCE /* CCareerField.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF737185B55ED00CDEFCE /* CCareerField.m */; };
 		160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF73E185BF20B00CDEFCE /* JsonHelper.m */; };
+		160CF742185BFF0300CDEFCE /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 160CF741185BFF0300CDEFCE /* Constant.m */; };
 		16166D5717F4678300AEEC4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5617F4678300AEEC4C /* Foundation.framework */; };
 		16166D5917F4678300AEEC4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5817F4678300AEEC4C /* CoreGraphics.framework */; };
 		16166D5B17F4678300AEEC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16166D5A17F4678300AEEC4C /* UIKit.framework */; };
@@ -78,6 +79,9 @@
 		160CF737185B55ED00CDEFCE /* CCareerField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCareerField.m; sourceTree = "<group>"; };
 		160CF73D185BF20B00CDEFCE /* JsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonHelper.h; sourceTree = "<group>"; };
 		160CF73E185BF20B00CDEFCE /* JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonHelper.m; sourceTree = "<group>"; };
+		160CF740185BFF0300CDEFCE /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		160CF741185BFF0300CDEFCE /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
+		160CF743185C1D7A00CDEFCE /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		16166D5317F4678300AEEC4C /* Connection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Connection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16166D5617F4678300AEEC4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		16166D5817F4678300AEEC4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,6 +168,8 @@
 		160CF739185B587200CDEFCE /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				160CF740185BFF0300CDEFCE /* Constant.h */,
+				160CF741185BFF0300CDEFCE /* Constant.m */,
 			);
 			name = Constant;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 				16166D6817F4678300AEEC4C /* Main.storyboard */,
 				16166D7117F4678300AEEC4C /* Images.xcassets */,
 				16166D5D17F4678300AEEC4C /* Supporting Files */,
+				160CF743185C1D7A00CDEFCE /* Connection.h */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -503,6 +510,7 @@
 				16FBC88F185A01B700721A59 /* CJSONSerializer.m in Sources */,
 				1691F018184E01B9000C45A8 /* PersonalBasicInfo.m in Sources */,
 				160CF735185B55DF00CDEFCE /* CCareer.m in Sources */,
+				160CF742185BFF0300CDEFCE /* Constant.m in Sources */,
 				1691F0251850B7A9000C45A8 /* CEducation.m in Sources */,
 				1691F01E184E01B9000C45A8 /* PersonalFirstTimeRecord.m in Sources */,
 				16D872CD17FFA28B00561887 /* MakingChoiceView.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "CSkillSet.h"
 #import "CSkill.h"
-#import "JsonHelper.h"
+#import "Connection.h"
 
 @implementation CSkillSet
 

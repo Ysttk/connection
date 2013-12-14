@@ -8,7 +8,7 @@
 
 #import "CExperience.h"
 #import "CExperienceItem.h"
-#import "JsonHelper.h"
+#import "Connection.h"
 
 @implementation CExperience
 

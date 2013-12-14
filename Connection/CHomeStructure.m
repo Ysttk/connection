@@ -8,7 +8,7 @@
 
 #import "CHomeStructure.h"
 #import "CHomeMember.h"
-#import "JsonHelper.h"
+#import "Connection.h"
 
 @implementation CHomeStructure
 

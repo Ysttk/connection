@@ -8,7 +8,7 @@
 
 #import "CCareer.h"
 #import "CCareerField.h"
-#import "JsonHelper.h"
+#import "Connection.h"
 
 @implementation CCareer
 

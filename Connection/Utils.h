@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#ifndef Connection_Header_h
-#define Connection_Header_h
+#ifndef Connection_Utils_h
+#define Connection_Utils_h
 
 #import "JsonHelper.h"
 

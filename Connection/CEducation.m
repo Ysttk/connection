@@ -8,8 +8,7 @@
 
 #import "CEducation.h"
 #import "CEducationItem.h"
-#import "libs.h"
-#import "JsonHelper.h"
+#import "Connection.h"
 
 @implementation CEducation
 
