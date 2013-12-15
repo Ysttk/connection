@@ -44,7 +44,7 @@
     return _basicInfo;
 }
 
-- (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
+- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
 {
     _basicInfo = basicInfo;
     [self reloadPeopleBasicInfo];
@@ -53,7 +53,10 @@
 - (void) reloadPeopleBasicInfo
 {
     [_m_Name setText:_basicInfo.name];
-    [_m_Age setText:[NSString stringWithFormat:@"%d",[Utils getAgeFromBirthday:_basicInfo.birthday]]];
+    int age = [Utils getAgeFromBirthday:_basicInfo.birthday];
+    if (age>0) {
+        [_m_Age setText:[NSString stringWithFormat:@"%d",age]];
+    }
     [_m_EnglishName setText:_basicInfo.english_name];
     [_m_Phone setText:_basicInfo.phone];
     [_m_Email setText:_basicInfo.email];
@@ -219,7 +222,7 @@
     [super viewDidLoad];
     
     [self initEditView];
-    //[self reloadPeopleBasicInfo];
+    [self reloadPeopleBasicInfo];
     [self UpdateStatusItem];
     [self UpdateEditMode];
     
@@ -235,13 +238,13 @@
 
 - (IBAction)StatusButtonClick:(id)sender {
     if (_isEditMode) {
-//        _basicInfo.name = _m_Name.text;
-//        _basicInfo.phone = _m_Phone.text;
-//        _basicInfo.email = _m_Email.text;
-//        _basicInfo.english_name = _m_EnglishName.text;
-//        _basicInfo.birthday = [Utils getDateFromString:_m_Birthday.text];
-//        [DBHelper SaveAll];
-//        [self reloadPeopleBasicInfo];
+        _basicInfo.name = _m_Name.text;
+        _basicInfo.phone = _m_Phone.text;
+        _basicInfo.email = _m_Email.text;
+        _basicInfo.english_name = _m_EnglishName.text;
+        _basicInfo.birthday = [Utils getDateFromString:_m_Birthday.text];
+        [DBHelper SaveAll];
+        [self reloadPeopleBasicInfo];
     }
     _isEditMode = ! _isEditMode;
     [self UpdateEditMode];
@@ -325,12 +328,9 @@
         _basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
     }
     id dest = [segue destinationViewController];
-    [dest setBasicInfo:_basicInfo];
+    [dest setPersonalBasicInfo:_basicInfo];
 }
 
-- (void) tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
-{
-    int a =0;
-}
+
 
 @end

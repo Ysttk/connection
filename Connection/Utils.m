@@ -12,6 +12,7 @@
 
 + (int) getAgeFromBirthday: (NSDate*) birthday
 {
+    if (birthday == nil) return 0;
     NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSDate* now = [NSDate date];
@@ -26,6 +27,7 @@
 
 + (NSString*) getDateString:(NSDate *)date
 {
+    if (date == nil) return @"";
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     return [[NSString alloc] initWithString:[formatter stringFromDate:date]];

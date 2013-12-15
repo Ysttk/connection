@@ -27,9 +27,12 @@
 }
 
 
-- (void)setBasicInfo: (PersonalBasicInfo*) basicInfo
+- (void)setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
 {
     _peopleBasicInfo = basicInfo;
+    for (id viewController in [self childViewControllers]) {
+        [viewController setPersonalBasicInfo:basicInfo];
+    }
 }
 
 - (void)viewDidLoad
@@ -52,7 +55,7 @@
         _peopleBasicInfo = (PersonalBasicInfo*) [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
     }
     id dest = [segue destinationViewController];
-    [dest setBasicInfo:_peopleBasicInfo];
+    [dest setPersonalBasicInfo:_peopleBasicInfo];
 }
 
 - (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
@@ -64,7 +67,7 @@
     }
     
     id dest = viewController;
-    [dest setBasicInfo:_peopleBasicInfo];
+    [dest setPersonalBasicInfo:_peopleBasicInfo];
     
 }
 

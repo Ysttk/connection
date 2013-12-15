@@ -12,7 +12,8 @@
 {
 }
 
-@property (nonatomic, retain) NSArray* personalInfoArray;
+@property (nonatomic, retain) NSMutableArray* personalInfoArray;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *m_AddBtn;
 
 
 @end

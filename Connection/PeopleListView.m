@@ -12,6 +12,7 @@
 #import "PersonalBasicInfo.h"
 #import "PersonalDetails.h"
 #import "Connection.h"
+#import "PersonalBasicInfoView.h"
 
 @interface PeopleListView ()
 
@@ -108,7 +109,21 @@
     [buddy_type setText:info.buddy_type];
     
     UILabel* career = labels[4];
-    NSString* careerStr = [NSString stringWithFormat:@"%@·%@·%@", info.my_details.profession, info.my_details.company, info.my_details.position];
+    NSMutableString* careerStr = [[NSMutableString alloc] init];
+    bool preStr = false;
+    if (info.my_details.profession != nil) {
+        [careerStr appendString:[NSString stringWithFormat:@"%@", info.my_details.profession]];
+        preStr = true;
+    }
+    if (info.my_details.company != nil) {
+        if (preStr) [careerStr appendString:@"."];
+        [careerStr appendString:[NSString stringWithFormat:@"%@", info.my_details.company]];
+        preStr = true;
+    }
+    if (info.my_details.position != nil) {
+        if (preStr) [careerStr appendString:@"."];
+        [careerStr appendString:[NSString stringWithFormat:@"%@", info.my_details.position]];
+    }
     [career setText:careerStr];
     
     return cell;
@@ -122,7 +137,11 @@
     [fetchRequest setEntity:descript];
     NSError* error;
     NSArray* array = [context executeFetchRequest:fetchRequest error:&error];
-    self.personalInfoArray = array;
+    self.personalInfoArray = [array mutableCopy];
+    if (_personalInfoArray == nil) {
+        _personalInfoArray = [[NSMutableArray alloc] init];
+        
+    }
 }
 
 /*
@@ -164,7 +183,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -172,8 +191,20 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UINavigationController* navi = (UINavigationController*)[self parentViewController];
+    navi.navigationBar.hidden  = YES;
+    PersonalBasicInfo* basicInfo = nil;
+    if (sender == _m_AddBtn) {
+        basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:[DBHelper getContext]];
+        [_personalInfoArray addObject:basicInfo];
+    } else {
+        NSIndexPath* path = [self.tableView indexPathForSelectedRow];
+        basicInfo = [_personalInfoArray objectAtIndex:path.row];
+    }
+    id dest = [segue destinationViewController];
+    [dest setPersonalBasicInfo:basicInfo];
 }
 
- */
+
 
 @end

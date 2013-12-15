@@ -40,6 +40,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
+{
+    _basicInfo = basicInfo;
+}
+
+- (PersonalBasicInfo*) getPersonalBasicInfo
+{
+    return _basicInfo;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

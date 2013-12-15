@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Connection.h"
+#import "PersonalBasicInfo.h"
 
 @interface PersonalActivityView : UITableViewController
+
+@property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 
 @end

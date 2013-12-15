@@ -30,7 +30,7 @@
     return UIBarPositionTop;
 }
 
-- (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
+- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
 {
     int a= 0;
 }
