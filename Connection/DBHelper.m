@@ -17,4 +17,13 @@
     return context;
 }
 
++ (BOOL) SaveAll
+{
+    NSManagedObjectContext* context = [DBHelper getContext];
+    if ([context hasChanges]) {
+        [context save:Nil];
+    }
+    return TRUE;
+}
+
 @end

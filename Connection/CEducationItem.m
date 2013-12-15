@@ -19,6 +19,16 @@
     return self;
 }
 
+- (id) initWithValue: (NSDate*) from :(NSDate*) to :(NSString*) school
+{
+    if (self = [super init]) {
+        _from = from;
+        _to = to;
+        _school = school;
+    }
+    return self;
+}
+
 - (NSString*) serialize
 {
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];

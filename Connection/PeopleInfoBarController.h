@@ -10,6 +10,8 @@
 #import "Connection.h"
 #import "PersonalBasicInfo.h"
 
-@interface PeopleInfoBarController : UITabBarController
+@interface PeopleInfoBarController : UITabBarController <UITabBarControllerDelegate>
 @property (nonatomic, retain) PersonalBasicInfo* peopleBasicInfo;
+@property (nonatomic, retain) id currentController;
+- (void) registCurrentSubViewController: (UIViewController*) controller;
 @end

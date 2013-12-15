@@ -13,5 +13,6 @@
 @interface DBHelper : NSObject
 
 + (NSManagedObjectContext*) getContext;
++ (BOOL) SaveAll;
 
 @end

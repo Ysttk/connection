@@ -18,6 +18,7 @@
 
 + (int) getAgeFromBirthday: (NSDate*) birthday;
 + (NSString*) getDateString: (NSDate*) date;
++ (NSDate*) getDateFromString: (NSString*) dateStr;
 @end
 
 #endif

@@ -7,7 +7,6 @@
 //
 
 #import "CEducation.h"
-#import "CEducationItem.h"
 #import "Connection.h"
 
 @implementation CEducation
@@ -18,6 +17,11 @@
         _items = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void) addEducationItem: (CEducationItem*) item
+{
+    [_items addObject:item];
 }
 
 - (NSString*) serialize

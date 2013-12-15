@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "PSerialize.h"
+#import "CEducationItem.h"
 
 @interface CEducation : NSObject <PSerialize>
 @property (nonatomic, retain) NSMutableArray* items;
 
 - (NSString*) toString;
-
+- (void) addEducationItem: (CEducationItem*) item;
 @end

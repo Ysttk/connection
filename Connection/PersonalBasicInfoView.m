@@ -8,9 +8,21 @@
 
 #import "PersonalBasicInfoView.h"
 #import "CEducation.h"
+#import "CEducationItem.h"
+#import "PeopleInfoBarController.h"
 
 
 @interface PersonalBasicInfoView ()
+
+@end
+
+@interface DatePickDelegate : NSObject <UIPickerViewDelegate>
+
+@end
+
+@implementation DatePickDelegate
+
+
 
 @end
 
@@ -25,6 +37,11 @@
 
     self.isEditMode = true;
     return self;
+}
+
+- (PersonalBasicInfo*) getPersonalBasicInfo
+{
+    return _basicInfo;
 }
 
 - (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
@@ -118,12 +135,97 @@
     
     
 }
+- (IBAction)BeginEditBirthday:(id)sender {
+    _currentEditor = _m_Birthday;
+}
+
+- (IBAction)BeginEditEducationBeginTime:(id)sender
+{
+    _currentEditor = _m_EducationBeginTime;
+}
+
+- (IBAction)BeginEditEducationEndTime:(id)sender
+{
+    _currentEditor = _m_EducationEndTime;
+}
+
+- (IBAction)EducationOKClick:(id)sender
+{
+    //load date from text field
+    NSString* school = _m_EducationSchool.text;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* tmpDateStr = _m_EducationBeginTime.text;
+    NSDate*  beginDate = [formatter dateFromString:tmpDateStr];
+    tmpDateStr = _m_EducationEndTime.text;
+    NSDate* endDate = [formatter dateFromString:tmpDateStr];
+    
+    //save date
+    CEducationItem* item = [[CEducationItem alloc] initWithValue:beginDate :endDate :school];
+    CEducation* education = [[CEducation alloc] init];
+    [education deserialize:_basicInfo.education];
+    [education addEducationItem:item];
+    _basicInfo.education = [education serialize];
+    [_m_EducationBackgroud setText:[education toString]];
+    
+    //clear date in text field
+    [_m_EducationBeginTime setText:@""];
+    [_m_EducationEndTime setText:@""];
+    [_m_EducationSchool setText:@""];
+}
+
+- (IBAction)DateEditDone:(id)sender
+{
+    NSDate* selDate = [_birthdayPicker date];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [_currentEditor setText:[formatter stringFromDate:selDate]];
+    [_currentEditor resignFirstResponder];
+}
+
+- (UIBarPosition) positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTop;
+}
+
+- (void) initEditView
+{
+    _birthdayPicker = [[UIDatePicker alloc] init];
+    _birthdayPicker.datePickerMode = UIDatePickerModeDate;
+
+    self.pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]applicationFrame].size.width, 30)];
+    [self.pickerToolbar setDelegate:self];
+    
+    
+    UIBarButtonItem* tmpOK = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(DateEditDone:)];
+    
+    UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSArray* items = [NSArray arrayWithObjects: placeHolder, tmpOK, nil];
+    [self.pickerToolbar setItems:items];
+    
+    _m_Birthday.inputAccessoryView = _pickerToolbar;
+    _m_Birthday.inputView = _birthdayPicker;
+    
+    _m_EducationBeginTime.inputAccessoryView = _pickerToolbar;
+    _m_EducationBeginTime.inputView = _birthdayPicker;
+    _m_EducationEndTime.inputAccessoryView = _pickerToolbar;
+    _m_EducationEndTime.inputView = _birthdayPicker;
+    
+}
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     
+    [self initEditView];
+    //[self reloadPeopleBasicInfo];
     [self UpdateStatusItem];
+    [self UpdateEditMode];
+    
+    id parent = [self parentViewController];
+    [parent registCurrentSubViewController:self];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -132,6 +234,15 @@
 }
 
 - (IBAction)StatusButtonClick:(id)sender {
+    if (_isEditMode) {
+//        _basicInfo.name = _m_Name.text;
+//        _basicInfo.phone = _m_Phone.text;
+//        _basicInfo.email = _m_Email.text;
+//        _basicInfo.english_name = _m_EnglishName.text;
+//        _basicInfo.birthday = [Utils getDateFromString:_m_Birthday.text];
+//        [DBHelper SaveAll];
+//        [self reloadPeopleBasicInfo];
+    }
     _isEditMode = ! _isEditMode;
     [self UpdateEditMode];
     
@@ -209,10 +320,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if (_basicInfo == nil) {
+        NSManagedObjectContext* context = [DBHelper getContext];
+        _basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
+    }
     id dest = [segue destinationViewController];
     [dest setBasicInfo:_basicInfo];
 }
 
-
+- (void) tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
+{
+    int a =0;
+}
 
 @end

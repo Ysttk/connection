@@ -7,6 +7,7 @@
 //
 
 #import "PersonalCareer.h"
+#import "PersonalBasicInfo.h"
 
 @interface PersonalCareer ()
 
@@ -29,6 +30,10 @@
     return UIBarPositionTop;
 }
 
+- (void) setBasicInfo: (PersonalBasicInfo*) basicInfo
+{
+    int a= 0;
+}
 - (IBAction)clickDone:(id)sender
 {
     NSLog(@"Done Clicked");

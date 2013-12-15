@@ -16,4 +16,5 @@
 @property (nonatomic, retain) NSString* school;
 
 - (NSString*) toString;
+- (id) initWithValue: (NSDate*) from :(NSDate*) to :(NSString*) school;
 @end
