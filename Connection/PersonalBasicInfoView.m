@@ -221,6 +221,7 @@
 
     [super viewDidLoad];
     
+    
     [self initEditView];
     [self reloadPeopleBasicInfo];
     [self UpdateStatusItem];
@@ -234,6 +235,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (IBAction)StatusButtonClick:(id)sender {

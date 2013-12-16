@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "Constant.h"
 /*
 static NSManagedObjectContext* theContext;
 static NSManagedObjectModel* theModel;
@@ -85,6 +85,7 @@ static NSPersistentStoreCoordinator* theCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    InitGlobalConstant();
     // Override point for customization after application launch.
     return YES;
 }

@@ -1,91 +1,44 @@
 //
-//  PersonalBasicInfoView2.m
+//  CEditGenericItemView.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-16.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#import "PersonalBasicInfoView2.h"
-#import "CHomeStructure.h"
+#import "CEditGenericItemView.h"
+#import "CGenericItemSetView.h"
 #import "CHomeMember.h"
-#import "Connection.h"
 
-@interface PersonalBasicInfoView2 ()
+@interface CEditGenericItemView ()
 
 @end
 
-@implementation PersonalBasicInfoView2
+@implementation CEditGenericItemView
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        _isEditModel = false;
     }
     return self;
 }
 
-- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
+- (void) init_widget
 {
-    _basicInfo = basicInfo;
-}
-
-- (PersonalBasicInfo*) getPersonalBasicInfo
-{
-    return _basicInfo;
-}
-
-- (void) reloadPersonalBasicInfo
-{
-    if (_basicInfo == nil) return;
-    CHomeStructure* home = [[CHomeStructure alloc] init];
-    [home deserialize:_basicInfo.home_member];
-    [_m_HomeIntro setText:[home toString]];
-    
-    [_m_Interest setText:_basicInfo.intresters];
-    [_m_Habit setText:_basicInfo.habit];
-}
-
-- (void) UpdateByEditModel
-{
-    if (_isEditModel)
-        [_m_StatusBtn setTitle:@"完成"];
-    else
-        [_m_StatusBtn setTitle:@"编辑"];
-    
-    
-}
-
-- (IBAction)AddHomeMember:(id)sender {
-    CHomeStructure* home = [[CHomeStructure alloc] init];
-    [home deserialize:_basicInfo.home_member];
-    CHomeMember* member = [[CHomeMember alloc] init];
-    member.role = _m_HomeRole.text;
-    member.name = _m_HomeName.text;
-    member.birthday = [Utils getDateFromString:_m_HomeBirthday.text];
-    [home addMember:member];
-    _basicInfo.home_member = [home serialize];
-    [DBHelper SaveAll];
-}
-
-- (IBAction)SwitchEditModel:(id)sender {
-    if (_isEditModel) {
-        _basicInfo.intresters = _m_Interest.text;
-        _basicInfo.habit = _m_Habit.text;
-        [DBHelper SaveAll];
-    }
-    _isEditModel = ! _isEditModel;
-    [self UpdateByEditModel];
+    NSIndexPath* path = [[NSIndexPath alloc] initWithIndex:0];
+    NSArray* array = [[NSArray alloc] initWithObjects:path, nil];
+    [self.tableView deleteRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self reloadPersonalBasicInfo];
-    [self UpdateByEditModel];
+    self.navigationController.navigationBar.hidden = NO;
+    [self init_widget];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -94,10 +47,16 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void) viewWillAppear:(BOOL)animated
+
+
+- (void) viewDidDisappear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
+    [self performSelector:_persist_func withObject:nil];
+}
+
+- (void) setItem:(id)item
+{
+    _item = item;
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,32 +65,60 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+- (void) setDate: (NSDate*) date
+{
+    
+}
+
+- (void) home_init: (UITableViewCell*) cell
+{
+    CHomeMember* item = (CHomeMember*)_item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* homeRole = (UITextField*) views[1];
+    [homeRole setText:item.role];
+    UITextField* homeName = (UITextField*) views[3];
+    [homeName setText:item.name];
+    UITextField* homeBirthday = (UITextField*) views[5];
+    [homeBirthday setText:[Utils getDateString:item.birthday]];
+    UIHelper* helper = [[UIHelper alloc] init];
+    [helper setDatePickerForTextField:homeBirthday :@selector(setDate:) :self];
+}
+
+- (void) home_persist: (UITableViewCell*) cell
+{
+    CHomeMember* item = (CHomeMember*) _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* homeRole = (UITextField*) views[1];
+    UITextField* homeName = (UITextField*) views[3];
+    UITextField* homeBirthday = (UITextField*) views[5];
+    item.role = homeRole.text;
+    item.name = homeName.text;
+    item.birthday = [Utils getDateFromString:homeBirthday.text];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"EditHomeMember";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    [self performSelector:_init_func withObject:cell];
     // Configure the cell...
     
     return cell;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -172,8 +159,7 @@
 }
 */
 
-
-
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -181,16 +167,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UIViewController* dest = [segue destinationViewController];
-    if ([dest isKindOfClass:[CGenericItemSetView class]] ) {
-        CGenericItemSetView* destView = (CGenericItemSetView*) dest;
-        destView.item_class = [CHomeMember class];
-        CHomeStructure* home = [[CHomeStructure alloc] init];
-        [home deserialize:_basicInfo.home_member];
-        destView.items = home.members;
-    }
 }
 
-
+ */
 
 @end

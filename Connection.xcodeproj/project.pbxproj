@@ -47,6 +47,9 @@
 		16F455E4185DF61F0014167E /* PersonalFirstTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E3185DF61F0014167E /* PersonalFirstTimeRecord.m */; };
 		16F455E7185DF61F0014167E /* AllDatingRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E6185DF61F0014167E /* AllDatingRecord.m */; };
 		16F455EA185DF61F0014167E /* PersonalDatingSessions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E9185DF61F0014167E /* PersonalDatingSessions.m */; };
+		16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455EC185F236C0014167E /* CGenericItemSetView.m */; };
+		16F455F0185F23940014167E /* CEditGenericItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455EF185F23940014167E /* CEditGenericItemView.m */; };
+		16F455F3185F527E0014167E /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455F2185F527E0014167E /* UIHelper.m */; };
 		16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC8821859EBF100721A59 /* CEducationItem.m */; };
 		16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC888185A01B600721A59 /* CJSONDeserializer.m */; };
 		16FBC88F185A01B700721A59 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC88A185A01B600721A59 /* CJSONSerializer.m */; };
@@ -134,6 +137,12 @@
 		16F455E6185DF61F0014167E /* AllDatingRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDatingRecord.m; sourceTree = "<group>"; };
 		16F455E8185DF61F0014167E /* PersonalDatingSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDatingSessions.h; sourceTree = "<group>"; };
 		16F455E9185DF61F0014167E /* PersonalDatingSessions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDatingSessions.m; sourceTree = "<group>"; };
+		16F455EB185F236C0014167E /* CGenericItemSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGenericItemSetView.h; sourceTree = "<group>"; };
+		16F455EC185F236C0014167E /* CGenericItemSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGenericItemSetView.m; sourceTree = "<group>"; };
+		16F455EE185F23940014167E /* CEditGenericItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEditGenericItemView.h; sourceTree = "<group>"; };
+		16F455EF185F23940014167E /* CEditGenericItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEditGenericItemView.m; sourceTree = "<group>"; };
+		16F455F1185F527E0014167E /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
+		16F455F2185F527E0014167E /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
 		16FBC8811859EBF100721A59 /* CEducationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducationItem.h; sourceTree = "<group>"; };
 		16FBC8821859EBF100721A59 /* CEducationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEducationItem.m; sourceTree = "<group>"; };
 		16FBC887185A01B600721A59 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJSONDeserializer.h; path = libs/TouchJSON/CJSONDeserializer.h; sourceTree = "<group>"; };
@@ -331,6 +340,12 @@
 				160CF748185C2F5900CDEFCE /* PeopleInfoBarController.m */,
 				16F455D9185DE93D0014167E /* PersonalBasicInfoView2.h */,
 				16F455DA185DE93D0014167E /* PersonalBasicInfoView2.m */,
+				16F455EB185F236C0014167E /* CGenericItemSetView.h */,
+				16F455EC185F236C0014167E /* CGenericItemSetView.m */,
+				16F455EE185F23940014167E /* CEditGenericItemView.h */,
+				16F455EF185F23940014167E /* CEditGenericItemView.m */,
+				16F455F1185F527E0014167E /* UIHelper.h */,
+				16F455F2185F527E0014167E /* UIHelper.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -535,14 +550,17 @@
 				160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */,
 				160CF723185B485000CDEFCE /* CExperienceItem.m in Sources */,
 				160CF72F185B532F00CDEFCE /* CSkillSet.m in Sources */,
+				16F455F0185F23940014167E /* CEditGenericItemView.m in Sources */,
 				16166D6317F4678300AEEC4C /* main.m in Sources */,
 				16D872C317FE98CC00561887 /* PersonalCareer.m in Sources */,
 				160CF72C185B4F0700CDEFCE /* CHomeMember.m in Sources */,
+				16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */,
 				16F455E7185DF61F0014167E /* AllDatingRecord.m in Sources */,
 				16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */,
 				16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */,
 				160CF749185C2F5900CDEFCE /* PeopleInfoBarController.m in Sources */,
 				16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */,
+				16F455F3185F527E0014167E /* UIHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

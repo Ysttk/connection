@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Connection.h"
 #import "PersonalBasicInfo.h"
+#import "CGenericItemSetView.h"
+#import "CHomeMember.h"
 
 @interface PersonalBasicInfoView2 : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextView *m_HomeIntro;
