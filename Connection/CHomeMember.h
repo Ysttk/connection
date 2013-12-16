@@ -16,4 +16,6 @@
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, copy) NSDate* birthday;
 
+- (NSString*) toString;
+
 @end

@@ -247,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="1166" y="62"/>
         </scene>
-        <!--Table View Controller - 基本资料-2-->
+        <!--Personal Basic Info View2 - 基本资料-2-->
         <scene sceneID="Ecd-lZ-M0a">
             <objects>
-                <tableViewController id="7SA-hw-Gmr" sceneMemberID="viewController">
+                <tableViewController id="7SA-hw-Gmr" customClass="PersonalBasicInfoView2" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="T9Z-TV-a51">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,13 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="3aw-G3-BSx"/>
+                                <navigationItem title="Title" id="3aw-G3-BSx">
+                                    <barButtonItem key="rightBarButtonItem" title="Item" id="KGg-aY-Q4S">
+                                        <connections>
+                                            <action selector="SwitchEditModel:" destination="7SA-hw-Gmr" id="aDO-uZ-7gT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <sections>
@@ -331,6 +337,9 @@
                                                     <state key="normal" title="+">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="AddHomeMember:" destination="7SA-hw-Gmr" eventType="touchUpInside" id="9Wv-yu-Qti"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -397,6 +406,16 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="基本资料-2" id="I9O-6Z-MJl"/>
+                    <connections>
+                        <outlet property="m_Habit" destination="gWE-gz-AVN" id="61K-xo-76b"/>
+                        <outlet property="m_HomeAddBtn" destination="ngZ-59-Xhu" id="c3V-a8-keP"/>
+                        <outlet property="m_HomeBirthday" destination="yNq-tV-gy9" id="Gbh-8W-djy"/>
+                        <outlet property="m_HomeIntro" destination="LfD-IB-2Fl" id="Ev6-gP-0dQ"/>
+                        <outlet property="m_HomeName" destination="hwr-dk-Ooe" id="kp7-av-WIz"/>
+                        <outlet property="m_HomeRole" destination="gqm-5g-jsT" id="hZh-d6-miM"/>
+                        <outlet property="m_Interest" destination="QBf-nL-WYv" id="TJx-Mz-bet"/>
+                        <outlet property="m_StatusBtn" destination="KGg-aY-Q4S" id="Nlk-Ey-9VJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dap-3V-EN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

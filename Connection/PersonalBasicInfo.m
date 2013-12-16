@@ -2,7 +2,7 @@
 //  PersonalBasicInfo.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-14.
+//  Created by 寿宝江 on 13-12-15.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
@@ -17,17 +17,16 @@
 @dynamic birthday;
 @dynamic buddy_closer_type;
 @dynamic buddy_type;
+@dynamic city;
 @dynamic education;
+@dynamic email;
+@dynamic english_name;
+@dynamic habit;
 @dynamic home_member;
+@dynamic intresters;
 @dynamic is_male;
 @dynamic name;
-@dynamic english_name;
-@dynamic city;
-@dynamic habit;
-@dynamic intresters;
-@dynamic habite;
 @dynamic phone;
-@dynamic email;
 @dynamic my_dating_record;
 @dynamic my_details;
 @dynamic my_first_met_record;

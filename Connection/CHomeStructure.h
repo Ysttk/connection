@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PSerialize.h"
+#import "CHomeMember.h"
 
 @interface CHomeStructure : NSObject <PSerialize>
 
 @property (nonatomic, copy) NSMutableArray* members;
 
+- (NSString*) toString;
+- (void) addMember: (CHomeMember*) member;
 @end

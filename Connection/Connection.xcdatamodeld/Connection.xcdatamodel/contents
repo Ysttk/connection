@@ -21,7 +21,6 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="english_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="habit" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="habite" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="home_member" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intresters" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="is_male" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -54,10 +53,10 @@
         <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_first_met_record" inverseEntity="PersonalBasicInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AllDatingRecord" positionX="-81" positionY="387" width="128" height="193"/>
-        <element name="PersonalBasicInfo" positionX="160" positionY="192" width="128" height="268"/>
-        <element name="PersonalCareer" positionX="468" positionY="293" width="128" height="148"/>
-        <element name="PersonalDatingSessions" positionX="-83" positionY="243" width="128" height="88"/>
-        <element name="PersonalFirstTimeRecord" positionX="142" positionY="540" width="128" height="133"/>
+        <element name="AllDatingRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalBasicInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalCareer" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalDatingSessions" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalFirstTimeRecord" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

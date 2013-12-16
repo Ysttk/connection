@@ -20,6 +20,21 @@
     return self;
 }
 
+- (void) addMember:(CHomeMember *)member
+{
+    [_members addObject:member];
+}
+
+- (NSString*) toString
+{
+    NSMutableString* tmpStr = [[NSMutableString alloc]init];
+    for (id member in _members) {
+        [tmpStr appendString:[member toString]];
+        [tmpStr appendString:@"\n"];
+    }
+    return tmpStr;
+}
+
 - (NSString*) serialize
 {
     NSString* re = [JsonHelper JsonFromSerializeArray:_members];

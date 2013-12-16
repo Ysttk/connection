@@ -7,6 +7,7 @@
 //
 
 #import "CHomeMember.h"
+#import "Connection.h"
 
 static const NSString* roleKey = @"role";
 static const NSString* nameKey = @"name";
@@ -22,6 +23,16 @@ static const NSString* birKey = @"birthday";
         _birthday = nil;
     }
     return self;
+}
+
+- (NSString*) toString
+{
+    NSMutableString* tmpStr = [[NSMutableString alloc] init];
+    [tmpStr appendString: _role];
+    [tmpStr appendString:@"~"];
+    [tmpStr appendString:_name];
+    [tmpStr appendFormat:@"    %@", [Utils getDateString:_birthday]];
+    return tmpStr;
 }
 
 - (NSDictionary*) toDictionary
