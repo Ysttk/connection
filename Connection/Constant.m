@@ -21,9 +21,17 @@ NSString* BuddyTypeC[] = {
     @"同学", @"战友", @"工作", @"生活", @"亲戚",
 };
 
+NSString* ClassKey = @"class";
+NSString* InitKey = @"init_func:";
+NSString* PersistKey = @"persist_func:";
+NSString* EditRowHeigh = @"row_heigh";
+
+
+NSString* HomeKey = @"HomeMembers";
+
 NSString* _SetId2SetViewCellIdAndEditViewId =
 @"{\
-\"date\":\"123\" \
+\"HomeMembers\":{\"class\":\"CHomeMember\",\"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76}, \
 }";
 
 NSDictionary* SetId2SetViewCellIdAndEditViewId;

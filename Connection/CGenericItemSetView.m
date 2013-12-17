@@ -135,9 +135,17 @@
     // Pass the selected object to the new view controller.
     CEditGenericItemView* dest = (CEditGenericItemView*)[segue destinationViewController];
     
-    dest.init_func = @selector(home_init:);
-    dest.persist_func = @selector(home_persist:);
-    
+    //dest.init_func = @selector(home_init:);
+   // dest.persist_func = @selector(home_persist:);
+    //dest.init_func = NSSelectorFromString(@"home_init:");
+    //dest.persist_func= NSSelectorFromString(@"home_persist:");
+    NSDictionary* dic = (NSDictionary*)[SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+    NSString* initStr = (NSString*) [dic valueForKey:@"init_func:"];
+    NSString* persistStr = (NSString*) [dic valueForKey:@"persist_func:"];
+    NSNumber* heigh = (NSNumber*) [dic valueForKey:EditRowHeigh];
+    dest.init_func = NSSelectorFromString(initStr);
+    dest.persist_func = NSSelectorFromString(persistStr);
+    dest.rowHeigh = heigh.intValue;
     id item = nil;
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         item = [[_item_class alloc] init];

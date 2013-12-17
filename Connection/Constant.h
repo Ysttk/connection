@@ -11,6 +11,12 @@
 extern NSString* HomeRoleC[];
 extern NSString* SkillLevelC[];
 extern NSString* BuddyTypeC[];
+extern NSString* HomeKey;
 extern NSDictionary* SetId2SetViewCellIdAndEditViewId;
+extern NSString* ClassKey;
+extern NSString* InitKey;
+extern NSString* PersistKey;
+extern NSString* EditRowHeigh;
+
 
 void InitGlobalConstant();

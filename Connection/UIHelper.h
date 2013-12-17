@@ -15,4 +15,6 @@
 @property (nonatomic, assign) SEL setDateAction;
 
 - (void) setDatePickerForTextField: (UITextField*) textField :(SEL)setDateAction :(id) delegate;
+
++ (UIHelper*) getUIHelper;
 @end

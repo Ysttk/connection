@@ -65,9 +65,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setDate: (NSDate*) date
+- (void) setHomeBirthday: (NSDate*) date
 {
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
     
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* birthdayText = views[5];
+    [birthdayText setText:[Utils getDateString:date]];
+    [birthdayText resignFirstResponder];
 }
 
 - (void) home_init: (UITableViewCell*) cell
@@ -80,8 +86,8 @@
     [homeName setText:item.name];
     UITextField* homeBirthday = (UITextField*) views[5];
     [homeBirthday setText:[Utils getDateString:item.birthday]];
-    UIHelper* helper = [[UIHelper alloc] init];
-    [helper setDatePickerForTextField:homeBirthday :@selector(setDate:) :self];
+    UIHelper* helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:homeBirthday :@selector(setHomeBirthday:) :self];
 }
 
 - (void) home_persist: (UITableViewCell*) cell
@@ -119,6 +125,10 @@
     return cell;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return _rowHeigh;
+}
 
 /*
 // Override to support conditional editing of the table view.

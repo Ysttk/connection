@@ -12,6 +12,16 @@
 static UIDatePicker* datePicker;
 static UIToolbar* pickerToolBar;
 static UIBarButtonItem* okBtn;
+static UIHelper* helper;
+
++ (UIHelper*) getUIHelper
+{
+    if (helper == nil) {
+        helper = [[UIHelper alloc] init];
+    }
+    return helper;
+}
+
 + (UIDatePicker*) getDatePicker
 {
     if (datePicker == nil) {
@@ -41,14 +51,15 @@ static UIBarButtonItem* okBtn;
 - (IBAction)okClick:(id)sender
 {
     [_delegate performSelector:_setDateAction withObject:[datePicker date]];
+    
 }
 
 - (void) setDatePickerForTextField:(UITextField *)textField :(SEL)setDateAction :(id) delegate
 {
     textField.inputView = [UIHelper getDatePicker];
     textField.inputAccessoryView = [UIHelper getToolbar];
-    [okBtn setAction:@selector(okClick:)];
     [okBtn setTarget:self];
+    [okBtn setAction:@selector(okClick:)];
     [pickerToolBar setDelegate:self];
     _delegate = delegate;
     _setDateAction = setDateAction;
