@@ -294,7 +294,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="CA0-dO-Dmj" kind="push" id="BE7-6B-UFX"/>
+                                            <segue destination="CA0-dO-Dmj" kind="push" identifier="HomeMemberEdit" id="BE7-6B-UFX"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

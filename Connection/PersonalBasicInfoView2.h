@@ -22,4 +22,6 @@
 @property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @property (nonatomic, assign) bool isEditModel;
 
+- (void) SaveHomeMember:(NSArray*)members;
+
 @end

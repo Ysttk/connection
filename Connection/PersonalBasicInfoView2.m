@@ -62,6 +62,14 @@
     
 }
 
+- (void) SaveHomeMember:(NSArray *)members
+{
+    CHomeStructure* home = [[CHomeStructure alloc]init];
+    [home deserialize:_basicInfo.home_member];
+    home.members = [members mutableCopy];
+    _basicInfo.home_member = [home serialize];
+}
+
 
 - (IBAction)SwitchEditModel:(id)sender {
     if (_isEditModel) {
@@ -179,15 +187,18 @@
     // Pass the selected object to the new view controller.
     UIViewController* dest = [segue destinationViewController];
     if ([dest isKindOfClass:[CGenericItemSetView class]] ) {
-        CGenericItemSetView* destView = (CGenericItemSetView*) dest;
-        //destView.item_class = NSClassFromString(@"CHomeMember");
-        NSDictionary* dic = (NSDictionary*) [SetId2SetViewCellIdAndEditViewId valueForKey:HomeKey];
-        NSString* className = (NSString*) [dic valueForKey:ClassKey];
-        destView.item_class = NSClassFromString(className);
-        destView.item_key = HomeKey;
-        CHomeStructure* home = [[CHomeStructure alloc] init];
-        [home deserialize:_basicInfo.home_member];
-        destView.items = home.members;
+        if ([[segue identifier] compare:@"HomeMemberEdit"] == NSOrderedSame) {
+            CGenericItemSetView* destView = (CGenericItemSetView*) dest;
+            //destView.item_class = NSClassFromString(@"CHomeMember");
+            NSDictionary* dic = (NSDictionary*) [SetId2SetViewCellIdAndEditViewId valueForKey:HomeKey];
+            NSString* className = (NSString*) [dic valueForKey:ClassKey];
+            destView.item_class = NSClassFromString(className);
+            destView.item_key = HomeKey;
+            CHomeStructure* home = [[CHomeStructure alloc] init];
+            [home deserialize:_basicInfo.home_member];
+            destView.items = home.members;
+            destView.parent = self;
+        }
     }
 }
 

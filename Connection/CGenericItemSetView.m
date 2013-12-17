@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = NO;
+    _toDetailPage = false;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,6 +52,17 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     [self.tableView reloadData];
+    _toDetailPage = false;
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (_toDetailPage) return;
+    NSDictionary* dic = [SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+    NSString* saveFunc = [dic valueForKey:SaveFuncKey];
+    SEL func = NSSelectorFromString(saveFunc);
+    [_parent performSelector:func withObject:_items];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,6 +168,8 @@
         item =[_items objectAtIndex: self.tableView.indexPathForSelectedRow.row];
     }
     [dest setItem:item];
+    
+    _toDetailPage = true;
 }
 
  

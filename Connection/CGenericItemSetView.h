@@ -17,5 +17,9 @@
 
 @property (nonatomic, retain) NSString* item_key;
 
+@property (nonatomic, retain) id parent;
+
+@property (nonatomic, assign) bool toDetailPage;
+
 - (void) setItems:(NSMutableArray *)items;
 @end
