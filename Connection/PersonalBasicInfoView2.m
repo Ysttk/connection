@@ -186,7 +186,7 @@
         CGenericItemSetView* destView = (CGenericItemSetView*) dest;
         //destView.item_class = NSClassFromString(@"CHomeMember");
         NSDictionary* dic = (NSDictionary*) [SetId2SetViewCellIdAndEditViewId valueForKey:HomeKey];
-        NSString* className = (NSString*) [dic valueForKey:@"class"];
+        NSString* className = (NSString*) [dic valueForKey:ClassKey];
         destView.item_class = NSClassFromString(className);
         destView.item_key = HomeKey;
         CHomeStructure* home = [[CHomeStructure alloc] init];

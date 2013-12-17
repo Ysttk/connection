@@ -49,9 +49,11 @@
 
 
 
-- (void) viewDidDisappear:(BOOL)animated
+- (void) viewWillDisappear:(BOOL)animated
 {
-    [self performSelector:_persist_func withObject:nil];
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    [self performSelector:_persist_func withObject:cell];
 }
 
 - (void) setItem:(id)item

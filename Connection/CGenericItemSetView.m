@@ -50,6 +50,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,8 +141,8 @@
     //dest.init_func = NSSelectorFromString(@"home_init:");
     //dest.persist_func= NSSelectorFromString(@"home_persist:");
     NSDictionary* dic = (NSDictionary*)[SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
-    NSString* initStr = (NSString*) [dic valueForKey:@"init_func:"];
-    NSString* persistStr = (NSString*) [dic valueForKey:@"persist_func:"];
+    NSString* initStr = (NSString*) [dic valueForKey:InitKey];
+    NSString* persistStr = (NSString*) [dic valueForKey:PersistKey];
     NSNumber* heigh = (NSNumber*) [dic valueForKey:EditRowHeigh];
     dest.init_func = NSSelectorFromString(initStr);
     dest.persist_func = NSSelectorFromString(persistStr);
