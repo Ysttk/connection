@@ -25,13 +25,14 @@ NSString* ClassKey = @"class";
 NSString* InitKey = @"init_func:";
 NSString* PersistKey = @"persist_func:";
 NSString* EditRowHeigh = @"row_heigh";
+NSString* EditRowId = @"row_id";
 
 
 NSString* HomeKey = @"HomeMembers";
 
 NSString* _SetId2SetViewCellIdAndEditViewId =
 @"{\
-\"HomeMembers\":{\"class\":\"CHomeMember\",\"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76}, \
+\"HomeMembers\":{\"class\":\"CHomeMember\",\"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76, \"row_id\":\"EditHomeMember\"}, \
 }";
 
 NSDictionary* SetId2SetViewCellIdAndEditViewId;

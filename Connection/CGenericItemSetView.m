@@ -147,6 +147,7 @@
     dest.init_func = NSSelectorFromString(initStr);
     dest.persist_func = NSSelectorFromString(persistStr);
     dest.rowHeigh = heigh.intValue;
+    dest.item_key = _item_key;
     id item = nil;
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         item = [[_item_class alloc] init];

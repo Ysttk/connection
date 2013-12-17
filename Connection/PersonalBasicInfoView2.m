@@ -50,25 +50,18 @@
 
 - (void) UpdateByEditModel
 {
-    if (_isEditModel)
+    [_m_HomeIntro setEditable:FALSE];
+    if (_isEditModel) {
         [_m_StatusBtn setTitle:@"完成"];
-    else
+        _m_HomeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
         [_m_StatusBtn setTitle:@"编辑"];
+        _m_HomeCell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     
 }
 
-- (IBAction)AddHomeMember:(id)sender {
-    CHomeStructure* home = [[CHomeStructure alloc] init];
-    [home deserialize:_basicInfo.home_member];
-    CHomeMember* member = [[CHomeMember alloc] init];
-    member.role = _m_HomeRole.text;
-    member.name = _m_HomeName.text;
-    member.birthday = [Utils getDateFromString:_m_HomeBirthday.text];
-    [home addMember:member];
-    _basicInfo.home_member = [home serialize];
-    [DBHelper SaveAll];
-}
 
 - (IBAction)SwitchEditModel:(id)sender {
     if (_isEditModel) {
@@ -79,6 +72,7 @@
     _isEditModel = ! _isEditModel;
     [self UpdateByEditModel];
 }
+
 
 - (void)viewDidLoad
 {
@@ -98,6 +92,8 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self reloadPersonalBasicInfo];
+    [self UpdateByEditModel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -193,6 +189,14 @@
         [home deserialize:_basicInfo.home_member];
         destView.items = home.members;
     }
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if (!_isEditModel)
+        return NO;
+    else
+        return YES;
 }
 
 

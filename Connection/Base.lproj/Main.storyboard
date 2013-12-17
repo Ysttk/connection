@@ -361,6 +361,7 @@
                     <tabBarItem key="tabBarItem" title="基本资料-2" id="I9O-6Z-MJl"/>
                     <connections>
                         <outlet property="m_Habit" destination="gWE-gz-AVN" id="61K-xo-76b"/>
+                        <outlet property="m_HomeCell" destination="oLx-Sg-aD1" id="d9Q-G2-HJ5"/>
                         <outlet property="m_HomeIntro" destination="LfD-IB-2Fl" id="Ev6-gP-0dQ"/>
                         <outlet property="m_Interest" destination="QBf-nL-WYv" id="TJx-Mz-bet"/>
                         <outlet property="m_StatusBtn" destination="KGg-aY-Q4S" id="Nlk-Ey-9VJ"/>

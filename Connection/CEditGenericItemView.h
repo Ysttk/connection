@@ -16,6 +16,7 @@
 @property (nonatomic, assign) SEL init_func;
 @property (nonatomic, assign) SEL persist_func;
 @property (nonatomic, assign) CGFloat rowHeigh;
+@property (nonatomic, retain) NSString* item_key;
 
 
 - (void) home_init: (UITableViewCell*) cell;

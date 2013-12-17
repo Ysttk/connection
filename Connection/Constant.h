@@ -17,6 +17,7 @@ extern NSString* ClassKey;
 extern NSString* InitKey;
 extern NSString* PersistKey;
 extern NSString* EditRowHeigh;
+extern NSString* EditRowId;
 
 
 void InitGlobalConstant();

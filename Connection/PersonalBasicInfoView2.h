@@ -14,13 +14,10 @@
 
 @interface PersonalBasicInfoView2 : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextView *m_HomeIntro;
-@property (weak, nonatomic) IBOutlet UITextField *m_HomeRole;
-@property (weak, nonatomic) IBOutlet UITextField *m_HomeName;
-@property (weak, nonatomic) IBOutlet UITextField *m_HomeBirthday;
-@property (weak, nonatomic) IBOutlet UIButton *m_HomeAddBtn;
 @property (weak, nonatomic) IBOutlet UITextField *m_Interest;
 @property (weak, nonatomic) IBOutlet UITextView *m_Habit;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *m_StatusBtn;
+@property (weak, nonatomic) IBOutlet UITableViewCell *m_HomeCell;
 
 @property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @property (nonatomic, assign) bool isEditModel;
