@@ -25,9 +25,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *m_EducationBackgroud;
 @property (weak, nonatomic) IBOutlet UITableViewCell *m_ConnectionCell;
 @property (weak, nonatomic) IBOutlet UIView *m_ConnectionView;
-@property (weak, nonatomic) IBOutlet UITextField *m_EducationBeginTime;
-@property (weak, nonatomic) IBOutlet UITextField *m_EducationEndTime;
-@property (weak, nonatomic) IBOutlet UITextField *m_EducationSchool;
 @property (weak, nonatomic) IBOutlet UITextField *m_Sex;
 @property (weak, nonatomic) IBOutlet UITextField *m_City;
 
@@ -42,4 +39,5 @@
 
 - (PersonalBasicInfo*) getPersonalBasicInfo;
 - (void) setPersonalBasicInfo:(PersonalBasicInfo *)basicInfo;
+- (void) SaveEducation: (NSArray*) items;
 @end

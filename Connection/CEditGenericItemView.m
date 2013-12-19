@@ -9,6 +9,7 @@
 #import "CEditGenericItemView.h"
 #import "CGenericItemSetView.h"
 #import "CHomeMember.h"
+#import "CEducationItem.h"
 
 @interface CEditGenericItemView ()
 
@@ -47,6 +48,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -54,6 +61,7 @@
     NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
     [self performSelector:_persist_func withObject:cell];
+    [UIHelper releaseUIHelper];
 }
 
 - (void) setItem:(id)item
@@ -67,6 +75,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*******************CHomeMember*************/
 - (void) setHomeBirthday: (NSDate*) date
 {
     NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -103,6 +112,62 @@
     item.name = homeName.text;
     item.birthday = [Utils getDateFromString:homeBirthday.text];
 }
+
+- (UITableViewCell*) getFirstRow
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    return [self.tableView cellForRowAtIndexPath:path];
+}
+
+/****************CEducation*****************/
+
+- (void) setEducationFrom: (NSDate*) date
+{
+    UITableViewCell* cell = [self getFirstRow];
+    NSArray* array = cell.contentView.subviews;
+    UITextField* from = array[0];
+    [from setText:[Utils getDateString:date]];
+    [from resignFirstResponder];
+}
+
+- (void) setEducationTo: (NSDate*) date
+{
+    UITableViewCell* cell = [self getFirstRow];
+    NSArray* array = cell.contentView.subviews;
+    UITextField* to = array[1];
+    [to setText:[Utils getDateString:date]];
+    [to resignFirstResponder];
+}
+
+- (void) education_init: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    CEducationItem* item = _item;
+    UITextField* from = views[0];
+    [from setText:[Utils getDateString:item.from]];
+    UITextField* to = views[1];
+    [to setText:[Utils getDateString:item.to]];
+    UITextField* school = views[2];
+    [school setText:item.school];
+    UIHelper* helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:from :@selector(setEducationFrom:) :self];
+    helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:to :@selector(setEducationTo:) :self];
+}
+
+- (void) education_persist: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    CEducationItem* item = _item;
+    UITextField* from = views[0];
+    UITextField* to = views[1];
+    UITextField* school = views[2];
+    
+    item.from = [Utils getDateFromString:from.text];
+    item.to = [Utils getDateFromString:to.text];
+    item.school = school.text;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

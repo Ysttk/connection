@@ -47,6 +47,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    NSDictionary* dic = [SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+    NSString* className = [dic valueForKey:ClassKey];
+    _item_class = NSClassFromString(className);
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

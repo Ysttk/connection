@@ -10,6 +10,7 @@
 #import "CEducation.h"
 #import "CEducationItem.h"
 #import "PeopleInfoBarController.h"
+#import "CGenericItemSetView.h"
 
 
 @interface PersonalBasicInfoView ()
@@ -142,40 +143,40 @@
     _currentEditor = _m_Birthday;
 }
 
-- (IBAction)BeginEditEducationBeginTime:(id)sender
-{
-    _currentEditor = _m_EducationBeginTime;
-}
+//- (IBAction)BeginEditEducationBeginTime:(id)sender
+//{
+//    _currentEditor = _m_EducationBeginTime;
+//}
+//
+//- (IBAction)BeginEditEducationEndTime:(id)sender
+//{
+//    _currentEditor = _m_EducationEndTime;
+//}
 
-- (IBAction)BeginEditEducationEndTime:(id)sender
-{
-    _currentEditor = _m_EducationEndTime;
-}
-
-- (IBAction)EducationOKClick:(id)sender
-{
-    //load date from text field
-    NSString* school = _m_EducationSchool.text;
-    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString* tmpDateStr = _m_EducationBeginTime.text;
-    NSDate*  beginDate = [formatter dateFromString:tmpDateStr];
-    tmpDateStr = _m_EducationEndTime.text;
-    NSDate* endDate = [formatter dateFromString:tmpDateStr];
-    
-    //save date
-    CEducationItem* item = [[CEducationItem alloc] initWithValue:beginDate :endDate :school];
-    CEducation* education = [[CEducation alloc] init];
-    [education deserialize:_basicInfo.education];
-    [education addEducationItem:item];
-    _basicInfo.education = [education serialize];
-    [_m_EducationBackgroud setText:[education toString]];
-    
-    //clear date in text field
-    [_m_EducationBeginTime setText:@""];
-    [_m_EducationEndTime setText:@""];
-    [_m_EducationSchool setText:@""];
-}
+//- (IBAction)EducationOKClick:(id)sender
+//{
+//    //load date from text field
+//    NSString* school = _m_EducationSchool.text;
+//    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+//    [formatter setDateFormat:@"yyyy-MM-dd"];
+//    NSString* tmpDateStr = _m_EducationBeginTime.text;
+//    NSDate*  beginDate = [formatter dateFromString:tmpDateStr];
+//    tmpDateStr = _m_EducationEndTime.text;
+//    NSDate* endDate = [formatter dateFromString:tmpDateStr];
+//    
+//    //save date
+//    CEducationItem* item = [[CEducationItem alloc] initWithValue:beginDate :endDate :school];
+//    CEducation* education = [[CEducation alloc] init];
+//    [education deserialize:_basicInfo.education];
+//    [education addEducationItem:item];
+//    _basicInfo.education = [education serialize];
+//    [_m_EducationBackgroud setText:[education toString]];
+//    
+//    //clear date in text field
+//    [_m_EducationBeginTime setText:@""];
+//    [_m_EducationEndTime setText:@""];
+//    [_m_EducationSchool setText:@""];
+//}
 
 - (IBAction)DateEditDone:(id)sender
 {
@@ -209,10 +210,10 @@
     _m_Birthday.inputAccessoryView = _pickerToolbar;
     _m_Birthday.inputView = _birthdayPicker;
     
-    _m_EducationBeginTime.inputAccessoryView = _pickerToolbar;
-    _m_EducationBeginTime.inputView = _birthdayPicker;
-    _m_EducationEndTime.inputAccessoryView = _pickerToolbar;
-    _m_EducationEndTime.inputView = _birthdayPicker;
+//    _m_EducationBeginTime.inputAccessoryView = _pickerToolbar;
+//    _m_EducationBeginTime.inputView = _birthdayPicker;
+//    _m_EducationEndTime.inputAccessoryView = _pickerToolbar;
+//    _m_EducationEndTime.inputView = _birthdayPicker;
     
 }
 
@@ -265,7 +266,12 @@
 
 }
 
-
+- (void) SaveEducation:(NSArray *)items
+{
+    CEducation* education = [[CEducation alloc] init];
+    education.items = [items mutableCopy];
+    _basicInfo.education = [education serialize];
+}
 
 
 #pragma mark - Table view data source
@@ -330,12 +336,21 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if (_basicInfo == nil) {
-        NSManagedObjectContext* context = [DBHelper getContext];
-        _basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
-    }
     id dest = [segue destinationViewController];
-    [dest setPersonalBasicInfo:_basicInfo];
+    if ([dest isKindOfClass:[CGenericItemSetView class]]) {
+        CGenericItemSetView* destView = dest;
+        destView.item_key = EducationKey;
+        destView.parent = self;
+        CEducation* education = [[CEducation alloc] init];
+        [education deserialize:_basicInfo.education];
+        destView.items = education.items;
+    } else {
+        if (_basicInfo == nil) {
+            NSManagedObjectContext* context = [DBHelper getContext];
+            _basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
+        }
+        [dest setPersonalBasicInfo:_basicInfo];
+    }
 }
 
 

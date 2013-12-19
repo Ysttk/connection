@@ -13,33 +13,44 @@ static UIDatePicker* datePicker;
 static UIToolbar* pickerToolBar;
 static UIBarButtonItem* okBtn;
 static UIHelper* helper;
+static NSMutableArray* helpers;
 
 + (UIHelper*) getUIHelper
 {
-    if (helper == nil) {
-        helper = [[UIHelper alloc] init];
+    //if (helper == nil) {
+    //    helper = [[UIHelper alloc] init];
+    //}
+    if (helpers == nil) {
+        helpers = [[NSMutableArray alloc] init];
     }
+    UIHelper* helper = [[UIHelper alloc] init];
+    [helpers addObject:helper];
     return helper;
+}
+
++ (void) releaseUIHelper
+{
+    [helpers removeAllObjects];
 }
 
 + (UIDatePicker*) getDatePicker
 {
-    if (datePicker == nil) {
+    //if (datePicker == nil) {
         datePicker = [[UIDatePicker alloc] init];
         datePicker.datePickerMode = UIDatePickerModeDate;
-    }
+    //}
     return datePicker;
 }
 
 + (UIToolbar*) getToolbar
 {
-    if (pickerToolBar == nil) {
+    //if (pickerToolBar == nil) {
         pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width,  30)];
         okBtn = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:nil action:nil];
             UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         NSArray* items = [NSArray arrayWithObjects: placeHolder, okBtn, nil];
         [pickerToolBar setItems:items];
-    }
+    //}
     return pickerToolBar;
 }
 
@@ -53,6 +64,7 @@ static UIHelper* helper;
     [_delegate performSelector:_setDateAction withObject:[datePicker date]];
     
 }
+
 
 - (void) setDatePickerForTextField:(UITextField *)textField :(SEL)setDateAction :(id) delegate
 {
