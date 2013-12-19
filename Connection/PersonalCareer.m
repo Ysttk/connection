@@ -10,7 +10,7 @@
 #import "PersonalBasicInfo.h"
 #import "CGenericItemSetView.h"
 #import "CExperience.h"
-#import "CSkill.h"
+#import "CSkillSet.h"
 #import "CCareer.h"
 #import "PersonalDetails.h"
 
@@ -156,6 +156,13 @@
     _basicInfo.my_details.history = [exp serialize];
 }
 
+- (void) SaveSkill: (NSArray*) items
+{
+    CSkillSet* set = [[CSkillSet alloc] init];
+    set.skills = [items mutableCopy];
+    _basicInfo.my_details.skills = [set serialize];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -178,6 +185,13 @@
         CCareer* career = [[CCareer alloc] init];
         [career deserialize:_basicInfo.my_details.career];
         dest.items = career.fields;
+    } else if ([[segue identifier] compare:@"EditSkill"] == NSOrderedSame) {
+        CGenericItemSetView* dest = [segue destinationViewController];
+        dest.parent = self;
+        dest.item_key = SkillKey;
+        CSkillSet* skills = [[CSkillSet alloc] init];
+        [skills deserialize:_basicInfo.my_details.skills];
+        dest.items = skills.skills;
     }
 }
 

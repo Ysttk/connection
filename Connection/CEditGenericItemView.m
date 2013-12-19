@@ -78,6 +78,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+/******************CSkill*******************/
+
+-(void) setSkillLevel: (NSString*) levelStr
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* level = views[1];
+    [level setText:levelStr];
+    [level resignFirstResponder];
+}
+
+- (void) skill_init: (UITableViewCell*) cell
+{
+    CSkill* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* skill= views[0];
+    UITextField* level= views[1];
+    
+    [skill setText:item.skill];
+    [level setText:item.level];
+    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:3];
+    UIHelper* helper= [UIHelper getUIHelper];
+    [helper setStrPickerForTextField:level :@selector(setSkillLevel:) :self :array];
+}
+
+- (void) skill_persist: (UITableViewCell*) cell
+{
+    CSkill* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* skill= views[0];
+    UITextField* level= views[1];
+    
+    item.skill = skill.text;
+    item.level = level.text;
+}
+
 /******************CExperienceItem**********/
 - (void) setExpItemFrom: (NSDate*) date
 {

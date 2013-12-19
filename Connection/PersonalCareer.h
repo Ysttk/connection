@@ -13,8 +13,8 @@
 @interface PersonalCareer : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *m_Object;
-@property (weak, nonatomic) IBOutlet UITextField *m_Skill;
 @property (weak, nonatomic) IBOutlet UITextField *m_Company;
+@property (weak, nonatomic) IBOutlet UITextView *m_Skill;
 @property (weak, nonatomic) IBOutlet UITextField *m_Position;
 @property (weak, nonatomic) IBOutlet UITextView *m_Experience;
 @property (weak, nonatomic) IBOutlet UITextView *m_Career;

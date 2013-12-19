@@ -23,6 +23,7 @@ extern NSString* HomeKey;
 extern NSString* EducationKey;
 extern NSString* ExperienceKey;
 extern NSString* CareerKey;
+extern NSString* SkillKey;
 
 
 void InitGlobalConstant();
