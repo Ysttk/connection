@@ -34,4 +34,8 @@ static const NSString* levelKey = @"level";
     return TRUE;
 }
 
+- (NSString*) toString
+{
+    return [[NSString alloc] initWithFormat:@"%@~%@", _skill, _level];
+}
 @end

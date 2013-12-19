@@ -99,10 +99,13 @@
 
 - (void) UpdateStatusItem
 {
-    if (! _isEditMode)
+    if (! _isEditMode) {
         [_m_StatusActionButton setTitle:@"编辑"];
-    else
+        [_m_EducationCell setAccessoryType:UITableViewCellAccessoryNone];
+    } else {
         [_m_StatusActionButton setTitle:@"完成"];
+        [_m_EducationCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
 }
 
 - (void) UpdateEditMode
@@ -353,6 +356,16 @@
     }
 }
 
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier compare:@"EditEducation"] == NSOrderedSame) {
+        if (!_isEditMode)
+            return FALSE;
+        else
+            return TRUE;
+    }
+    return TRUE;
+}
 
 
 @end

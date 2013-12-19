@@ -33,5 +33,8 @@ static const NSString* roleKey = @"role";
     _role = [dic valueForKey:roleKey];
     return TRUE;
 }
-
+- (NSString*) toString
+{
+    return [[NSString alloc] initWithFormat:@"%@~%@", _field, _role];
+}
 @end

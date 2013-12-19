@@ -10,6 +10,9 @@
 #import "CGenericItemSetView.h"
 #import "CHomeMember.h"
 #import "CEducationItem.h"
+#import "CExperienceItem.h"
+#import "CCareerField.h"
+#import "CSkill.h"
 
 @interface CEditGenericItemView ()
 
@@ -73,6 +76,96 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/******************CExperienceItem**********/
+- (void) setExpItemFrom: (NSDate*) date
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* from = views[0];
+    [from setText:[Utils getDateString:date]];
+    [from resignFirstResponder];
+}
+
+- (void) setExpItemTo: (NSDate*) date
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* to= views[1];
+    [to setText:[Utils getDateString:date]];
+    [to resignFirstResponder];
+}
+
+- (void) experience_init:(UITableViewCell*) cell
+{
+    CExperienceItem* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* from = views[0];
+    UITextField* to = views[1];
+    UITextField* activity = views[2];
+    [from setText:[Utils getDateString:item.from]];
+    [to setText:[Utils getDateString:item.to]];
+    [activity setText:item.description];
+    
+    UIHelper* helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:from :@selector(setExpItemFrom:) :self];
+    helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:to :@selector(setExpItemTo:) :self];
+}
+
+- (void) experience_persist:(UITableViewCell*) cell
+{
+    CExperienceItem* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* from = views[0];
+    UITextField* to = views[1];
+    UITextField* activity = views[2];
+    item.from = [Utils getDateFromString:from.text];
+    item.to = [Utils getDateFromString:to.text];
+    item.description = activity.text;
+}
+
+/*******************CCareerField*************/
+
+- (void) setFieldRole:(NSString*) role
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* roleEditor = views[1];
+    [roleEditor setText:role];
+    [roleEditor resignFirstResponder];
+}
+
+- (void) career_init: (UITableViewCell*) cell
+{
+    CCareerField* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* field = views[0];
+    UITextField* role = views[1];
+    
+    [field setText:item.field];
+    [role setText:item.role];
+    
+    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:3];
+    UIHelper* helper= [UIHelper getUIHelper];
+    [helper setStrPickerForTextField:role :@selector(setFieldRole:) :self :array];
+}
+
+- (void) career_persist: (UITableViewCell*) cell
+{
+    CCareerField* item = _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* field = views[0];
+    UITextField* role = views[1];
+    
+    item.field = field.text;
+    item.role = role.text;
 }
 
 /*******************CHomeMember*************/

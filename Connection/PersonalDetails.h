@@ -2,7 +2,7 @@
 //  PersonalDetails.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-19.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * position;
 @property (nonatomic, retain) NSString * profession;
 @property (nonatomic, retain) NSString * skills;
+@property (nonatomic, retain) NSString * career;
 @property (nonatomic, retain) PersonalBasicInfo *my_basic_info;
 
 @end

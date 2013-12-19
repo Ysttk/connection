@@ -8,6 +8,11 @@
 
 #import "PersonalCareer.h"
 #import "PersonalBasicInfo.h"
+#import "CGenericItemSetView.h"
+#import "CExperience.h"
+#import "CSkill.h"
+#import "CCareer.h"
+#import "PersonalDetails.h"
 
 @interface PersonalCareer ()
 
@@ -30,13 +35,10 @@
     return UIBarPositionTop;
 }
 
-- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
+
+- (void) viewWillAppear:(BOOL)animated
 {
-    int a= 0;
-}
-- (IBAction)clickDone:(id)sender
-{
-    NSLog(@"Done Clicked");
+    
 }
 
 - (void)viewDidLoad
@@ -48,33 +50,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-/*
-    _picker = [[UIPickerView alloc] init];
-    [_picker setDataSource:self];
-    [_picker setDelegate:self];
-    self.pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]applicationFrame].size.width, 30)];
-    [self.pickerToolbar setDelegate:self];
 
-    
-    UIBarButtonItem* tmpOK = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(clickDone:)];
-    
-    UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-
-    
-    NSArray* items = [NSArray arrayWithObjects: placeHolder, tmpOK, nil];
-    [self.pickerToolbar setItems:items];
-    
-    self.lovingPlace.inputView = _picker;
-    self.lovingSport.inputView = _picker;
-    self.lovingDrink.inputView = _picker;
-    self.lovingSmork.inputView = _picker;
-    self.lovingPlace.inputAccessoryView = self.pickerToolbar;
-    self.lovingSport.inputAccessoryView = self.pickerToolbar;
-    self.lovingDrink.inputAccessoryView = self.pickerToolbar;
-    self.lovingSmork.inputAccessoryView = self.pickerToolbar;
- */
 }
 - (IBAction)BeginEditSport:(id)sender {
     //[_picker reloadAllComponents];
@@ -83,31 +59,7 @@
     //[_picker reloadAllComponents];
 }
 
-- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
 
-- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return 3;
-}
-
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [@"ABC" stringByAppendingString:[NSString stringWithFormat:@"%d", row]];
-}
-
-- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -180,7 +132,30 @@
 }
 */
 
-/*
+- (void) setPersonalBasicInfo: (PersonalBasicInfo*) basicInfo
+{
+    _basicInfo = basicInfo;
+}
+
+- (PersonalBasicInfo*) getPersonalBasicInfo
+{
+    return _basicInfo;
+}
+
+- (void) SaveCareer: (NSArray*) items
+{
+    CCareer* career = [[CCareer alloc] init];
+    career.fields = [items mutableCopy];
+    _basicInfo.my_details.career = [career serialize];
+}
+
+- (void) SaveExperience: (NSArray*) items
+{
+    CExperience* exp = [[CExperience alloc] init];
+    exp.items = [items mutableCopy];
+    _basicInfo.my_details.history = [exp serialize];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -188,8 +163,24 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] compare: @"EditExperience"] == NSOrderedSame) {
+        CGenericItemSetView* dest = [segue destinationViewController];
+        dest.item_key = ExperienceKey;
+        dest.parent = self;
+        CExperience* exp = [[CExperience alloc]init];
+        [exp deserialize:_basicInfo.my_details.history];
+        dest.items = exp.items;
+    } else if ([[segue identifier] compare:@"EditCareer"] == NSOrderedSame) {
+        CGenericItemSetView* dest = [segue destinationViewController];
+        dest.parent = self;
+        dest.item_key = CareerKey;
+        CCareer* career = [[CCareer alloc] init];
+        [career deserialize:_basicInfo.my_details.career];
+        dest.items = career.fields;
+    }
 }
 
- */
+
 
 @end

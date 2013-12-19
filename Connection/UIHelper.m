@@ -9,10 +9,6 @@
 #import "UIHelper.h"
 
 @implementation UIHelper
-static UIDatePicker* datePicker;
-static UIToolbar* pickerToolBar;
-static UIBarButtonItem* okBtn;
-static UIHelper* helper;
 static NSMutableArray* helpers;
 
 + (UIHelper*) getUIHelper
@@ -33,25 +29,48 @@ static NSMutableArray* helpers;
     [helpers removeAllObjects];
 }
 
-+ (UIDatePicker*) getDatePicker
+- (UIDatePicker*) getDatePicker
 {
-    //if (datePicker == nil) {
-        datePicker = [[UIDatePicker alloc] init];
-        datePicker.datePickerMode = UIDatePickerModeDate;
-    //}
-    return datePicker;
+    _datePicker = [[UIDatePicker alloc] init];
+    _datePicker.datePickerMode = UIDatePickerModeDate;
+    return _datePicker;
 }
 
-+ (UIToolbar*) getToolbar
+- (UIPickerView*) getItemPicker
 {
-    //if (pickerToolBar == nil) {
-        pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width,  30)];
-        okBtn = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:nil action:nil];
-            UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        NSArray* items = [NSArray arrayWithObjects: placeHolder, okBtn, nil];
-        [pickerToolBar setItems:items];
-    //}
-    return pickerToolBar;
+    UIPickerView* picker = [[UIPickerView alloc] init];
+    [picker setDataSource:self];
+    [picker setDelegate:self];
+    return picker;
+}
+
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [_items count];
+}
+- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [_items objectAtIndex:row];
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+}
+
+- (UIToolbar*) getToolbar
+{
+    _pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width,  30)];
+    _okBtn = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSArray* items = [NSArray arrayWithObjects: placeHolder, _okBtn, nil];
+        [_pickerToolBar setItems:items];
+    return _pickerToolBar;
 }
 
 - (UIBarPosition) positionForBar:(id<UIBarPositioning>)bar
@@ -59,21 +78,37 @@ static NSMutableArray* helpers;
     return UIBarPositionTop;
 }
 
-- (IBAction)okClick:(id)sender
+- (IBAction)dateOkClick:(id)sender
 {
-    [_delegate performSelector:_setDateAction withObject:[datePicker date]];
-    
+    [_delegate performSelector:_setAction withObject:[_datePicker date]];
 }
 
+- (IBAction)itemOKClick:(id)sender
+{
+    NSInteger index = [_itemPicker selectedRowInComponent:0];
+    NSString* item = [_items objectAtIndex:index];
+    [_delegate performSelector:_setAction withObject:item];
+}
 
 - (void) setDatePickerForTextField:(UITextField *)textField :(SEL)setDateAction :(id) delegate
 {
-    textField.inputView = [UIHelper getDatePicker];
-    textField.inputAccessoryView = [UIHelper getToolbar];
-    [okBtn setTarget:self];
-    [okBtn setAction:@selector(okClick:)];
-    [pickerToolBar setDelegate:self];
+    textField.inputView = [self getDatePicker];
+    textField.inputAccessoryView = [self getToolbar];
+    [_okBtn setTarget:self];
+    [_okBtn setAction:@selector(dateOkClick:)];
+    [_pickerToolBar setDelegate:self];
     _delegate = delegate;
-    _setDateAction = setDateAction;
+    _setAction = setDateAction;
+}
+
+- (void) setStrPickerForTextField:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray*) strItems;
+{
+    textField.inputView = [self getItemPicker];
+    textField.inputAccessoryView = [self getToolbar];
+    [_okBtn setTarget:self];
+    [_okBtn setAction:@selector(itemOKClick:)];
+    _delegate = delegate;
+    _setAction = setItemAction;
+    _items = strItems;
 }
 @end

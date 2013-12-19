@@ -7,20 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Connection.h"
+#import "PersonalBasicInfo.h"
 
 @interface PersonalCareer : UITableViewController
-    <UIPickerViewDelegate,
-    UIPickerViewDataSource,
-    UIToolbarDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *m_Object;
+@property (weak, nonatomic) IBOutlet UITextField *m_Skill;
+@property (weak, nonatomic) IBOutlet UITextField *m_Company;
+@property (weak, nonatomic) IBOutlet UITextField *m_Position;
+@property (weak, nonatomic) IBOutlet UITextView *m_Experience;
+@property (weak, nonatomic) IBOutlet UITextView *m_Career;
 
-@property (weak, nonatomic) IBOutlet UITextField *lovingSport;
-@property (weak, nonatomic) IBOutlet UITextField *lovingDrink;
+@property (nonatomic, assign) bool isEditMode;
 
-@property (weak, nonatomic) IBOutlet UITextField *lovingSmork;
-
-@property (weak, nonatomic) IBOutlet UITextField *lovingPlace;
-@property (nonatomic) UIPickerView* picker;
-@property (nonatomic) UIToolbar* pickerToolbar;
-
+@property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @end

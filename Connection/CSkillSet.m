@@ -39,4 +39,13 @@
     return TRUE;
 }
 
+- (NSString*) toString
+{
+    NSMutableString* tmpStr = [[NSMutableString alloc] init];
+    for (id item in _skills) {
+        [tmpStr appendFormat:@"%@\n", [item toString]];
+    }
+    return tmpStr;
+}
+
 @end

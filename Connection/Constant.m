@@ -31,11 +31,15 @@ NSString* EditRowId = @"row_id";
 
 NSString* HomeKey = @"HomeMembers";
 NSString* EducationKey = @"EducationItems";
+NSString* ExperienceKey = @"ExperienceItems";
+NSString* CareerKey = @"CareerFields";
 
 NSString* _SetId2SetViewCellIdAndEditViewId =
 @"{\
 \"HomeMembers\":{\"class\":\"CHomeMember\",\"save_func:\":\"SaveHomeMember:\", \"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76, \"row_id\":\"EditHomeMember\"}, \
 \"EducationItems\":{\"class\":\"CEducationItem\",\"save_func:\":\"SaveEducation:\", \"init_func:\":\"education_init:\", \"persist_func:\":\"education_persist:\", \"row_heigh\":82, \"row_id\":\"EditEducation\"}, \
+\"ExperienceItems\":{\"class\":\"CExperienceItem\",\"save_func:\":\"SaveExperience:\", \"init_func:\":\"experience_init:\", \"persist_func:\":\"experience_persist:\", \"row_heigh\":81, \"row_id\":\"EditExperience\"}, \
+\"CareerFields\":{\"class\":\"CCareerField\",\"save_func:\":\"SaveCareer:\", \"init_func:\":\"career_init:\", \"persist_func:\":\"career_persist:\", \"row_heigh\":51, \"row_id\":\"EditCareer\"}, \
 }";
 
 NSDictionary* SetId2SetViewCellIdAndEditViewId;

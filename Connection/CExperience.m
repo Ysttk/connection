@@ -40,4 +40,13 @@
     return TRUE;
 }
 
+- (NSString*) toString
+{
+    NSMutableString* tmpStr = [[NSMutableString alloc] init];
+    for (id item in _items) {
+        [tmpStr appendFormat:@"%@\n", [item toString]];
+    }
+    return tmpStr;
+}
+
 @end

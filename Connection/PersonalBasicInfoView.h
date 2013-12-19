@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIView *m_ConnectionView;
 @property (weak, nonatomic) IBOutlet UITextField *m_Sex;
 @property (weak, nonatomic) IBOutlet UITextField *m_City;
+@property (weak, nonatomic) IBOutlet UITableViewCell *m_EducationCell;
 
 @property (nonatomic, assign) bool isEditMode;
 

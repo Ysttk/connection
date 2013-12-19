@@ -31,6 +31,7 @@
         <relationship name="my_first_met_record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalFirstTimeRecord" inverseName="my_basic_info" inverseEntity="PersonalFirstTimeRecord" syncable="YES"/>
     </entity>
     <entity name="PersonalCareer" representedClassName="PersonalDetails" syncable="YES">
+        <attribute name="career" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="goal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="history" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,10 +54,10 @@
         <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_first_met_record" inverseEntity="PersonalBasicInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AllDatingRecord" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PersonalBasicInfo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PersonalCareer" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PersonalDatingSessions" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PersonalFirstTimeRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AllDatingRecord" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="PersonalBasicInfo" positionX="0" positionY="0" width="128" height="285"/>
+        <element name="PersonalCareer" positionX="171" positionY="297" width="128" height="150"/>
+        <element name="PersonalDatingSessions" positionX="52" positionY="-180" width="128" height="90"/>
+        <element name="PersonalFirstTimeRecord" positionX="223" positionY="-63" width="128" height="135"/>
     </elements>
 </model>

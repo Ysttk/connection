@@ -7,6 +7,7 @@
 //
 
 #import "CExperienceItem.h"
+#import "Utils.h"
 
 static const NSString* fromKey = @"from";
 static const NSString* toKey = @"to";
@@ -37,6 +38,11 @@ static const NSString* descKey = @"desc";
     _to = [formatter dateFromString:[dic valueForKey:toKey]];
     _description = [dic valueForKey:descKey];
     return TRUE;
+}
+
+- (NSString*) toString
+{
+    return [[NSString alloc] initWithFormat:@"%@~%@   %@", [Utils getDateString:_from   ], [Utils getDateString:_to], _description];
 }
 
 @end

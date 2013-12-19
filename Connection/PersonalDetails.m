@@ -2,7 +2,7 @@
 //  PersonalDetails.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-19.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @dynamic position;
 @dynamic profession;
 @dynamic skills;
+@dynamic career;
 @dynamic my_basic_info;
 
 @end
