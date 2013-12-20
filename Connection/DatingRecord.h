@@ -1,17 +1,16 @@
 //
-//  AllDatingRecord.h
+//  DatingRecord.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-20.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class PersonalDatingSessions;
 
-@interface AllDatingRecord : NSManagedObject
+@interface DatingRecord : NSManagedObject
 
 @property (nonatomic, retain) NSString * attendee;
 @property (nonatomic, retain) NSString * data_type;
@@ -22,6 +21,5 @@
 @property (nonatomic, retain) NSString * purpose;
 @property (nonatomic, retain) NSNumber * quality;
 @property (nonatomic, retain) NSDate * start_time;
-@property (nonatomic, retain) PersonalDatingSessions *master_session;
 
 @end

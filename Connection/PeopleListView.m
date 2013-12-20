@@ -22,6 +22,7 @@
 
 @synthesize personalInfoArray = _personalInfoArray;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

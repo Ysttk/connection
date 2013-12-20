@@ -2,14 +2,14 @@
 //  PersonalBasicInfo.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-20.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class PersonalDatingSessions, PersonalDetails, PersonalFirstTimeRecord;
+@class PersonalDetails, PersonalFirstTimeRecord;
 
 @interface PersonalBasicInfo : NSManagedObject
 
@@ -26,16 +26,7 @@
 @property (nonatomic, retain) NSNumber * is_male;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) NSSet *my_dating_record;
 @property (nonatomic, retain) PersonalDetails *my_details;
 @property (nonatomic, retain) PersonalFirstTimeRecord *my_first_met_record;
-@end
-
-@interface PersonalBasicInfo (CoreDataGeneratedAccessors)
-
-- (void)addMy_dating_recordObject:(PersonalDatingSessions *)value;
-- (void)removeMy_dating_recordObject:(PersonalDatingSessions *)value;
-- (void)addMy_dating_record:(NSSet *)values;
-- (void)removeMy_dating_record:(NSSet *)values;
 
 @end

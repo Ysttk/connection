@@ -1,16 +1,15 @@
 //
-//  AllDatingRecord.m
+//  DatingRecord.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-20.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#import "AllDatingRecord.h"
-#import "PersonalDatingSessions.h"
+#import "DatingRecord.h"
 
 
-@implementation AllDatingRecord
+@implementation DatingRecord
 
 @dynamic attendee;
 @dynamic data_type;
@@ -21,6 +20,5 @@
 @dynamic purpose;
 @dynamic quality;
 @dynamic start_time;
-@dynamic master_session;
 
 @end

@@ -42,14 +42,15 @@
 		16E38447180A8C18007CC843 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E38446180A8C18007CC843 /* CoreData.framework */; };
 		16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16E3844D180A97EB007CC843 /* Connection.xcdatamodeld */; };
 		16F455DB185DE93D0014167E /* PersonalBasicInfoView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455DA185DE93D0014167E /* PersonalBasicInfoView2.m */; };
-		16F455DE185DF61E0014167E /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455DD185DF61E0014167E /* PersonalBasicInfo.m */; };
-		16F455E4185DF61F0014167E /* PersonalFirstTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E3185DF61F0014167E /* PersonalFirstTimeRecord.m */; };
-		16F455E7185DF61F0014167E /* AllDatingRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E6185DF61F0014167E /* AllDatingRecord.m */; };
-		16F455EA185DF61F0014167E /* PersonalDatingSessions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455E9185DF61F0014167E /* PersonalDatingSessions.m */; };
 		16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455EC185F236C0014167E /* CGenericItemSetView.m */; };
 		16F455F0185F23940014167E /* CEditGenericItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455EF185F23940014167E /* CEditGenericItemView.m */; };
 		16F455F3185F527E0014167E /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455F2185F527E0014167E /* UIHelper.m */; };
-		16F8108018633D3C00A7EA94 /* PersonalDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8107F18633D3C00A7EA94 /* PersonalDetails.m */; };
+		16F8109E1864951200A7EA94 /* DatingRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F8109D1864951200A7EA94 /* DatingRecord.m */; };
+		16F810A11864951300A7EA94 /* PersonalDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810A01864951300A7EA94 /* PersonalDetails.m */; };
+		16F810A41864951300A7EA94 /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810A31864951300A7EA94 /* PersonalBasicInfo.m */; };
+		16F810A71864951300A7EA94 /* PersonalFirstTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810A61864951300A7EA94 /* PersonalFirstTimeRecord.m */; };
+		16F810AB1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810AA1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m */; };
+		16F810AE186495E000A7EA94 /* DatingRecordSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810AD186495E000A7EA94 /* DatingRecordSet.m */; };
 		16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC8821859EBF100721A59 /* CEducationItem.m */; };
 		16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC888185A01B600721A59 /* CJSONDeserializer.m */; };
 		16FBC88F185A01B700721A59 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC88A185A01B600721A59 /* CJSONSerializer.m */; };
@@ -127,22 +128,24 @@
 		16E3844E180A97EB007CC843 /* Connection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Connection.xcdatamodel; sourceTree = "<group>"; };
 		16F455D9185DE93D0014167E /* PersonalBasicInfoView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfoView2.h; sourceTree = "<group>"; };
 		16F455DA185DE93D0014167E /* PersonalBasicInfoView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfoView2.m; sourceTree = "<group>"; };
-		16F455DC185DF61E0014167E /* PersonalBasicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfo.h; sourceTree = "<group>"; };
-		16F455DD185DF61E0014167E /* PersonalBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfo.m; sourceTree = "<group>"; };
-		16F455E2185DF61F0014167E /* PersonalFirstTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFirstTimeRecord.h; sourceTree = "<group>"; };
-		16F455E3185DF61F0014167E /* PersonalFirstTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalFirstTimeRecord.m; sourceTree = "<group>"; };
-		16F455E5185DF61F0014167E /* AllDatingRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllDatingRecord.h; sourceTree = "<group>"; };
-		16F455E6185DF61F0014167E /* AllDatingRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDatingRecord.m; sourceTree = "<group>"; };
-		16F455E8185DF61F0014167E /* PersonalDatingSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDatingSessions.h; sourceTree = "<group>"; };
-		16F455E9185DF61F0014167E /* PersonalDatingSessions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDatingSessions.m; sourceTree = "<group>"; };
 		16F455EB185F236C0014167E /* CGenericItemSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGenericItemSetView.h; sourceTree = "<group>"; };
 		16F455EC185F236C0014167E /* CGenericItemSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGenericItemSetView.m; sourceTree = "<group>"; };
 		16F455EE185F23940014167E /* CEditGenericItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEditGenericItemView.h; sourceTree = "<group>"; };
 		16F455EF185F23940014167E /* CEditGenericItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEditGenericItemView.m; sourceTree = "<group>"; };
 		16F455F1185F527E0014167E /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
 		16F455F2185F527E0014167E /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
-		16F8107E18633D3C00A7EA94 /* PersonalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDetails.h; sourceTree = "<group>"; };
-		16F8107F18633D3C00A7EA94 /* PersonalDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDetails.m; sourceTree = "<group>"; };
+		16F8109C1864951200A7EA94 /* DatingRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatingRecord.h; sourceTree = "<group>"; };
+		16F8109D1864951200A7EA94 /* DatingRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatingRecord.m; sourceTree = "<group>"; };
+		16F8109F1864951300A7EA94 /* PersonalDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDetails.h; sourceTree = "<group>"; };
+		16F810A01864951300A7EA94 /* PersonalDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDetails.m; sourceTree = "<group>"; };
+		16F810A21864951300A7EA94 /* PersonalBasicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfo.h; sourceTree = "<group>"; };
+		16F810A31864951300A7EA94 /* PersonalBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfo.m; sourceTree = "<group>"; };
+		16F810A51864951300A7EA94 /* PersonalFirstTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFirstTimeRecord.h; sourceTree = "<group>"; };
+		16F810A61864951300A7EA94 /* PersonalFirstTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalFirstTimeRecord.m; sourceTree = "<group>"; };
+		16F810A91864956400A7EA94 /* DatingRecord+UIGenericAdopter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DatingRecord+UIGenericAdopter.h"; sourceTree = "<group>"; };
+		16F810AA1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DatingRecord+UIGenericAdopter.m"; sourceTree = "<group>"; };
+		16F810AC186495E000A7EA94 /* DatingRecordSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatingRecordSet.h; sourceTree = "<group>"; };
+		16F810AD186495E000A7EA94 /* DatingRecordSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatingRecordSet.m; sourceTree = "<group>"; };
 		16FBC8811859EBF100721A59 /* CEducationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducationItem.h; sourceTree = "<group>"; };
 		16FBC8821859EBF100721A59 /* CEducationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEducationItem.m; sourceTree = "<group>"; };
 		16FBC887185A01B600721A59 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJSONDeserializer.h; path = libs/TouchJSON/CJSONDeserializer.h; sourceTree = "<group>"; };
@@ -228,6 +231,10 @@
 		160CF73C185B58F300CDEFCE /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				16F810A91864956400A7EA94 /* DatingRecord+UIGenericAdopter.h */,
+				16F810AA1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m */,
+				16F810AC186495E000A7EA94 /* DatingRecordSet.h */,
+				16F810AD186495E000A7EA94 /* DatingRecordSet.m */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -390,19 +397,25 @@
 		16E38449180A8DFE007CC843 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				16F8107E18633D3C00A7EA94 /* PersonalDetails.h */,
-				16F8107F18633D3C00A7EA94 /* PersonalDetails.m */,
-				16F455E8185DF61F0014167E /* PersonalDatingSessions.h */,
-				16F455E9185DF61F0014167E /* PersonalDatingSessions.m */,
-				16F455E5185DF61F0014167E /* AllDatingRecord.h */,
-				16F455E6185DF61F0014167E /* AllDatingRecord.m */,
-				16F455E2185DF61F0014167E /* PersonalFirstTimeRecord.h */,
-				16F455E3185DF61F0014167E /* PersonalFirstTimeRecord.m */,
-				16F455DC185DF61E0014167E /* PersonalBasicInfo.h */,
-				16F455DD185DF61E0014167E /* PersonalBasicInfo.m */,
+				16F810A81864953700A7EA94 /* Generated */,
 				1691F0221850B74A000C45A8 /* BasicDataCluster */,
 			);
 			name = Class;
+			sourceTree = "<group>";
+		};
+		16F810A81864953700A7EA94 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				16F810A51864951300A7EA94 /* PersonalFirstTimeRecord.h */,
+				16F810A61864951300A7EA94 /* PersonalFirstTimeRecord.m */,
+				16F810A21864951300A7EA94 /* PersonalBasicInfo.h */,
+				16F810A31864951300A7EA94 /* PersonalBasicInfo.m */,
+				16F8109F1864951300A7EA94 /* PersonalDetails.h */,
+				16F810A01864951300A7EA94 /* PersonalDetails.m */,
+				16F8109C1864951200A7EA94 /* DatingRecord.h */,
+				16F8109D1864951200A7EA94 /* DatingRecord.m */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 		16FBC8841859F53100721A59 /* libs */ = {
@@ -527,8 +540,8 @@
 			files = (
 				160CF746185C227A00CDEFCE /* DBHelper.m in Sources */,
 				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
+				16F810A71864951300A7EA94 /* PersonalFirstTimeRecord.m in Sources */,
 				160CF732185B533A00CDEFCE /* CSkill.m in Sources */,
-				16F455E4185DF61F0014167E /* PersonalFirstTimeRecord.m in Sources */,
 				160CF726185B4B9700CDEFCE /* CExperience.m in Sources */,
 				160CF729185B4EC800CDEFCE /* CHomeStructure.m in Sources */,
 				16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */,
@@ -537,13 +550,16 @@
 				16FBC88F185A01B700721A59 /* CJSONSerializer.m in Sources */,
 				16F455DB185DE93D0014167E /* PersonalBasicInfoView2.m in Sources */,
 				160CF735185B55DF00CDEFCE /* CCareer.m in Sources */,
-				16F455DE185DF61E0014167E /* PersonalBasicInfo.m in Sources */,
 				160CF742185BFF0300CDEFCE /* Constant.m in Sources */,
+				16F810AE186495E000A7EA94 /* DatingRecordSet.m in Sources */,
 				1691F0251850B7A9000C45A8 /* CEducation.m in Sources */,
+				16F8109E1864951200A7EA94 /* DatingRecord.m in Sources */,
 				16D872CD17FFA28B00561887 /* MakingChoiceView.m in Sources */,
+				16F810A11864951300A7EA94 /* PersonalDetails.m in Sources */,
+				16F810AB1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m in Sources */,
 				16FBC890185A01B700721A59 /* NSDictionary_JSONExtensions.m in Sources */,
+				16F810A41864951300A7EA94 /* PersonalBasicInfo.m in Sources */,
 				160CF75A185C3C7500CDEFCE /* Utils.m in Sources */,
-				16F455EA185DF61F0014167E /* PersonalDatingSessions.m in Sources */,
 				16D872C617FE991400561887 /* PersonalActivityView.m in Sources */,
 				160CF738185B55ED00CDEFCE /* CCareerField.m in Sources */,
 				160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */,
@@ -551,11 +567,9 @@
 				160CF72F185B532F00CDEFCE /* CSkillSet.m in Sources */,
 				16F455F0185F23940014167E /* CEditGenericItemView.m in Sources */,
 				16166D6317F4678300AEEC4C /* main.m in Sources */,
-				16F8108018633D3C00A7EA94 /* PersonalDetails.m in Sources */,
 				16D872C317FE98CC00561887 /* PersonalCareer.m in Sources */,
 				160CF72C185B4F0700CDEFCE /* CHomeMember.m in Sources */,
 				16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */,
-				16F455E7185DF61F0014167E /* AllDatingRecord.m in Sources */,
 				16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */,
 				16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */,
 				160CF749185C2F5900CDEFCE /* PeopleInfoBarController.m in Sources */,

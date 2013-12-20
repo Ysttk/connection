@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="AllDatingRecord" representedClassName="AllDatingRecord" syncable="YES">
+    <entity name="DatingRecord" representedClassName="DatingRecord" syncable="YES">
         <attribute name="attendee" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
@@ -10,7 +10,6 @@
         <attribute name="purpose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quality" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="master_session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalDatingSessions" inverseName="activities" inverseEntity="PersonalDatingSessions" syncable="YES"/>
     </entity>
     <entity name="PersonalBasicInfo" representedClassName="PersonalBasicInfo" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
@@ -26,7 +25,6 @@
         <attribute name="is_male" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="my_dating_record" optional="YES" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="PersonalDatingSessions" inverseName="my_basic_info" inverseEntity="PersonalDatingSessions" syncable="YES"/>
         <relationship name="my_details" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PersonalCareer" inverseName="my_basic_info" inverseEntity="PersonalCareer" syncable="YES"/>
         <relationship name="my_first_met_record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalFirstTimeRecord" inverseName="my_basic_info" inverseEntity="PersonalFirstTimeRecord" syncable="YES"/>
     </entity>
@@ -40,11 +38,6 @@
         <attribute name="skills" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_details" inverseEntity="PersonalBasicInfo" syncable="YES"/>
     </entity>
-    <entity name="PersonalDatingSessions" representedClassName="PersonalDatingSessions" syncable="YES">
-        <attribute name="session_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AllDatingRecord" inverseName="master_session" inverseEntity="AllDatingRecord" syncable="YES"/>
-        <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_dating_record" inverseEntity="PersonalBasicInfo" syncable="YES"/>
-    </entity>
     <entity name="PersonalFirstTimeRecord" representedClassName="PersonalFirstTimeRecord" syncable="YES">
         <attribute name="first_met_time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="introducer" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,10 +47,9 @@
         <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_first_met_record" inverseEntity="PersonalBasicInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AllDatingRecord" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="PersonalBasicInfo" positionX="0" positionY="0" width="128" height="285"/>
-        <element name="PersonalCareer" positionX="171" positionY="297" width="128" height="150"/>
-        <element name="PersonalDatingSessions" positionX="52" positionY="-180" width="128" height="90"/>
-        <element name="PersonalFirstTimeRecord" positionX="223" positionY="-63" width="128" height="135"/>
+        <element name="DatingRecord" positionX="-245" positionY="-180" width="128" height="178"/>
+        <element name="PersonalBasicInfo" positionX="-405" positionY="-36" width="128" height="268"/>
+        <element name="PersonalCareer" positionX="-63" positionY="-51" width="128" height="150"/>
+        <element name="PersonalFirstTimeRecord" positionX="223" positionY="72" width="128" height="135"/>
     </elements>
 </model>

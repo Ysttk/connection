@@ -2,12 +2,11 @@
 //  PersonalBasicInfo.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-15.
+//  Created by 寿宝江 on 13-12-20.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import "PersonalBasicInfo.h"
-#import "PersonalDatingSessions.h"
 #import "PersonalDetails.h"
 #import "PersonalFirstTimeRecord.h"
 
@@ -27,7 +26,6 @@
 @dynamic is_male;
 @dynamic name;
 @dynamic phone;
-@dynamic my_dating_record;
 @dynamic my_details;
 @dynamic my_first_met_record;
 
