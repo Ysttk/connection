@@ -28,7 +28,7 @@
         <relationship name="my_details" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PersonalCareer" inverseName="my_basic_info" inverseEntity="PersonalCareer" syncable="YES"/>
         <relationship name="my_first_met_record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalFirstTimeRecord" inverseName="my_basic_info" inverseEntity="PersonalFirstTimeRecord" syncable="YES"/>
     </entity>
-    <entity name="PersonalCareer" representedClassName="PersonalDetails" syncable="YES">
+    <entity name="PersonalCareer" representedClassName="PersonalCareer" syncable="YES">
         <attribute name="career" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="goal" optional="YES" attributeType="String" syncable="YES"/>

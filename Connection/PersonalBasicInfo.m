@@ -2,12 +2,12 @@
 //  PersonalBasicInfo.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-21.
+//  Created by 寿宝江 on 13-12-22.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import "PersonalBasicInfo.h"
-#import "PersonalDetails.h"
+#import "PersonalCareer.h"
 #import "PersonalFirstTimeRecord.h"
 
 

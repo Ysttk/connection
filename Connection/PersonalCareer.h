@@ -1,25 +1,25 @@
 //
-//  PersonalDetailInfoView.h
+//  PersonalCareer.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-10-4.
+//  Created by 寿宝江 on 13-12-22.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "Connection.h"
-#import "PersonalBasicInfo.h"
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface PersonalCareer : UITableViewController
+@class PersonalBasicInfo;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_Object;
-@property (weak, nonatomic) IBOutlet UITextField *m_Company;
-@property (weak, nonatomic) IBOutlet UITextView *m_Skill;
-@property (weak, nonatomic) IBOutlet UITextField *m_Position;
-@property (weak, nonatomic) IBOutlet UITextView *m_Experience;
-@property (weak, nonatomic) IBOutlet UITextView *m_Career;
+@interface PersonalCareer : NSManagedObject
 
-@property (nonatomic, assign) bool isEditMode;
+@property (nonatomic, retain) NSString * career;
+@property (nonatomic, retain) NSString * company;
+@property (nonatomic, retain) NSString * goal;
+@property (nonatomic, retain) NSString * history;
+@property (nonatomic, retain) NSString * position;
+@property (nonatomic, retain) NSString * profession;
+@property (nonatomic, retain) NSString * skills;
+@property (nonatomic, retain) PersonalBasicInfo *my_basic_info;
 
-@property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @end

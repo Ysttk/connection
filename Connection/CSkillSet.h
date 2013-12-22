@@ -12,5 +12,5 @@
 @interface CSkillSet : NSObject <PSerialize>
 
 @property (nonatomic, copy) NSMutableArray* skills;
-
+- (NSString*) toString;
 @end

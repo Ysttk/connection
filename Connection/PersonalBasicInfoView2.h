@@ -12,7 +12,7 @@
 #import "CGenericItemSetView.h"
 #import "CHomeMember.h"
 
-@interface PersonalBasicInfoView2 : UITableViewController
+@interface PersonalBasicInfoView2 : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *m_HomeIntro;
 @property (weak, nonatomic) IBOutlet UITextField *m_Interest;
 @property (weak, nonatomic) IBOutlet UITextView *m_Habit;

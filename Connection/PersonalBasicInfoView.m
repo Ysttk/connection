@@ -146,40 +146,7 @@
     _currentEditor = _m_Birthday;
 }
 
-//- (IBAction)BeginEditEducationBeginTime:(id)sender
-//{
-//    _currentEditor = _m_EducationBeginTime;
-//}
-//
-//- (IBAction)BeginEditEducationEndTime:(id)sender
-//{
-//    _currentEditor = _m_EducationEndTime;
-//}
 
-//- (IBAction)EducationOKClick:(id)sender
-//{
-//    //load date from text field
-//    NSString* school = _m_EducationSchool.text;
-//    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"yyyy-MM-dd"];
-//    NSString* tmpDateStr = _m_EducationBeginTime.text;
-//    NSDate*  beginDate = [formatter dateFromString:tmpDateStr];
-//    tmpDateStr = _m_EducationEndTime.text;
-//    NSDate* endDate = [formatter dateFromString:tmpDateStr];
-//    
-//    //save date
-//    CEducationItem* item = [[CEducationItem alloc] initWithValue:beginDate :endDate :school];
-//    CEducation* education = [[CEducation alloc] init];
-//    [education deserialize:_basicInfo.education];
-//    [education addEducationItem:item];
-//    _basicInfo.education = [education serialize];
-//    [_m_EducationBackgroud setText:[education toString]];
-//    
-//    //clear date in text field
-//    [_m_EducationBeginTime setText:@""];
-//    [_m_EducationEndTime setText:@""];
-//    [_m_EducationSchool setText:@""];
-//}
 
 - (IBAction)DateEditDone:(id)sender
 {
@@ -275,61 +242,6 @@
     education.items = [items mutableCopy];
     _basicInfo.education = [education serialize];
 }
-
-
-#pragma mark - Table view data source
-
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
- */
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation

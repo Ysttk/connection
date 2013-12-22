@@ -12,5 +12,5 @@
 @interface CExperience : NSObject <PSerialize>
 
 @property (nonatomic, copy) NSMutableArray* items;
-
+- (NSString*) toString;
 @end

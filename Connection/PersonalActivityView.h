@@ -13,7 +13,7 @@
 #import "PersonalFirstTimeRecord.h"
 #import "Constant.h"
 
-@interface PersonalActivityView : UITableViewController
+@interface PersonalActivityView : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, retain) PersonalBasicInfo* basicInfo;
 @property (nonatomic, retain) NSMutableArray* datingRecords;

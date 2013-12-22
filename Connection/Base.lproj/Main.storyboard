@@ -262,7 +262,7 @@
                                 <navigationItem title="Title" id="3aw-G3-BSx">
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="KGg-aY-Q4S">
                                         <connections>
-                                            <action selector="SwitchEditModel:" destination="7SA-hw-Gmr" id="aDO-uZ-7gT"/>
+                                            <action selector="SwitchEditMode:" destination="7SA-hw-Gmr" id="ayb-w4-5jm"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -312,7 +312,7 @@
                                                     <rect key="frame" x="87" y="7" width="200" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="兴趣爱好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvO-IN-QMe">
                                                     <rect key="frame" x="20" y="11" width="72" height="21"/>
@@ -790,10 +790,10 @@
             </objects>
             <point key="canvasLocation" x="-36" y="391"/>
         </scene>
-        <!--Personal Career - 职业成就-->
+        <!--Personal Career View - 职业成就-->
         <scene sceneID="bIH-3H-Mk1">
             <objects>
-                <tableViewController id="H7P-GF-ZCo" customClass="PersonalCareer" sceneMemberID="viewController">
+                <tableViewController id="H7P-GF-ZCo" customClass="PersonalCareerView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YUc-6f-npV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -803,7 +803,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="N2m-8U-032">
-                                    <barButtonItem key="rightBarButtonItem" title="Item" id="m5b-ne-UNd"/>
+                                    <barButtonItem key="rightBarButtonItem" title="Item" id="m5b-ne-UNd">
+                                        <connections>
+                                            <action selector="SwitchEditMode:" destination="H7P-GF-ZCo" id="WGr-9r-beK"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -828,7 +832,7 @@
                                                     <rect key="frame" x="109" y="7" width="191" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -902,7 +906,7 @@
                                                     <rect key="frame" x="112" y="0.0" width="188" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="职位：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHa-mQ-UGo">
                                                     <rect key="frame" x="48" y="35" width="42" height="21"/>
@@ -914,7 +918,7 @@
                                                     <rect key="frame" x="111" y="33" width="151" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -956,11 +960,15 @@
                     <tabBarItem key="tabBarItem" title="职业成就" id="8zC-l8-aXm"/>
                     <connections>
                         <outlet property="m_Career" destination="kNz-sc-PcH" id="TPx-LE-eHR"/>
+                        <outlet property="m_CareerCell" destination="f9L-nn-540" id="dkE-jK-EkS"/>
                         <outlet property="m_Company" destination="ndW-tW-Bav" id="bIB-pt-g8k"/>
                         <outlet property="m_Experience" destination="otS-DB-gWA" id="NoF-b9-FcD"/>
+                        <outlet property="m_ExperienceCell" destination="bbF-lZ-kg4" id="hqV-od-a5E"/>
                         <outlet property="m_Object" destination="pcy-5t-BgG" id="VmH-8c-Mue"/>
                         <outlet property="m_Position" destination="0U6-dO-T7J" id="1d5-08-cil"/>
                         <outlet property="m_Skill" destination="11W-RZ-QHZ" id="c0M-FB-V2e"/>
+                        <outlet property="m_SkillCell" destination="M5K-KR-gls" id="Bhj-KX-r3z"/>
+                        <outlet property="m_StatusBtn" destination="m5b-ne-UNd" id="z5O-XU-aJs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piK-Ju-E59" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1055,11 +1063,11 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="吴花精灵" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cv-Kf-NRN">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="吴花精灵" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4cv-Kf-NRN">
                                                     <rect key="frame" x="50" y="5" width="73" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="介绍在" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-Ew-6lx">
                                                     <rect key="frame" x="131" y="9" width="59" height="21"/>
@@ -1071,7 +1079,7 @@
                                                     <rect key="frame" x="184" y="5" width="122" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="因" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKI-Ai-Kak">
                                                     <rect key="frame" x="13" y="43" width="25" height="21"/>
@@ -1083,7 +1091,7 @@
                                                     <rect key="frame" x="33" y="38" width="211" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="认识" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUo-Gt-gfZ">
                                                     <rect key="frame" x="252" y="43" width="42" height="21"/>
@@ -1111,7 +1119,7 @@
                                                     <rect key="frame" x="89" y="7" width="131" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1217,7 +1225,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Dj1-lO-UWd"/>
-        <segue reference="DNT-MD-q3R"/>
+        <segue reference="sCe-Nr-IZo"/>
         <segue reference="Rye-YQ-UuQ"/>
     </inferredMetricsTieBreakers>
 </document>

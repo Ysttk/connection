@@ -12,5 +12,5 @@
 @interface CCareer : NSObject <PSerialize>
 
 @property (nonatomic, copy) NSMutableArray* fields;
-
+- (NSString*) toString;
 @end

@@ -44,6 +44,12 @@
     [DBHelper SaveAll];
 }
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -108,6 +114,11 @@
     _m_FirstDatePlace.enabled = isEnable;
     _m_FirstDatePurpose.enabled = isEnable;
     _m_RelationShip.enabled = isEnable;
+    
+    _m_FirstDatePurpose.delegate = self;
+    _m_Introducer.delegate = self;
+    _m_RelationShip.delegate = self;
+    _m_FirstDatePlace.delegate = self;
 }
 
 - (IBAction)SwitchEditMode:(id)sender {

@@ -2,14 +2,14 @@
 //  PersonalBasicInfo.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-21.
+//  Created by 寿宝江 on 13-12-22.
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class PersonalDetails, PersonalFirstTimeRecord;
+@class PersonalCareer, PersonalFirstTimeRecord;
 
 @interface PersonalBasicInfo : NSManagedObject
 
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSNumber * is_male;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) PersonalDetails *my_details;
+@property (nonatomic, retain) PersonalCareer *my_details;
 @property (nonatomic, retain) PersonalFirstTimeRecord *my_first_met_record;
 
 @end
