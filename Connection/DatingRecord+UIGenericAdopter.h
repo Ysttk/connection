@@ -16,5 +16,8 @@
 - (id) init;
 
 - (NSString*) toString;
+- (bool) IsRelateToCurrent;
+
+@property (nonatomic, retain) NSString* currentName;
 
 @end

@@ -139,6 +139,7 @@
     [att appendString: name];
     record.attendee = att;
     record.note = noteField.text;
+    record.currentName = name;
 }
 
 /******************CSkill*******************/

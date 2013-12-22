@@ -53,7 +53,8 @@
     self.datingRecords = [[NSMutableArray alloc] init];
     for (id item in array) {
         DatingRecord* r = item;
-        if ([r.attendee rangeOfString:_basicInfo.name].location != NSNotFound) {
+        r.currentName = _basicInfo.name;
+        if ([r IsRelateToCurrent]) {
             [self.datingRecords addObject:item];
         }
     }
@@ -158,6 +159,7 @@
 - (void) SaveDatingRecords:(NSArray*) items
 {
     _datingRecords = [items mutableCopy];
+    [DBHelper SaveAll];
 }
 
 #pragma mark - Navigation
