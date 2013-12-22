@@ -43,6 +43,7 @@
     return YES;
 }
 
+
 - (void) reloadPersonalBasicInfo
 {
     if (_basicInfo == nil) return;
@@ -70,6 +71,8 @@
     
     _m_Interest.enabled = enable;
     _m_Habit.editable = enable;
+    
+    _m_Interest.delegate = _m_Habit.delegate = self;
 }
 
 - (void) SaveHomeMember:(NSArray *)members
