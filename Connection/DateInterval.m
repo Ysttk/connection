@@ -22,9 +22,9 @@
 - (NSString*) toString
 {
     if (_year >0 )
-        return [[NSString alloc] initWithFormat:@"%d年%d月%d天", _year, _month, _day];
+        return [[NSString alloc] initWithFormat:@"%d年%d个月%d天", _year, _month, _day];
     else if (_month>0)
-        return [[NSString alloc] initWithFormat:@"%d月%d天",_month, _day];
+        return [[NSString alloc] initWithFormat:@"%d个月%d天",_month, _day];
     else
         return [[NSString alloc] initWithFormat:@"%d天", _day];
 }

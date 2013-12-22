@@ -40,11 +40,14 @@ static const void *CurrentNameKey = "CurrentNameKey";
     NSMutableString* att = [[NSMutableString alloc] init];
     NSArray* array = [self.attendee componentsSeparatedByString:
                       @":"];
-    [att appendString:[array objectAtIndex:0]];
+    bool first = true;
     for (int i=1; i<[array count]; i++) {
         NSString* name = [array objectAtIndex:i];
         if ([name compare:self.currentName] != NSOrderedSame)
-            [att appendFormat:@":%@", name];
+            if (first)
+                [att appendFormat:@"%@", name];
+            else
+                [att appendFormat:@":%@", name];
     }
     
     return [[NSString alloc] initWithFormat:@"%@ 在%@\n谈%@\n参与的人：%@",    [Utils getDateString: self.date], self.place, self.purpose, att];

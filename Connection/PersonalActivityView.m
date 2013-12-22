@@ -41,6 +41,7 @@
     [_m_FirstDateTime resignFirstResponder];
     _basicInfo.my_first_met_record.first_met_time = date;
     [_m_FirstDateInterval setText:[[Utils getDateIntervalUntilNow: date] toString]];
+    [DBHelper SaveAll];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -110,13 +111,22 @@
 }
 
 - (IBAction)SwitchEditMode:(id)sender {
-    if (_isEditMode) [DBHelper SaveAll];
+    if (_isEditMode) {
+        _basicInfo.my_first_met_record.met_place = _m_FirstDatePlace.text;
+        _basicInfo.my_first_met_record.met_reason = _m_FirstDatePurpose.text;
+        _basicInfo.my_first_met_record.introducer = _m_Introducer.text;
+        _basicInfo.my_first_met_record.relationship = _m_RelationShip.text;
+        [DBHelper SaveAll];
+    }
     _isEditMode = ! _isEditMode;
     [self updateEditMode];
 }
 
 - (void) updatePeopleActivity
 {
+    if (_basicInfo.my_first_met_record == nil) {
+        _basicInfo.my_first_met_record = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalFirstTimeRecord" inManagedObjectContext:[DBHelper getContext]];
+    }
     [_m_FirstDateTime setText:[Utils getDateString:_basicInfo.my_first_met_record.first_met_time]];
     [_m_Introducer setText:_basicInfo.my_first_met_record.introducer];
     [_m_FirstDatePlace setText:_basicInfo.my_first_met_record.met_place];
@@ -134,71 +144,7 @@
     [_m_DatingRecords setEditable:FALSE];
 }
 
-/*
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void) SaveDatingRecords:(NSArray*) items
 {
