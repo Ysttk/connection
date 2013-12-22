@@ -18,12 +18,15 @@ extern NSString* PersistKey;
 extern NSString* EditRowHeigh;
 extern NSString* EditRowId;
 extern NSString* SaveFuncKey;
+extern NSString* DisplayRowId;
+extern NSString* DisplayRowHeigh;
 
 extern NSString* HomeKey;
 extern NSString* EducationKey;
 extern NSString* ExperienceKey;
 extern NSString* CareerKey;
 extern NSString* SkillKey;
+extern NSString* DatingKey;
 
 
 void InitGlobalConstant();

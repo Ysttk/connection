@@ -27,21 +27,24 @@ NSString* PersistKey = @"persist_func:";
 NSString* SaveFuncKey = @"save_func:";
 NSString* EditRowHeigh = @"row_heigh";
 NSString* EditRowId = @"row_id";
-
+NSString* DisplayRowId = @"disp_row_id";
+NSString* DisplayRowHeigh = @"disp_row_heigh";
 
 NSString* HomeKey = @"HomeMembers";
 NSString* EducationKey = @"EducationItems";
 NSString* ExperienceKey = @"ExperienceItems";
 NSString* CareerKey = @"CareerFields";
 NSString* SkillKey= @"SkillItems";
+NSString* DatingKey = @"DatingRecord";
 
 NSString* _SetId2SetViewCellIdAndEditViewId =
 @"{\
-\"HomeMembers\":{\"class\":\"CHomeMember\",\"save_func:\":\"SaveHomeMember:\", \"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76, \"row_id\":\"EditHomeMember\"}, \
-\"EducationItems\":{\"class\":\"CEducationItem\",\"save_func:\":\"SaveEducation:\", \"init_func:\":\"education_init:\", \"persist_func:\":\"education_persist:\", \"row_heigh\":82, \"row_id\":\"EditEducation\"}, \
-\"ExperienceItems\":{\"class\":\"CExperienceItem\",\"save_func:\":\"SaveExperience:\", \"init_func:\":\"experience_init:\", \"persist_func:\":\"experience_persist:\", \"row_heigh\":81, \"row_id\":\"EditExperience\"}, \
-\"CareerFields\":{\"class\":\"CCareerField\",\"save_func:\":\"SaveCareer:\", \"init_func:\":\"career_init:\", \"persist_func:\":\"career_persist:\", \"row_heigh\":51, \"row_id\":\"EditCareer\"}, \
-\"SkillItems\":{\"class\":\"CSkill\",\"save_func:\":\"SaveSkill:\", \"init_func:\":\"skill_init:\", \"persist_func:\":\"skill_persist:\", \"row_heigh\":44, \"row_id\":\"EditSkill\"}, \
+\"HomeMembers\":{\"class\":\"CHomeMember\",\"save_func:\":\"SaveHomeMember:\", \"disp_row_id\":\"GenericItemDisp\", \"disp_row_heigh\":44, \"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76, \"row_id\":\"EditHomeMember\"}, \
+\"EducationItems\":{\"class\":\"CEducationItem\",\"save_func:\":\"SaveEducation:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"education_init:\", \"persist_func:\":\"education_persist:\", \"row_heigh\":82, \"row_id\":\"EditEducation\"}, \
+\"ExperienceItems\":{\"class\":\"CExperienceItem\",\"save_func:\":\"SaveExperience:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"experience_init:\", \"persist_func:\":\"experience_persist:\", \"row_heigh\":81, \"row_id\":\"EditExperience\"}, \
+\"CareerFields\":{\"class\":\"CCareerField\",\"save_func:\":\"SaveCareer:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"career_init:\", \"persist_func:\":\"career_persist:\", \"row_heigh\":51, \"row_id\":\"EditCareer\"}, \
+\"SkillItems\":{\"class\":\"CSkill\",\"save_func:\":\"SaveSkill:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"skill_init:\", \"persist_func:\":\"skill_persist:\", \"row_heigh\":44, \"row_id\":\"EditSkill\"}, \
+\"DatingRecord\":{\"class\":\"DatingRecord\",\"save_func:\":\"SaveDatingRecords:\", \"disp_row_id\":\"DatingItemDisp\",\"disp_row_heigh\":85, \"init_func:\":\"dating_init:\", \"persist_func:\":\"dating_persist:\", \"row_heigh\":205, \"row_id\":\"EditDating\"}, \
 }";
 
 NSDictionary* SetId2SetViewCellIdAndEditViewId;

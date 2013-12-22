@@ -94,17 +94,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"GenericItemDisp";
+    NSDictionary* dic = [SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+    //NSString *CellIdentifier = @"GenericItemDisp";
+    NSString *CellIdentifier = [dic valueForKey:DisplayRowId];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     if (_items != nil) {
         id item = [_items objectAtIndex:indexPath.row];
         [cell.textLabel setText:[item toString]];
+        NSDictionary* dic = [SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+        NSNumber* num = [dic valueForKey:DisplayRowHeigh];
+        UILabel* l = cell.textLabel;
+        l.numberOfLines = 0;
+        [l setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, num.integerValue)];
     }
     return cell;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* dic = [SetId2SetViewCellIdAndEditViewId valueForKey:_item_key];
+    NSNumber* num = [dic valueForKey:DisplayRowHeigh];
+    return num.integerValue;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -167,6 +180,7 @@
     dest.persist_func = NSSelectorFromString(persistStr);
     dest.rowHeigh = heigh.intValue;
     dest.item_key = _item_key;
+    dest.params = _params;
     id item = nil;
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         item = [[_item_class alloc] init];

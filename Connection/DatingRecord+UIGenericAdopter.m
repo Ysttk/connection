@@ -12,13 +12,19 @@
 
 + (id) alloc
 {
-    NSLog(@"special alloc called");
-    return nil;
+    DatingRecord* record = [NSEntityDescription insertNewObjectForEntityForName:@"DatingRecord" inManagedObjectContext:[DBHelper getContext]];
+    
+    return record;
+}
+
+- (id) init
+{
+    return self;
 }
 
 - (NSString*) toString
 {
-    return nil;
+    return [[NSString alloc] initWithFormat:@"%@ 在%@\n谈%@\n参与的人：%@",    [Utils getDateString: self.date], self.place, self.purpose, self.attendee];
 }
 
 @end

@@ -18,6 +18,7 @@
 @property (nonatomic, assign) CGFloat rowHeigh;
 @property (nonatomic, retain) NSString* item_key;
 
+@property (nonatomic, retain) NSDictionary* params;
 
 - (void) home_init: (UITableViewCell*) cell;
 - (void) home_persist: (UITableViewCell*) cell;

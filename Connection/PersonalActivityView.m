@@ -7,6 +7,7 @@
 //
 
 #import "PersonalActivityView.h"
+#import "CGenericItemSetView.h"
 
 @interface PersonalActivityView ()
 
@@ -26,12 +27,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.isEditMode = false;
+    [self updateEditMode];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateDatingRecordList];
+}
+
+- (void) updateDatingRecordList
+{
+    NSManagedObjectContext* context = [DBHelper getContext];
+    NSFetchRequest* fetchRequst = [[NSFetchRequest alloc] init];
+    NSEntityDescription* descript = [NSEntityDescription entityForName:@"DatingRecord" inManagedObjectContext:context];
+    [fetchRequst setEntity:descript];
+    NSError* error;
+    NSArray* array = [context executeFetchRequest:fetchRequst error:&error];
+    self.datingRecords = [[NSMutableArray alloc] init];
+    for (id item in array) {
+        DatingRecord* r = item;
+        if ([r.attendee rangeOfString:_basicInfo.name].location != NSNotFound) {
+            [self.datingRecords addObject:item];
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +76,20 @@
     return _basicInfo;
 }
 
+- (void) updateEditMode
+{
+    if (_isEditMode)
+        [_m_StatusBtn setTitle:@"完成"];
+    else
+        [_m_StatusBtn setTitle:@"编辑"];
+}
+
+- (IBAction)SwitchEditMode:(id)sender {
+    _isEditMode = ! _isEditMode;
+    [self updateEditMode];
+}
+
+/*
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -115,7 +155,11 @@
 }
 */
 
-/*
+- (void) SaveDatingRecords:(NSArray*) items
+{
+    _datingRecords = [items mutableCopy];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -123,8 +167,25 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] compare:@"EditDating"] == NSOrderedSame) {
+        CGenericItemSetView* dest = [segue destinationViewController];
+        dest.items = _datingRecords;
+        dest.item_key = DatingKey;
+        dest.parent = self;
+        NSDictionary* dic = [[NSDictionary alloc] initWithObjectsAndKeys:_basicInfo.name, @"name", nil];
+        dest.params = dic;
+    }
 }
 
- */
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier compare:@"EditDating"] == NSOrderedSame) {
+        if (_isEditMode) return TRUE;
+        else return FALSE;
+    }
+    return TRUE;
+}
+ 
 
 @end

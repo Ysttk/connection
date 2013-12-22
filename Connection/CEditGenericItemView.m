@@ -13,6 +13,7 @@
 #import "CExperienceItem.h"
 #import "CCareerField.h"
 #import "CSkill.h"
+#import "DatingRecord+UIGenericAdopter.h"
 
 @interface CEditGenericItemView ()
 
@@ -78,6 +79,68 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+/******************DatingRecord*************/
+
+- (void) setDatingDate: (NSDate*) date
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* dateField = views[0];
+    UITextField* placeField = views[1];
+    UITextField* objectField = views[2];
+    UITextField* attendeeField = views[3];
+    UITextField* noteField = views[4];
+    
+    [dateField setText:[Utils getDateString:date]];
+}
+
+- (void) dating_init: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* dateField = views[0];
+    UITextField* placeField = views[1];
+    UITextField* objectField = views[2];
+    UITextField* attendeeField = views[3];
+    UITextField* noteField = views[4];
+    
+    DatingRecord* record = _item;
+    [dateField setText:[Utils getDateString:record.date]];
+    [placeField setText:record.place];
+    [objectField setText:record.purpose];
+    [attendeeField setText:record.attendee];
+    [noteField setText:record.note];
+    
+    UIHelper* helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:dateField :@selector(setDatingDate:) :self];
+}
+
+- (void) dating_persist: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* dateField = views[0];
+    UITextField* placeField = views[1];
+    UITextField* objectField = views[2];
+    UITextField* attendeeField = views[3];
+    UITextField* noteField = views[4];
+    
+    DatingRecord* record = _item;
+    record.date = [Utils getDateFromString:dateField.text];
+    record.place = placeField.text;
+    record.purpose = objectField.text;
+    NSString* name = [_params valueForKey:@"name"];
+    NSMutableString* att = [attendeeField.text mutableCopy];
+    if ([attendeeField.text compare:@""] != NSOrderedSame)
+        [att appendString:@":"];
+    [att appendString: name];
+    record.attendee = att;
+    record.note = noteField.text;
+}
+
 /******************CSkill*******************/
 
 -(void) setSkillLevel: (NSString*) levelStr
@@ -99,6 +162,7 @@
     
     [skill setText:item.skill];
     [level setText:item.level];
+    
     NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:3];
     UIHelper* helper= [UIHelper getUIHelper];
     [helper setStrPickerForTextField:level :@selector(setSkillLevel:) :self :array];

@@ -3,13 +3,13 @@
     <entity name="DatingRecord" representedClassName="DatingRecord" syncable="YES">
         <attribute name="attendee" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data_type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="evaluate_score" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="perpare" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="purpose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quality" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
-        <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="PersonalBasicInfo" representedClassName="PersonalBasicInfo" syncable="YES">
         <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
@@ -47,9 +47,9 @@
         <relationship name="my_basic_info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalBasicInfo" inverseName="my_first_met_record" inverseEntity="PersonalBasicInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DatingRecord" positionX="-245" positionY="-180" width="128" height="178"/>
-        <element name="PersonalBasicInfo" positionX="-405" positionY="-36" width="128" height="268"/>
-        <element name="PersonalCareer" positionX="-63" positionY="-51" width="128" height="150"/>
-        <element name="PersonalFirstTimeRecord" positionX="223" positionY="72" width="128" height="135"/>
+        <element name="DatingRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalBasicInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalCareer" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PersonalFirstTimeRecord" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -19,6 +19,8 @@
 
 @property (nonatomic, retain) id parent;
 
+@property (nonatomic, retain) NSDictionary* params;
+
 @property (nonatomic, assign) bool toDetailPage;
 
 - (void) setItems:(NSMutableArray *)items;

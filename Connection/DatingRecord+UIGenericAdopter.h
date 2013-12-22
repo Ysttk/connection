@@ -7,10 +7,13 @@
 //
 
 #import "DatingRecord.h"
+#import "Connection.h"
 
 @interface DatingRecord (UIGenericAdopter)
 
 + (id) alloc;
+
+- (id) init;
 
 - (NSString*) toString;
 
