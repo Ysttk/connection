@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "PersonalBasicInfo.h"
-#import "PersonalDetails.h"
+#import "PersonalCareer.h"
 #import "Connection.h"
 #import "PersonalBasicInfoView.h"
 

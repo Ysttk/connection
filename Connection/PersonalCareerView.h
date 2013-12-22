@@ -10,7 +10,7 @@
 #import "Connection.h"
 #import "PersonalBasicInfo.h"
 
-@interface PersonalCareer : UITableViewController
+@interface PersonalCareerView : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *m_Object;
 @property (weak, nonatomic) IBOutlet UITextField *m_Company;

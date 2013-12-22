@@ -6,20 +6,20 @@
 //  Copyright (c) 2013年 Org. All rights reserved.
 //
 
-#import "PersonalCareer.h"
+#import "PersonalCareerView.h"
 #import "PersonalBasicInfo.h"
 #import "CGenericItemSetView.h"
 #import "CExperience.h"
 #import "CSkillSet.h"
 #import "CCareer.h"
-#import "PersonalDetails.h"
+#import "PersonalCareer.h"
 
-@interface PersonalCareer ()
+@interface PersonalCareerView ()
 
 
 @end
 
-@implementation PersonalCareer
+@implementation PersonalCareerView
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,12 +51,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-}
-- (IBAction)BeginEditSport:(id)sender {
-    //[_picker reloadAllComponents];
-}
-- (IBAction)BeginEditPlace:(id)sender {
-    //[_picker reloadAllComponents];
 }
 
 
