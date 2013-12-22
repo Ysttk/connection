@@ -1160,6 +1160,7 @@
                         <outlet property="m_FirstDatePurpose" destination="iyH-0b-bqb" id="qR6-Ms-BBM"/>
                         <outlet property="m_FirstDateTime" destination="10F-Ju-xpw" id="w64-Jv-Z0P"/>
                         <outlet property="m_Introducer" destination="4cv-Kf-NRN" id="exq-rN-oyH"/>
+                        <outlet property="m_RecordCell" destination="yCF-sG-RFe" id="gJW-Do-xT2"/>
                         <outlet property="m_RelationShip" destination="EhW-Uv-Ukq" id="oS7-0E-N8c"/>
                         <outlet property="m_StatusBtn" destination="bL1-Jw-D6m" id="RaV-sR-f09"/>
                     </connections>
@@ -1215,8 +1216,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rye-YQ-UuQ"/>
-        <segue reference="wwM-or-mXA"/>
         <segue reference="Dj1-lO-UWd"/>
+        <segue reference="DNT-MD-q3R"/>
+        <segue reference="Rye-YQ-UuQ"/>
     </inferredMetricsTieBreakers>
 </document>

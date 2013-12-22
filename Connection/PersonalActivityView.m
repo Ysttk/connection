@@ -28,7 +28,6 @@
 {
     [super viewDidLoad];
     self.isEditMode = false;
-    [self updateEditMode];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -36,10 +35,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) setFirstMetDate: (NSDate*) date
+{
+    [_m_FirstDateTime setText:[Utils getDateString:date]];
+    [_m_FirstDateTime resignFirstResponder];
+    _basicInfo.my_first_met_record.first_met_time = date;
+    [_m_FirstDateInterval setText:[[Utils getDateIntervalUntilNow: date] toString]];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self updateDatingRecordList];
+    [self updatePeopleActivity];
+    [self updateEditMode];
+    self.navigationController.navigationBar.hidden = true;
+    UIHelper* helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:_m_FirstDateTime :@selector(setFirstMetDate:) :self];
 }
 
 - (void) updateDatingRecordList
@@ -79,15 +90,48 @@
 
 - (void) updateEditMode
 {
-    if (_isEditMode)
+    BOOL isEnable;
+    if (_isEditMode) {
         [_m_StatusBtn setTitle:@"完成"];
-    else
+        isEnable = TRUE;
+        [_m_RecordCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    } else {
         [_m_StatusBtn setTitle:@"编辑"];
+        isEnable = FALSE;
+        [_m_RecordCell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
+    _m_FirstDateTime.enabled = isEnable;
+    _m_FirstDateInterval.enabled = FALSE;
+    _m_Introducer.enabled = isEnable;
+    _m_FirstDatePlace.enabled = isEnable;
+    _m_FirstDatePurpose.enabled = isEnable;
+    _m_RelationShip.enabled = isEnable;
 }
 
 - (IBAction)SwitchEditMode:(id)sender {
+    if (_isEditMode) [DBHelper SaveAll];
     _isEditMode = ! _isEditMode;
     [self updateEditMode];
+}
+
+- (void) updatePeopleActivity
+{
+    [_m_FirstDateTime setText:[Utils getDateString:_basicInfo.my_first_met_record.first_met_time]];
+    [_m_Introducer setText:_basicInfo.my_first_met_record.introducer];
+    [_m_FirstDatePlace setText:_basicInfo.my_first_met_record.met_place];
+    [_m_FirstDatePurpose setText:_basicInfo.my_first_met_record.met_reason];
+    [_m_RelationShip setText:_basicInfo.my_first_met_record.relationship];
+        [_m_FirstDateInterval setText:[[Utils getDateIntervalUntilNow: _basicInfo.my_first_met_record.first_met_time] toString]];
+    [self updateDatingRecordList];
+    int n = [_datingRecords count];
+    NSMutableString* recordStr = [[NSMutableString alloc] init];
+    for (int i=0; i<n; i++) {
+        DatingRecord* r = [_datingRecords objectAtIndex:i];
+        [recordStr appendFormat:@"%@\n", [r toString]];
+    }
+    [_m_DatingRecords setText:recordStr];
+    [_m_DatingRecords setEditable:FALSE];
 }
 
 /*

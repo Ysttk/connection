@@ -24,6 +24,40 @@
     
     return (year - oldyear);
 }
++ (DateInterval*) getDateIntervalUntilNow: (NSDate*) from
+{
+    return [self getDateInterval:from :nil];
+}
+
++ (DateInterval*) getDateIntervalSinceNow: (NSDate*) to
+{
+    return [self getDateInterval:nil :to];
+}
+
++ (DateInterval*) getDateInterval: (NSDate*) from :(NSDate*) to
+{
+    if (from == nil) from = [NSDate date];
+    if (to == nil) to = [NSDate date];
+    NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents* fromComp = [calendar components:unitFlags fromDate:from];
+    NSDateComponents* toComp = [calendar components:unitFlags fromDate:to];
+    int year = toComp.year - fromComp.year;
+    int month = toComp.month - fromComp.month;
+    int day = toComp.day - fromComp.day;
+    if (month < 0) {
+        year --;
+        month += 12;
+    }
+    if (day < 0) {
+        month -- ;
+        day += 30;
+    }
+    if (! (year>0 || month>0 || day>0))
+        year = month = day =0;
+    DateInterval* re = [[DateInterval alloc] initWithYMD:year :month :day];
+    return re;
+}
 
 + (NSString*) getDateString:(NSDate *)date
 {

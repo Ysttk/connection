@@ -10,6 +10,7 @@
 #import "Connection.h"
 #import "PersonalBasicInfo.h"
 #import "DatingRecord+UIGenericAdopter.h"
+#import "PersonalFirstTimeRecord.h"
 #import "Constant.h"
 
 @interface PersonalActivityView : UITableViewController
@@ -26,4 +27,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *m_RelationShip;
 @property (weak, nonatomic) IBOutlet UITextView *m_DatingRecords;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *m_StatusBtn;
+@property (weak, nonatomic) IBOutlet UITableViewCell *m_RecordCell;
 @end
