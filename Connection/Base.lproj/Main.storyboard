@@ -805,7 +805,7 @@
                                 <navigationItem title="Title" id="N2m-8U-032">
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="m5b-ne-UNd">
                                         <connections>
-                                            <action selector="SwitchEditMode:" destination="H7P-GF-ZCo" id="WGr-9r-beK"/>
+                                            <action selector="SwitchEditMode:" destination="H7P-GF-ZCo" id="gJK-Xn-yef"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -960,15 +960,15 @@
                     <tabBarItem key="tabBarItem" title="职业成就" id="8zC-l8-aXm"/>
                     <connections>
                         <outlet property="m_Career" destination="kNz-sc-PcH" id="TPx-LE-eHR"/>
-                        <outlet property="m_CareerCell" destination="f9L-nn-540" id="dkE-jK-EkS"/>
+                        <outlet property="m_CareerCell" destination="f9L-nn-540" id="hfG-SI-abe"/>
                         <outlet property="m_Company" destination="ndW-tW-Bav" id="bIB-pt-g8k"/>
                         <outlet property="m_Experience" destination="otS-DB-gWA" id="NoF-b9-FcD"/>
-                        <outlet property="m_ExperienceCell" destination="bbF-lZ-kg4" id="hqV-od-a5E"/>
+                        <outlet property="m_ExperienceCell" destination="bbF-lZ-kg4" id="1Ln-mt-oAL"/>
                         <outlet property="m_Object" destination="pcy-5t-BgG" id="VmH-8c-Mue"/>
                         <outlet property="m_Position" destination="0U6-dO-T7J" id="1d5-08-cil"/>
                         <outlet property="m_Skill" destination="11W-RZ-QHZ" id="c0M-FB-V2e"/>
-                        <outlet property="m_SkillCell" destination="M5K-KR-gls" id="Bhj-KX-r3z"/>
-                        <outlet property="m_StatusBtn" destination="m5b-ne-UNd" id="z5O-XU-aJs"/>
+                        <outlet property="m_SkillCell" destination="M5K-KR-gls" id="SdH-zy-ZNl"/>
+                        <outlet property="m_StatusBtn" destination="m5b-ne-UNd" id="9tS-eM-az4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piK-Ju-E59" userLabel="First Responder" sceneMemberID="firstResponder"/>
