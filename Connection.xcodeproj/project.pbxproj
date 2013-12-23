@@ -35,9 +35,9 @@
 		163D7587186712B6007DEC13 /* DateInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D7586186712B6007DEC13 /* DateInterval.m */; };
 		163D75A218672C10007DEC13 /* PersonalCareerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75A118672C10007DEC13 /* PersonalCareerView.m */; };
 		163D75A518672CB1007DEC13 /* DatingRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75A418672CB1007DEC13 /* DatingRecord.m */; };
-		163D75A818672CB2007DEC13 /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75A718672CB2007DEC13 /* PersonalBasicInfo.m */; };
 		163D75AB18672CB2007DEC13 /* PersonalCareer.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75AA18672CB2007DEC13 /* PersonalCareer.m */; };
 		163D75AE18672CB2007DEC13 /* PersonalFirstTimeRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75AD18672CB2007DEC13 /* PersonalFirstTimeRecord.m */; };
+		163D75B41867B938007DEC13 /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75B31867B938007DEC13 /* PersonalBasicInfo.m */; };
 		163F0982181DDED300A28D63 /* PeopleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F0981181DDED300A28D63 /* PeopleListView.m */; };
 		1691F0251850B7A9000C45A8 /* CEducation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691F0241850B7A9000C45A8 /* CEducation.m */; };
 		16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872BF17FE954700561887 /* PersonalBasicInfoView.m */; };
@@ -117,12 +117,12 @@
 		163D75A118672C10007DEC13 /* PersonalCareerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCareerView.m; sourceTree = "<group>"; };
 		163D75A318672CB1007DEC13 /* DatingRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatingRecord.h; sourceTree = "<group>"; };
 		163D75A418672CB1007DEC13 /* DatingRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatingRecord.m; sourceTree = "<group>"; };
-		163D75A618672CB2007DEC13 /* PersonalBasicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfo.h; sourceTree = "<group>"; };
-		163D75A718672CB2007DEC13 /* PersonalBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfo.m; sourceTree = "<group>"; };
 		163D75A918672CB2007DEC13 /* PersonalCareer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCareer.h; sourceTree = "<group>"; };
 		163D75AA18672CB2007DEC13 /* PersonalCareer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCareer.m; sourceTree = "<group>"; };
 		163D75AC18672CB2007DEC13 /* PersonalFirstTimeRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalFirstTimeRecord.h; sourceTree = "<group>"; };
 		163D75AD18672CB2007DEC13 /* PersonalFirstTimeRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalFirstTimeRecord.m; sourceTree = "<group>"; };
+		163D75B21867B938007DEC13 /* PersonalBasicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfo.h; sourceTree = "<group>"; };
+		163D75B31867B938007DEC13 /* PersonalBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfo.m; sourceTree = "<group>"; };
 		163F0980181DDED300A28D63 /* PeopleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleListView.h; sourceTree = "<group>"; };
 		163F0981181DDED300A28D63 /* PeopleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleListView.m; sourceTree = "<group>"; };
 		1691F0231850B7A9000C45A8 /* CEducation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducation.h; sourceTree = "<group>"; };
@@ -411,12 +411,12 @@
 		16F810A81864953700A7EA94 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				163D75B21867B938007DEC13 /* PersonalBasicInfo.h */,
+				163D75B31867B938007DEC13 /* PersonalBasicInfo.m */,
 				163D75AC18672CB2007DEC13 /* PersonalFirstTimeRecord.h */,
 				163D75AD18672CB2007DEC13 /* PersonalFirstTimeRecord.m */,
 				163D75A918672CB2007DEC13 /* PersonalCareer.h */,
 				163D75AA18672CB2007DEC13 /* PersonalCareer.m */,
-				163D75A618672CB2007DEC13 /* PersonalBasicInfo.h */,
-				163D75A718672CB2007DEC13 /* PersonalBasicInfo.m */,
 				163D75A318672CB1007DEC13 /* DatingRecord.h */,
 				163D75A418672CB1007DEC13 /* DatingRecord.m */,
 			);
@@ -548,7 +548,6 @@
 				163D75AB18672CB2007DEC13 /* PersonalCareer.m in Sources */,
 				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
 				160CF732185B533A00CDEFCE /* CSkill.m in Sources */,
-				163D75A818672CB2007DEC13 /* PersonalBasicInfo.m in Sources */,
 				160CF726185B4B9700CDEFCE /* CExperience.m in Sources */,
 				160CF729185B4EC800CDEFCE /* CHomeStructure.m in Sources */,
 				16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */,
@@ -560,6 +559,7 @@
 				160CF735185B55DF00CDEFCE /* CCareer.m in Sources */,
 				160CF742185BFF0300CDEFCE /* Constant.m in Sources */,
 				16F810AE186495E000A7EA94 /* DatingRecordSet.m in Sources */,
+				163D75B41867B938007DEC13 /* PersonalBasicInfo.m in Sources */,
 				1691F0251850B7A9000C45A8 /* CEducation.m in Sources */,
 				16D872CD17FFA28B00561887 /* MakingChoiceView.m in Sources */,
 				16F810AB1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m in Sources */,

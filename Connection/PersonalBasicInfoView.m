@@ -17,15 +17,7 @@
 
 @end
 
-@interface DatePickDelegate : NSObject <UIPickerViewDelegate>
 
-@end
-
-@implementation DatePickDelegate
-
-
-
-@end
 
 @implementation PersonalBasicInfoView
 
@@ -62,6 +54,16 @@
     [_m_Phone setText:_basicInfo.phone];
     [_m_Email setText:_basicInfo.email];
     [_m_Birthday setText:[Utils getDateString:_basicInfo.birthday]];
+    [_m_Phone setText:_basicInfo.phone];
+    [_m_City setText:_basicInfo.city];
+    NSString* sex;
+    if ([_basicInfo.is_male isEqualToNumber:[NSNumber numberWithBool:YES]])
+        sex = @"男";
+    else
+        sex = @"女";
+    [_m_Sex setText:sex];
+    [_m_BuddyType setText:_basicInfo.buddy_type];
+    [_m_BuddyCloseType setText:_basicInfo.buddy_closer_type];
     
     //formate education information
     CEducation* education = [[CEducation alloc] init];
@@ -71,6 +73,7 @@
 
 - (void) showEmptyTextView: (UITextView*) textView :(bool) isShow
 {
+    return;
     if (([textView.text compare:@""] == NSOrderedSame) && ! isShow)
         textView.hidden = YES;
     else
@@ -80,6 +83,7 @@
 
 - (void) showEmptyTextField: (UITextField*) textField :(bool) isShow
 {
+    return;
     if (([textField.text compare:@""] == NSOrderedSame) && !isShow)
         textField.hidden = YES;
     else
@@ -88,6 +92,7 @@
 
 - (void) showEmptyTextFieldWithLabel: (UILabel*) label :(UITextField*) textField :(bool) isShow
 {
+    return;
     if (([textField.text compare:@""] == NSOrderedSame) && !isShow) {
         textField.hidden = YES;
         label.hidden = YES;
@@ -108,9 +113,15 @@
     }
 }
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void) UpdateEditMode
 {
-    
+
     bool isShowEmpty, isEditable;
     if (_isEditMode)
         isEditable = isShowEmpty = true;
@@ -120,7 +131,7 @@
     [_m_Name setEnabled:isEditable];
     [self showEmptyTextField:_m_Name :isShowEmpty];
     
-    [_m_Age setEnabled:isEditable];
+    [_m_Age setEnabled:FALSE];
     [self showEmptyTextField:_m_Age :isShowEmpty];
     
     [_m_EnglishName setEnabled:isEditable];
@@ -135,12 +146,53 @@
     [_m_Birthday setEnabled:isEditable];
     [self showEmptyTextField:_m_Birthday :isShowEmpty];
     
-    [_m_EducationBackgroud setEditable:isEditable];
+    [_m_EducationBackgroud setEditable:FALSE];
     [self showEmptyTextView:_m_EducationBackgroud :isShowEmpty];
+    
+    [_m_Sex setEnabled:isEditable];
+    [_m_City setEnabled:isEditable];
+    [_m_BuddyType setEnabled:isEditable];
+    [_m_BuddyCloseType setEnabled:isEditable];
+    
     
     [self UpdateStatusItem];
     
-    
+
+}
+
+- (void) setCity: (NSString*) city
+{
+    _m_City.text = city;
+    [_m_City resignFirstResponder];
+    _basicInfo.city = city;
+    [DBHelper SaveAll];
+}
+
+- (void) setBuddyType: (NSString*) type
+{
+    _m_BuddyType.text = type;
+    [_m_BuddyType resignFirstResponder];
+    _basicInfo.buddy_type = type;
+    [DBHelper SaveAll];
+}
+
+- (void) setBuddyCloseType: (NSString*) type
+{
+    _m_BuddyCloseType.text = type;
+    [_m_BuddyCloseType resignFirstResponder];
+    _basicInfo.buddy_closer_type = type;
+    [DBHelper SaveAll];
+}
+
+- (void) setSex: (NSString*) sex
+{
+    _m_Sex.text = sex;
+    [_m_Sex resignFirstResponder];
+    if ([sex compare:@"男"] == NSOrderedSame)
+        _basicInfo.is_male = [NSNumber numberWithBool:YES];
+    else
+        _basicInfo.is_male = [NSNumber numberWithBool:NO];
+    [DBHelper SaveAll];
 }
 - (IBAction)BeginEditBirthday:(id)sender {
     _currentEditor = _m_Birthday;
@@ -148,13 +200,12 @@
 
 
 
-- (IBAction)DateEditDone:(id)sender
+- (IBAction)setBirthday: (NSDate*) date
 {
-    NSDate* selDate = [_birthdayPicker date];
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    [_currentEditor setText:[formatter stringFromDate:selDate]];
+    [_currentEditor setText:[Utils getDateString:date]];
     [_currentEditor resignFirstResponder];
+    _basicInfo.birthday = date;
+    [DBHelper SaveAll];
 }
 
 - (UIBarPosition) positionForBar:(id<UIBarPositioning>)bar
@@ -162,30 +213,7 @@
     return UIBarPositionTop;
 }
 
-- (void) initEditView
-{
-    _birthdayPicker = [[UIDatePicker alloc] init];
-    _birthdayPicker.datePickerMode = UIDatePickerModeDate;
 
-    self.pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]applicationFrame].size.width, 30)];
-    [self.pickerToolbar setDelegate:self];
-    
-    
-    UIBarButtonItem* tmpOK = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(DateEditDone:)];
-    
-    UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    NSArray* items = [NSArray arrayWithObjects: placeHolder, tmpOK, nil];
-    [self.pickerToolbar setItems:items];
-    
-    _m_Birthday.inputAccessoryView = _pickerToolbar;
-    _m_Birthday.inputView = _birthdayPicker;
-    
-//    _m_EducationBeginTime.inputAccessoryView = _pickerToolbar;
-//    _m_EducationBeginTime.inputView = _birthdayPicker;
-//    _m_EducationEndTime.inputAccessoryView = _pickerToolbar;
-//    _m_EducationEndTime.inputView = _birthdayPicker;
-    
-}
 
 - (void)viewDidLoad
 {
@@ -193,10 +221,6 @@
     [super viewDidLoad];
     
     
-    [self initEditView];
-    [self reloadPeopleBasicInfo];
-    [self UpdateStatusItem];
-    [self UpdateEditMode];
     
     id parent = [self parentViewController];
     [parent registCurrentSubViewController:self];
@@ -212,17 +236,44 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self UpdateEditMode];
+    [self reloadPeopleBasicInfo];
+    
+    UIHelper* helper = [UIHelper getUIHelper];
+    NSArray* array = [[NSArray alloc] initWithObjects:SexC count:2];
+    [helper setStrPickerForTextField:_m_Sex :@selector(setSex:) :self :array];
+    helper = [UIHelper getUIHelper];
+    array = [[NSArray alloc] initWithObjects:CityC count:2];
+    [helper setStrPickerForTextField:_m_City :@selector(setCity:) :self :array];
+    array = [[NSArray alloc] initWithObjects:BuddyTypeC count:5];
+    helper = [UIHelper getUIHelper];
+    [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
+    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:2];
+    helper = [UIHelper getUIHelper];
+    [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
+    
+    helper = [UIHelper getUIHelper];
+    [helper setDatePickerForTextField:_m_Birthday :@selector(setBirthday:) :self];
+    
+    
+    [_m_Name setDelegate:self];
+    [_m_EnglishName setDelegate:self];
+    [_m_Phone setDelegate:self];
+    [_m_Email setDelegate:self];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [UIHelper releaseUIHelper];
 }
 
 - (IBAction)StatusButtonClick:(id)sender {
     if (_isEditMode) {
         _basicInfo.name = _m_Name.text;
+        _basicInfo.english_name = _m_EnglishName.text;
         _basicInfo.phone = _m_Phone.text;
         _basicInfo.email = _m_Email.text;
-        _basicInfo.english_name = _m_EnglishName.text;
-        _basicInfo.birthday = [Utils getDateFromString:_m_Birthday.text];
         [DBHelper SaveAll];
-        [self reloadPeopleBasicInfo];
     }
     _isEditMode = ! _isEditMode;
     [self UpdateEditMode];
@@ -241,6 +292,7 @@
     CEducation* education = [[CEducation alloc] init];
     education.items = [items mutableCopy];
     _basicInfo.education = [education serialize];
+    [DBHelper SaveAll];
 }
 
 

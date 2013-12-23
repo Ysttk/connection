@@ -24,6 +24,8 @@
 @property (nonatomic, retain) UIPickerView* itemPicker;
 @property (nonatomic, retain) NSArray* items;
 
+@property (nonatomic, assign) NSInteger selectedRow;
+
 - (void) setDatePickerForTextField: (UITextField*) textField :(SEL)setDateAction :(id) delegate;
 - (void) setStrPickerForTextField: (UITextField*) textField :(SEL) setItemAction :(id) delegate :(NSArray*) array;
 

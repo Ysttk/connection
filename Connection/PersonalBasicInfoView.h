@@ -10,7 +10,7 @@
 #import "PersonalBasicInfo.h"
 #import "Connection.h"
 
-@interface PersonalBasicInfoView : UITableViewController <UIToolbarDelegate>
+@interface PersonalBasicInfoView : UITableViewController <UIToolbarDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *m_StatusActionButton;
 @property (weak, nonatomic) IBOutlet UITextField *m_Name;
@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *m_Sex;
 @property (weak, nonatomic) IBOutlet UITextField *m_City;
 @property (weak, nonatomic) IBOutlet UITableViewCell *m_EducationCell;
+@property (weak, nonatomic) IBOutlet UITextField *m_BuddyType;
+@property (weak, nonatomic) IBOutlet UITextField *m_BuddyCloseType;
 
 @property (nonatomic, assign) bool isEditMode;
 

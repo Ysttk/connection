@@ -20,6 +20,17 @@ NSString* SkillLevelC[] = {
 NSString* BuddyTypeC[] = {
     @"同学", @"战友", @"工作", @"生活", @"亲戚",
 };
+NSString* BuddyCloseC[] = {
+    @"一般", @"紧密"
+};
+
+NSString* SexC[] = {
+    @"男", @"女"
+};
+
+NSString* CityC[] = {
+    @"杭州", @"绍兴"
+};
 
 NSString* ClassKey = @"class";
 NSString* InitKey = @"init_func:";

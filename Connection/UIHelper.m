@@ -60,7 +60,7 @@ static NSMutableArray* helpers;
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
+    _selectedRow = row;
 }
 
 - (UIToolbar*) getToolbar
@@ -85,8 +85,7 @@ static NSMutableArray* helpers;
 
 - (IBAction)itemOKClick:(id)sender
 {
-    NSInteger index = [_itemPicker selectedRowInComponent:0];
-    NSString* item = [_items objectAtIndex:index];
+    NSString* item = [_items objectAtIndex:_selectedRow];
     [_delegate performSelector:_setAction withObject:item];
 }
 

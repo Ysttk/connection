@@ -11,6 +11,10 @@
 extern NSString* HomeRoleC[];
 extern NSString* SkillLevelC[];
 extern NSString* BuddyTypeC[];
+extern NSString* BuddyCloseC[];
+extern NSString* SexC[];
+extern NSString* CityC[];
+
 extern NSDictionary* SetId2SetViewCellIdAndEditViewId;
 extern NSString* ClassKey;
 extern NSString* InitKey;
