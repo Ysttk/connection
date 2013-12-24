@@ -51,9 +51,23 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (IBAction)CancelClick:(id)sender {
+- (IBAction)OKClick:(id)sender {
+
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    if (![self IsInputOK:cell]) return;
+        @try {
+            [self performSelector:_persist_func withObject:cell];
+            NSArray* views = self.navigationController.viewControllers;
+            CGenericItemSetView* view =  [views objectAtIndex:([views count]-2)];
+            [view addItemToSet];
+        }
+        @catch (NSException *exception) {
+            int a =0;
+        }
+
     [self.navigationController popViewControllerAnimated:YES];
-    _cancelClick = true;
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -67,16 +81,36 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
-    if (!_cancelClick) {
-        [self performSelector:_persist_func withObject:cell];
-        NSArray* views = self.navigationController.viewControllers;
-        CGenericItemSetView* view =  [views objectAtIndex:([views count]-1)];
-        [view addItemToSet];
-    }
+    [super viewWillDisappear:animated];
     [UIHelper releaseUIHelper];
     
+}
+
+- (bool) IsInputOK: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    for (id view in views) {
+        if ([view isKindOfClass:[UITextField class]]) {
+            UITextField* textField = (UITextField*)view;
+            if (textField.text == nil || [textField.text compare:@""]==NSOrderedSame) {
+                UIAlertView* alert_view = [[UIAlertView alloc]
+                                           initWithTitle: @"空输入" message: @"请填写完整" delegate: nil
+                                           cancelButtonTitle: @"确定" otherButtonTitles: nil, nil];
+                [alert_view show];
+                return false;
+            }
+        } else if ([view isKindOfClass:[UITextView class]]) {
+            UITextView* textView = (UITextView*) view;
+            if (textView.text==nil || [textView.text compare:@""]==NSOrderedSame) {
+                UIAlertView* alert_view = [[UIAlertView alloc]
+                                           initWithTitle: @"空输入" message: @"请填写写完整" delegate: nil
+                                           cancelButtonTitle: @"确定" otherButtonTitles: nil, nil];
+                [alert_view show];
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 - (void) setItem:(id)item
@@ -131,6 +165,7 @@
 
 - (void) dating_persist: (UITableViewCell*) cell
 {
+    
     NSArray* views = cell.contentView.subviews;
     
     UITextField* dateField = views[0];
@@ -454,5 +489,7 @@
 }
 
  */
+
+
 
 @end

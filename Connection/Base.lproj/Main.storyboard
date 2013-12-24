@@ -421,7 +421,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6o0-fk-lTg">
-                        <barButtonItem key="backBarButtonItem" title="完成" id="92Z-am-JJP"/>
+                        <barButtonItem key="backBarButtonItem" title="取消" id="92Z-am-JJP"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZL7-Sa-Hb6">
                             <connections>
                                 <segue destination="1x9-q7-uam" kind="push" id="jaL-iM-3PJ"/>
@@ -723,9 +723,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hzk-RS-XwC">
-                        <barButtonItem key="rightBarButtonItem" title="取消" id="5Nw-ij-ytD">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="5Nw-ij-ytD">
                             <connections>
-                                <action selector="CancelClick:" destination="1x9-q7-uam" id="CUs-hf-z1r"/>
+                                <action selector="OKClick:" destination="1x9-q7-uam" id="CCV-9T-Bjj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
