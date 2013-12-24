@@ -10,27 +10,33 @@
 #import "CJSONDeserializer.h"
 
 NSString* HomeRoleC[] = {
-    @"妻子", @"丈夫", @"儿子", @"爸爸", @"妈妈", @"祖父", @"祖母",
+    @"妻子", @"丈夫", @"儿子", @"爸爸", @"妈妈", @"祖父", @"祖母", nil
 };
+int HomeRoleN;
 
 NSString* SkillLevelC[] = {
-    @"专家", @"精通", @"普通",
+    @"专家", @"精通", @"普通", nil
 };
+int SkillLevelN;
 
 NSString* BuddyTypeC[] = {
-    @"同学", @"战友", @"工作", @"生活", @"亲戚",
+    @"同学", @"战友", @"工作", @"生活", @"亲戚", nil
 };
+int BuddyTypeN;
 NSString* BuddyCloseC[] = {
-    @"一般", @"紧密"
+    @"一般", @"紧密", nil
 };
+int BuddyCloseN;
 
 NSString* SexC[] = {
-    @"男", @"女"
+    @"男", @"女", nil
 };
+int SexN;
 
 NSString* CityC[] = {
-    @"杭州", @"绍兴"
+    @"杭州", @"绍兴", nil
 };
+int CityN;
 
 NSString* ClassKey = @"class";
 NSString* InitKey = @"init_func:";
@@ -64,4 +70,23 @@ void InitGlobalConstant ()
 {
     NSError* _tmpError;
     SetId2SetViewCellIdAndEditViewId = [[CJSONDeserializer deserializer] deserialize:[_SetId2SetViewCellIdAndEditViewId dataUsingEncoding:NSUTF8StringEncoding] error:&_tmpError];
+    
+    int count = 0;
+    while (HomeRoleC[count] != nil) count++;
+    HomeRoleN = count;
+    count = 0;
+    while (SkillLevelC[count] != nil) count++;
+    SkillLevelN = count;
+    count = 0;
+    while (BuddyTypeC[count] != nil) count++;
+    BuddyTypeN = count;
+    count=0;
+    while (BuddyCloseC[count] != nil) count++;
+    BuddyCloseN = count;
+    count =0;
+    while (SexC[count] != nil) count++;
+    SexN = count;
+    count = 0;
+    while (CityC[count] != nil) count++;
+    CityN = count;
 }

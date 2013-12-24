@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 
 extern NSString* HomeRoleC[];
+extern int HomeRoleN;
 extern NSString* SkillLevelC[];
+extern int SkillLevelN;
 extern NSString* BuddyTypeC[];
+extern int BuddyTypeN;
 extern NSString* BuddyCloseC[];
+extern int BuddyCloseN;
 extern NSString* SexC[];
+extern int SexN;
 extern NSString* CityC[];
+extern int CityN;
 
 extern NSDictionary* SetId2SetViewCellIdAndEditViewId;
 extern NSString* ClassKey;
