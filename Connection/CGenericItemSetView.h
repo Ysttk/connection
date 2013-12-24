@@ -23,5 +23,11 @@
 
 @property (nonatomic, assign) bool toDetailPage;
 
+@property (nonatomic, retain) id currentItem;
+
 - (void) setItems:(NSMutableArray *)items;
+
+//for item editor
+- (void) addItemToSet;
+
 @end

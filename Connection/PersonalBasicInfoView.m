@@ -101,6 +101,9 @@
         label.hidden = NO;
     }
 }
+- (IBAction)BackClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void) UpdateStatusItem
 {

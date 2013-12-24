@@ -156,6 +156,9 @@
 }
 
 
+- (IBAction)BackClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void) SaveDatingRecords:(NSArray*) items
 {

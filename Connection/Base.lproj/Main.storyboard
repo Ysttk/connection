@@ -17,6 +17,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="3X5-yc-D5T">
+                                    <barButtonItem key="leftBarButtonItem" title="返回" id="kz5-VC-73o">
+                                        <connections>
+                                            <action selector="BackClick:" destination="2mi-6W-aY1" id="f1J-UU-y3Z"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="DMV-00-IKh">
                                         <connections>
                                             <action selector="StatusButtonClick:" destination="2mi-6W-aY1" id="e7v-9f-LEk"/>
@@ -262,6 +267,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="3aw-G3-BSx">
+                                    <barButtonItem key="leftBarButtonItem" title="返回" id="EUL-Qo-B5A">
+                                        <connections>
+                                            <action selector="BackClick:" destination="7SA-hw-Gmr" id="R22-dH-7Ju"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="KGg-aY-Q4S">
                                         <connections>
                                             <action selector="SwitchEditMode:" destination="7SA-hw-Gmr" id="ayb-w4-5jm"/>
@@ -712,7 +722,13 @@
                             <outlet property="delegate" destination="1x9-q7-uam" id="ce3-2u-Bsm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hzk-RS-XwC"/>
+                    <navigationItem key="navigationItem" id="hzk-RS-XwC">
+                        <barButtonItem key="rightBarButtonItem" title="取消" id="5Nw-ij-ytD">
+                            <connections>
+                                <action selector="CancelClick:" destination="1x9-q7-uam" id="CUs-hf-z1r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhR-Ex-xKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -805,6 +821,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="N2m-8U-032">
+                                    <barButtonItem key="leftBarButtonItem" title="返回" id="WTD-U5-zWN">
+                                        <connections>
+                                            <action selector="BackClick:" destination="H7P-GF-ZCo" id="QFw-iw-wUA"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="m5b-ne-UNd">
                                         <connections>
                                             <action selector="SwitchEditMode:" destination="H7P-GF-ZCo" id="gJK-Xn-yef"/>
@@ -990,6 +1011,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Title" id="V9q-8h-DpA">
+                                    <barButtonItem key="leftBarButtonItem" title="返回" id="dfK-qD-BsW">
+                                        <connections>
+                                            <action selector="BackClick:" destination="2wK-7L-KXe" id="7R9-EI-YYK"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" title="Item" id="bL1-Jw-D6m">
                                         <connections>
                                             <action selector="SwitchEditMode:" destination="2wK-7L-KXe" id="vzl-2J-RXB"/>
@@ -1227,7 +1253,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Dj1-lO-UWd"/>
-        <segue reference="DNT-MD-q3R"/>
-        <segue reference="Rye-YQ-UuQ"/>
+        <segue reference="wwM-or-mXA"/>
+        <segue reference="jaL-iM-3PJ"/>
     </inferredMetricsTieBreakers>
 </document>

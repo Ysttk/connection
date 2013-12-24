@@ -34,6 +34,9 @@
 {
     return UIBarPositionTop;
 }
+- (IBAction)BackClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {

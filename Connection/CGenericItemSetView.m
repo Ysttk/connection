@@ -119,6 +119,10 @@
     return num.integerValue;
 }
 
+- (void) addItemToSet
+{
+    [_items addObject:_currentItem];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,8 +187,9 @@
     dest.params = _params;
     id item = nil;
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
-        item = [[_item_class alloc] init];
-        [_items addObject:item];
+        _currentItem = [[_item_class alloc] init];
+        item = _currentItem;
+        //[_items addObject:item];
     } else {
         item =[_items objectAtIndex: self.tableView.indexPathForSelectedRow.row];
     }

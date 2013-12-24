@@ -132,6 +132,9 @@
     [self UpdateByEditModel];
 }
 
+- (IBAction)BackClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Navigation
 

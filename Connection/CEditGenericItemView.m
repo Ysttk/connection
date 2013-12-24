@@ -51,11 +51,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (IBAction)CancelClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    _cancelClick = true;
+}
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    _cancelClick = false;
 }
 
 
@@ -64,8 +69,14 @@
 {
     NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
-    [self performSelector:_persist_func withObject:cell];
+    if (!_cancelClick) {
+        [self performSelector:_persist_func withObject:cell];
+        NSArray* views = self.navigationController.viewControllers;
+        CGenericItemSetView* view =  [views objectAtIndex:([views count]-1)];
+        [view addItemToSet];
+    }
     [UIHelper releaseUIHelper];
+    
 }
 
 - (void) setItem:(id)item
