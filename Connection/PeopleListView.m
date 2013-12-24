@@ -63,6 +63,9 @@
     array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
     [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
 
+    _m_BuddyType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _m_BuddyCloseType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -200,19 +203,23 @@
 }
 */
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        PersonalBasicInfo* basicInfo = [_dispPersonalInfoArray objectAtIndex:indexPath.row];
+        [_personalInfoArray removeObject:basicInfo];
+        [DBHelper SaveAll];
+        [self.tableView reloadData];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -238,8 +245,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UINavigationController* navi = (UINavigationController*)[self parentViewController];
-    navi.navigationBar.hidden  = YES;
+
     PersonalBasicInfo* basicInfo = nil;
     if (sender == _m_AddBtn) {
         basicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"PersonalBasicInfo" inManagedObjectContext:[DBHelper getContext]];
