@@ -32,6 +32,45 @@
     return self;
 }
 
+- (void) setBuddyType: (NSString*) type
+{
+    _buddyType = type;
+    _m_BuddyType.text = type;
+    [_m_BuddyType resignFirstResponder];
+    [self.tableView reloadData];
+}
+
+- (void) setBuddyCloseType: (NSString*) type
+{
+    _buddyCloseType = type;
+    _m_BuddyCloseType.text = type;
+    [_m_BuddyCloseType resignFirstResponder];
+    [self.tableView reloadData];
+}
+
+- (void) setField: (NSString*) field
+{
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UIHelper* helper = [UIHelper getUIHelper];
+    NSArray* array = [[NSArray alloc] initWithObjects:BuddyTypeC count:BuddyTypeN];
+    [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
+    helper = [UIHelper getUIHelper];
+    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
+    [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
+
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [UIHelper releaseUIHelper];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,8 +99,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    //return 2;
-    return [_personalInfoArray count];
+    _dispPersonalInfoArray = [[NSMutableArray alloc] init];
+    int count = 0;
+    for (PersonalBasicInfo* basicInfo in _personalInfoArray) {
+        if ((_buddyType != nil) && ([_buddyType compare:basicInfo.buddy_type]!=NSOrderedSame)) continue;
+        if ((_buddyCloseType!=nil) && ([_buddyCloseType compare:basicInfo.buddy_closer_type]!=NSOrderedSame)) continue;
+        [_dispPersonalInfoArray addObject:basicInfo];
+        count++;
+    }
+    return count;
 }
 
 - (NSDateComponents*) getDateComponents:(NSDate*) date
@@ -92,7 +138,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSInteger index = indexPath.row;
-    PersonalBasicInfo* info = _personalInfoArray[index];
+    PersonalBasicInfo* info = _dispPersonalInfoArray[index];
     // Configure the cell...
     NSArray* labels = (NSArray*)cell.contentView.subviews;
     UILabel* name = (UILabel*)labels[0];
@@ -200,7 +246,7 @@
         [_personalInfoArray addObject:basicInfo];
     } else {
         NSIndexPath* path = [self.tableView indexPathForSelectedRow];
-        basicInfo = [_personalInfoArray objectAtIndex:path.row];
+        basicInfo = [_dispPersonalInfoArray objectAtIndex:path.row];
     }
     id dest = [segue destinationViewController];
     [dest setPersonalBasicInfo:basicInfo];
