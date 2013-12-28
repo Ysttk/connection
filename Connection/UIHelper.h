@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) SEL setAction;
@@ -23,11 +23,18 @@
 //for item picker
 @property (nonatomic, retain) UIPickerView* itemPicker;
 @property (nonatomic, retain) NSArray* items;
+//for item picker with search bar
+@property (nonatomic, retain) NSMutableArray* dumpItems;
+@property (nonatomic, retain) UISearchBar* itemSearch;
+@property (nonatomic, assign) bool isEditSearchBar;
+@property (nonatomic, assign) bool isWithSearchFunc;
+@property (nonatomic, retain) UIPickerView* tmpObj;
 
 @property (nonatomic, assign) NSInteger selectedRow;
 
 - (void) setDatePickerForTextField: (UITextField*) textField :(SEL)setDateAction :(id) delegate;
 - (void) setStrPickerForTextField: (UITextField*) textField :(SEL) setItemAction :(id) delegate :(NSArray*) array;
+- (void) setStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems;
 
 + (UIHelper*) getUIHelper;
 + (void) releaseUIHelper;

@@ -253,7 +253,7 @@
     [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
     array = [[NSArray alloc] initWithObjects:BuddyCloseC count:2];
     helper = [UIHelper getUIHelper];
-    [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
+    [helper setStrPickerWithSearchForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
     
     helper = [UIHelper getUIHelper];
     [helper setDatePickerForTextField:_m_Birthday :@selector(setBirthday:) :self];

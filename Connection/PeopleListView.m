@@ -64,6 +64,7 @@
     [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
 
     _m_BuddyType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _m_BuddyType.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _m_BuddyCloseType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.navigationController.navigationBar.hidden = NO;
 }
