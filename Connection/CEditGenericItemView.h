@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
+#import "PersonalBasicInfo.h"
 
 @interface CEditGenericItemView : UITableViewController
 

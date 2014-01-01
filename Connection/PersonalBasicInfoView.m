@@ -243,15 +243,15 @@
     [self reloadPeopleBasicInfo];
     
     UIHelper* helper = [UIHelper getUIHelper];
-    NSArray* array = [[NSArray alloc] initWithObjects:SexC count:2];
+    NSArray* array = [[NSArray alloc] initWithObjects:SexC count:SexN];
     [helper setStrPickerForTextField:_m_Sex :@selector(setSex:) :self :array];
     helper = [UIHelper getUIHelper];
-    array = [[NSArray alloc] initWithObjects:CityC count:2];
+    array = [[NSArray alloc] initWithObjects:CityC count:CityN];
     [helper setStrPickerForTextField:_m_City :@selector(setCity:) :self :array];
     array = [[NSArray alloc] initWithObjects:BuddyTypeC count:5];
     helper = [UIHelper getUIHelper];
     [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
-    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:2];
+    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
     helper = [UIHelper getUIHelper];
     [helper setStrPickerWithSearchForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
     
@@ -267,7 +267,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [UIHelper releaseUIHelper];
+    //[UIHelper releaseUIHelper];
 }
 
 - (IBAction)StatusButtonClick:(id)sender {

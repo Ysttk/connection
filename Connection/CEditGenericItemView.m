@@ -142,6 +142,57 @@
     [dateField setText:[Utils getDateString:date]];
 }
 
+- (void) addAttendee: (NSString*) item
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* attendeeField = views[3];
+
+    
+    
+    DatingRecord* record = _item;
+    NSArray* array = [record.attendee componentsSeparatedByString:@";"];
+    NSMutableString* newAtt = [[NSMutableString alloc] init];
+    bool exist = false;
+    bool first = true;
+    for (NSString* str in array) {
+        if ([str compare:item] == NSOrderedSame) {
+            exist = true;
+        } else {
+            if (first) {
+                [newAtt appendString:str];
+                first = false;
+            } else [newAtt appendFormat:@";%@", str];
+        }
+    }
+    if (! exist) {
+        if (first) [newAtt appendString:item];
+        else [newAtt appendFormat:@";%@", item];
+    }
+    record.attendee = newAtt;
+    
+    [attendeeField setText:record.attendee];
+}
+
+- (void) finishEditAttendee: (NSString*) item
+{
+    NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:path];
+    NSArray* views = cell.contentView.subviews;
+    
+    UITextField* dateField = views[0];
+    UITextField* placeField = views[1];
+    UITextField* objectField = views[2];
+    UITextField* attendeeField = views[3];
+    UITextField* noteField = views[4];
+    [attendeeField resignFirstResponder];
+    
+    DatingRecord* record = _item;
+    record.attendee = attendeeField.text;
+}
+
 - (void) dating_init: (UITableViewCell*) cell
 {
     NSArray* views = cell.contentView.subviews;
@@ -161,6 +212,25 @@
     
     UIHelper* helper = [UIHelper getUIHelper];
     [helper setDatePickerForTextField:dateField :@selector(setDatingDate:) :self];
+    
+    NSMutableArray* candidates = [[NSMutableArray alloc] init];
+    //try to find out all people name
+    NSManagedObjectContext* context = [DBHelper getContext];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription* descript  = [NSEntityDescription entityForName:@"PersonalBasicInfo" inManagedObjectContext:context];
+    [fetchRequest setEntity:descript];
+    NSString* currentName = [_params valueForKey:@"name"];
+    NSError* error;
+    NSArray* array = [context executeFetchRequest:fetchRequest error:&error];
+    for (PersonalBasicInfo* info in array) {
+        if (info.name != nil && [info.name compare:currentName] != NSOrderedSame) {
+            [candidates addObject:[info.name mutableCopy]];
+        }
+    }
+//    NSArray* candidates = [[NSArray alloc] initWithObjects:@"abc", @"bcd", nil];
+    helper = [UIHelper getUIHelper];
+    [helper setMultiSelectStrPickerWithSearchForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
+//    [helper setMultiSelectStrPickerWithSearchForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:)  :self :candidates];
 }
 
 - (void) dating_persist: (UITableViewCell*) cell
@@ -181,7 +251,7 @@
     NSString* name = [_params valueForKey:@"name"];
     NSMutableString* att = [attendeeField.text mutableCopy];
     if ([attendeeField.text compare:@""] != NSOrderedSame)
-        [att appendString:@":"];
+        [att appendString:@";"];
     [att appendString: name];
     record.attendee = att;
     record.note = noteField.text;
@@ -210,7 +280,7 @@
     [skill setText:item.skill];
     [level setText:item.level];
     
-    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:3];
+    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:SkillLevelN];
     UIHelper* helper= [UIHelper getUIHelper];
     [helper setStrPickerForTextField:level :@selector(setSkillLevel:) :self :array];
 }
@@ -300,7 +370,7 @@
     [field setText:item.field];
     [role setText:item.role];
     
-    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:3];
+    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:SkillLevelN];
     UIHelper* helper= [UIHelper getUIHelper];
     [helper setStrPickerForTextField:role :@selector(setFieldRole:) :self :array];
 }

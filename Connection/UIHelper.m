@@ -27,6 +27,9 @@ static NSMutableArray* helpers;
 
 + (void) releaseUIHelper
 {
+    for (UIHelper* helper in helpers) {
+        [[NSNotificationCenter defaultCenter] removeObserver:helper];
+    }
     [helpers removeAllObjects];
 }
 
@@ -93,7 +96,7 @@ static NSMutableArray* helpers;
     NSArray* items = [NSArray arrayWithObjects:placeHolder, _okBtn, nil];
     CGFloat leftWidth = swidth - _okBtn.width - 15 -110;
     _itemSearch = [[UISearchBar alloc] initWithFrame:CGRectMake(15, 0, leftWidth, 30)];
-    _itemSearch.tag = 1;
+    //_itemSearch.tag = 1;
     _itemSearch.barStyle = UIBarStyleDefault;
     _itemSearch.delegate = self;
     _itemSearch.userInteractionEnabled = TRUE;
@@ -169,6 +172,7 @@ static NSMutableArray* helpers;
     if (_isEditSearchBar) {
         UIPickerView* pick = _tmpObj;
         [pick removeFromSuperview];
+        _tmpObj = nil;
     }
 }
 
@@ -216,6 +220,11 @@ static NSMutableArray* helpers;
     [_delegate performSelector:_setAction withObject:item];
 }
 
+- (IBAction)itemFinishClick:(id)sender
+{
+    [_delegate performSelector:_finishAction withObject:nil];
+}
+
 - (void) setDatePickerForTextField:(UITextField *)textField :(SEL)setDateAction :(id) delegate
 {
     textField.inputView = [self getDatePicker];
@@ -225,6 +234,11 @@ static NSMutableArray* helpers;
     [_pickerToolBar setDelegate:self];
     _delegate = delegate;
     _setAction = setDateAction;
+}
+
+- (void) pickerTap: (UIGestureRecognizer*) ges
+{
+    [self itemOKClick:nil];
 }
 
 - (void) setStrPickerForTextField:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray*) strItems;
@@ -253,4 +267,24 @@ static NSMutableArray* helpers;
     _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
     _isWithSearchFunc = true;
 }
+
+- (void) setMultiSelectStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    textField.inputView = [self getItemPicker];
+    textField.inputAccessoryView = [self getToolbarWithSearchbar];
+    _okBtn.title = @"完成";
+    [_okBtn setTarget:self];
+    [_okBtn setAction:@selector(itemFinishClick:)];
+    _delegate = delegate;
+    _setAction = setItemAction;
+    _finishAction = finishAction;
+    _items = strItems;
+    _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
+    _isWithSearchFunc = true;
+    UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickerTap:)];
+    [_itemPicker addGestureRecognizer:tapGes];
+}
+
 @end
