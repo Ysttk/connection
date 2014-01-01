@@ -58,9 +58,11 @@
     if (![self IsInputOK:cell]) return;
         @try {
             [self performSelector:_persist_func withObject:cell];
-            NSArray* views = self.navigationController.viewControllers;
-            CGenericItemSetView* view =  [views objectAtIndex:([views count]-2)];
-            [view addItemToSet];
+            if (self.addMode) {
+                NSArray* views = self.navigationController.viewControllers;
+                CGenericItemSetView* view =  [views objectAtIndex:([views count]-2)];
+                [view addItemToSet];
+            }
         }
         @catch (NSException *exception) {
             int a =0;
@@ -74,7 +76,6 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    _cancelClick = false;
 }
 
 
@@ -223,14 +224,14 @@
     NSError* error;
     NSArray* array = [context executeFetchRequest:fetchRequest error:&error];
     for (PersonalBasicInfo* info in array) {
-        if (info.name != nil && [info.name compare:currentName] != NSOrderedSame) {
+        if (info.name != nil &&
+            [info.name compare:@""]!=NSOrderedSame &&
+            [info.name compare:currentName] != NSOrderedSame) {
             [candidates addObject:[info.name mutableCopy]];
         }
     }
-//    NSArray* candidates = [[NSArray alloc] initWithObjects:@"abc", @"bcd", nil];
     helper = [UIHelper getUIHelper];
-    [helper setMultiSelectStrPickerWithSearchForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
-//    [helper setMultiSelectStrPickerWithSearchForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:)  :self :candidates];
+    [helper setMultiSelectStrPickerWithSearchAndInputForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
 }
 
 - (void) dating_persist: (UITableViewCell*) cell
@@ -250,9 +251,11 @@
     record.purpose = objectField.text;
     NSString* name = [_params valueForKey:@"name"];
     NSMutableString* att = [attendeeField.text mutableCopy];
-    if ([attendeeField.text compare:@""] != NSOrderedSame)
-        [att appendString:@";"];
-    [att appendString: name];
+    if ([att rangeOfString:name].location == NSNotFound) {
+        if ([attendeeField.text compare:@""] != NSOrderedSame)
+            [att appendString:@";"];
+        [att appendString: name];
+    }
     record.attendee = att;
     record.note = noteField.text;
     record.currentName = name;

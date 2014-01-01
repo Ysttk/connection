@@ -12,7 +12,8 @@
 
 @interface CEditGenericItemView : UITableViewController
 
-@property (nonatomic, assign) bool cancelClick;
+
+@property (nonatomic, assign) bool addMode;
 @property (nonatomic,retain) id item;
 
 @property (nonatomic, assign) SEL init_func;

@@ -192,9 +192,11 @@
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         _currentItem = [[_item_class alloc] init];
         item = _currentItem;
+        dest.addMode = true;
         //[_items addObject:item];
     } else {
         item =[_items objectAtIndex: self.tableView.indexPathForSelectedRow.row];
+        dest.addMode = false;
     }
     [dest setItem:item];
     

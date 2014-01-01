@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate>
+@interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) SEL setAction;
@@ -25,7 +25,7 @@
 
 //for item picker
 @property (nonatomic, retain) UIPickerView* itemPicker;
-@property (nonatomic, retain) NSArray* items;
+@property (nonatomic, retain) NSMutableArray* items;
 //for item picker with search bar
 @property (nonatomic, retain) NSMutableArray* dumpItems;
 @property (nonatomic, retain) UISearchBar* itemSearch;
@@ -39,6 +39,9 @@
 - (void) setStrPickerForTextField: (UITextField*) textField :(SEL) setItemAction :(id) delegate :(NSArray*) array;
 - (void) setStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems;
 - (void) setMultiSelectStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems;
+- (void) setMultiSelectStrPickerWithSearchAndInputForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems;
+
+
 
 + (UIHelper*) getUIHelper;
 + (void) releaseUIHelper;

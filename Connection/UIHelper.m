@@ -122,6 +122,66 @@ static NSMutableArray* helpers;
     return _pickerToolBar;
 }
 
+
+
+- (IBAction) showAddNewItem: (id) sender
+{
+    UIAlertView* input = [[UIAlertView alloc] initWithTitle:@"请输入：" message:@"请输入：" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    input.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [input show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Cancel Clicked");
+            break;
+        case 1:
+        {
+            UITextField* text = [alertView textFieldAtIndex:0];
+            [_items addObject:text.text];
+            [_dumpItems addObject:text.text];
+            [_itemPicker reloadAllComponents];
+            NSLog(@"Input text:%@", text.text);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (UIToolbar*) getToolbarWithSearchbarAndInput
+{
+    CGFloat swidth = [[UIScreen mainScreen]applicationFrame].size.width;
+    _pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width,  30 )];
+    
+    _okBtn = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem* addBtn = [[UIBarButtonItem alloc] initWithTitle:@"新增" style:UIBarButtonItemStyleDone target:self action:@selector(showAddNewItem:)];
+    UIBarButtonItem* placeHolder = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSArray* items = [NSArray arrayWithObjects:placeHolder, addBtn, _okBtn, nil];
+    CGFloat leftWidth = swidth - _okBtn.width - 15 -110;
+    _itemSearch = [[UISearchBar alloc] initWithFrame:CGRectMake(15, 0, leftWidth, 30)];
+    //_itemSearch.tag = 1;
+    _itemSearch.barStyle = UIBarStyleDefault;
+    _itemSearch.delegate = self;
+    _itemSearch.userInteractionEnabled = TRUE;
+    for (UIView* view in _itemSearch.subviews) {
+        if ([view isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [view removeFromSuperview];
+            break;
+        }
+    }
+    _itemSearch.showsCancelButton = YES;
+    [_itemSearch setShowsCancelButton:YES animated:YES];
+    UIView* searchContainer = [[UIView alloc] initWithFrame:_itemSearch.frame];
+    searchContainer.backgroundColor = [UIColor whiteColor];
+    _itemSearch.backgroundColor = [UIColor whiteColor];
+    [searchContainer addSubview:_itemSearch];
+    [_pickerToolBar addSubview:searchContainer];
+    [_pickerToolBar setItems:items];
+    return _pickerToolBar;
+}
+
 - (BOOL) searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     return YES;
@@ -249,7 +309,7 @@ static NSMutableArray* helpers;
     [_okBtn setAction:@selector(itemOKClick:)];
     _delegate = delegate;
     _setAction = setItemAction;
-    _items = strItems;
+    _items = [strItems mutableCopy];
     _isWithSearchFunc = false;
 }
 
@@ -263,7 +323,7 @@ static NSMutableArray* helpers;
     [_okBtn setAction:@selector(itemOKClick:)];
     _delegate = delegate;
     _setAction = setItemAction;
-    _items = strItems;
+    _items = [strItems mutableCopy];
     _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
     _isWithSearchFunc = true;
 }
@@ -280,7 +340,26 @@ static NSMutableArray* helpers;
     _delegate = delegate;
     _setAction = setItemAction;
     _finishAction = finishAction;
-    _items = strItems;
+    _items = [strItems mutableCopy];
+    _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
+    _isWithSearchFunc = true;
+    UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickerTap:)];
+    [_itemPicker addGestureRecognizer:tapGes];
+}
+
+- (void) setMultiSelectStrPickerWithSearchAndInputForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    textField.inputView = [self getItemPicker];
+    textField.inputAccessoryView = [self getToolbarWithSearchbarAndInput];
+    _okBtn.title = @"完成";
+    [_okBtn setTarget:self];
+    [_okBtn setAction:@selector(itemFinishClick:)];
+    _delegate = delegate;
+    _setAction = setItemAction;
+    _finishAction = finishAction;
+    _items = [strItems mutableCopy];
     _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
     _isWithSearchFunc = true;
     UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickerTap:)];
