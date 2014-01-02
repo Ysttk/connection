@@ -258,10 +258,10 @@
         <scene sceneID="Ecd-lZ-M0a">
             <objects>
                 <tableViewController id="7SA-hw-Gmr" customClass="PersonalBasicInfoView2" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="T9Z-TV-a51">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T9Z-TV-a51">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="LtH-3T-vDA">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -314,7 +314,7 @@
                             <tableViewSection id="fqM-OL-MQ9">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YAt-Tk-Jgl">
-                                        <rect key="frame" x="0.0" y="244" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="224" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAt-Tk-Jgl" id="pmd-6F-HCi">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -340,7 +340,7 @@
                             <tableViewSection id="Byx-X1-hXo">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="hzY-00-VaI">
-                                        <rect key="frame" x="0.0" y="308" width="320" height="95"/>
+                                        <rect key="frame" x="0.0" y="268" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hzY-00-VaI" id="O6x-gg-y0F">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -1297,7 +1297,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Dj1-lO-UWd"/>
-        <segue reference="DNT-MD-q3R"/>
+        <segue reference="BE7-6B-UFX"/>
         <segue reference="jaL-iM-3PJ"/>
     </inferredMetricsTieBreakers>
 </document>
