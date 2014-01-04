@@ -165,6 +165,10 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    _basicInfo.my_details.goal = _m_Object.text;
+    _basicInfo.my_details.company = _m_Company.text;
+    _basicInfo.my_details.position = _m_Position.text;
+    [DBHelper SaveAll];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     

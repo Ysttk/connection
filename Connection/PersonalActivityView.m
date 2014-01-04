@@ -123,14 +123,19 @@
 
 - (IBAction)SwitchEditMode:(id)sender {
     if (_isEditMode) {
-        _basicInfo.my_first_met_record.met_place = _m_FirstDatePlace.text;
-        _basicInfo.my_first_met_record.met_reason = _m_FirstDatePurpose.text;
-        _basicInfo.my_first_met_record.introducer = _m_Introducer.text;
-        _basicInfo.my_first_met_record.relationship = _m_RelationShip.text;
-        [DBHelper SaveAll];
+        [self SaveFirstMetRecord];
     }
     _isEditMode = ! _isEditMode;
     [self updateEditMode];
+}
+
+- (void) SaveFirstMetRecord
+{
+    _basicInfo.my_first_met_record.met_place = _m_FirstDatePlace.text;
+    _basicInfo.my_first_met_record.met_reason = _m_FirstDatePurpose.text;
+    _basicInfo.my_first_met_record.introducer = _m_Introducer.text;
+    _basicInfo.my_first_met_record.relationship = _m_RelationShip.text;
+    [DBHelper SaveAll];
 }
 
 - (void) updatePeopleActivity
@@ -143,7 +148,7 @@
     [_m_FirstDatePlace setText:_basicInfo.my_first_met_record.met_place];
     [_m_FirstDatePurpose setText:_basicInfo.my_first_met_record.met_reason];
     [_m_RelationShip setText:_basicInfo.my_first_met_record.relationship];
-        [_m_FirstDateInterval setText:[[Utils getDateIntervalUntilNow: _basicInfo.my_first_met_record.first_met_time] toString]];
+    [_m_FirstDateInterval setText:[[Utils getDateIntervalUntilNow: _basicInfo.my_first_met_record.first_met_time] toString]];
     [self updateDatingRecordList];
     int n = [_datingRecords count];
     NSMutableString* recordStr = [[NSMutableString alloc] init];
@@ -173,6 +178,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    [self SaveFirstMetRecord];
     
     if ([[segue identifier] compare:@"EditDating"] == NSOrderedSame) {
         CGenericItemSetView* dest = [segue destinationViewController];

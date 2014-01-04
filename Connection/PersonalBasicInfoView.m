@@ -267,7 +267,8 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    //[UIHelper releaseUIHelper];
+
+    [UIHelper releaseUIHelper];
 }
 
 - (IBAction)StatusButtonClick:(id)sender {
@@ -304,6 +305,11 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    _basicInfo.name = _m_Name.text;
+    _basicInfo.english_name = _m_EnglishName.text;
+    _basicInfo.phone = _m_Phone.text;
+    _basicInfo.email = _m_Email.text;
+    [DBHelper SaveAll];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     id dest = [segue destinationViewController];
