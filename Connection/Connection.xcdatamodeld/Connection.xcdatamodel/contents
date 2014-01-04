@@ -21,6 +21,7 @@
         <attribute name="english_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="habit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="home_member" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intrester_note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="intresters" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="is_male" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>

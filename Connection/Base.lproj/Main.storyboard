@@ -313,11 +313,11 @@
                             </tableViewSection>
                             <tableViewSection id="fqM-OL-MQ9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YAt-Tk-Jgl">
-                                        <rect key="frame" x="0.0" y="224" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="142" id="YAt-Tk-Jgl">
+                                        <rect key="frame" x="0.0" y="224" width="320" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAt-Tk-Jgl" id="pmd-6F-HCi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-nL-WYv">
@@ -332,6 +332,20 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIF-IH-BMt">
+                                                    <rect key="frame" x="65" y="45" width="222" height="96"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3D-qs-wza">
+                                                    <rect key="frame" x="40" y="51" width="32" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -340,7 +354,7 @@
                             <tableViewSection id="Byx-X1-hXo">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="hzY-00-VaI">
-                                        <rect key="frame" x="0.0" y="268" width="320" height="95"/>
+                                        <rect key="frame" x="0.0" y="366" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hzY-00-VaI" id="O6x-gg-y0F">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
@@ -376,6 +390,7 @@
                         <outlet property="m_HomeCell" destination="oLx-Sg-aD1" id="d9Q-G2-HJ5"/>
                         <outlet property="m_HomeIntro" destination="LfD-IB-2Fl" id="Ev6-gP-0dQ"/>
                         <outlet property="m_Interest" destination="QBf-nL-WYv" id="TJx-Mz-bet"/>
+                        <outlet property="m_InterestNote" destination="VIF-IH-BMt" id="rlX-R1-Adl"/>
                         <outlet property="m_StatusBtn" destination="KGg-aY-Q4S" id="Nlk-Ey-9VJ"/>
                     </connections>
                 </tableViewController>

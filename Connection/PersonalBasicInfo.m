@@ -2,8 +2,8 @@
 //  PersonalBasicInfo.m
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-23.
-//  Copyright (c) 2013年 Org. All rights reserved.
+//  Created by 寿宝江 on 14-1-4.
+//  Copyright (c) 2014年 Org. All rights reserved.
 //
 
 #import "PersonalBasicInfo.h"
@@ -26,6 +26,7 @@
 @dynamic is_male;
 @dynamic name;
 @dynamic phone;
+@dynamic intrester_note;
 @dynamic my_details;
 @dynamic my_first_met_record;
 

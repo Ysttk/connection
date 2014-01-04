@@ -51,6 +51,7 @@
     [home deserialize:_basicInfo.home_member];
     [_m_HomeIntro setText:[home toString]];
     
+    [_m_InterestNote setText:_basicInfo.intrester_note];
     [_m_Interest setText:_basicInfo.intresters];
     [_m_Habit setText:_basicInfo.habit];
 }
@@ -71,8 +72,9 @@
     
     _m_Interest.enabled = enable;
     _m_Habit.editable = enable;
+    _m_InterestNote.editable = enable;
     
-    _m_Interest.delegate = _m_Habit.delegate = self;
+    _m_Habit.delegate = self;
 }
 
 - (void) SaveHomeMember:(NSArray *)members
@@ -108,12 +110,58 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) addInterest: (NSString*) interest
+{
+    NSString* current = self.m_Interest.text;
+    NSArray* items = [current componentsSeparatedByString:@";"];
+    bool first = true;
+    bool exist = false;
+    NSMutableString* new = [[NSMutableString alloc] init];
+    for (NSString* item in items) {
+        if ([item compare:@""] == NSOrderedSame) continue;
+        if ([item compare:interest] != NSOrderedSame) {
+            if (first) {
+                [new appendString:item];
+                first = false;
+            } else
+                [new appendFormat:@";%@", item];
+        } else
+            exist = true;
+    }
+    if (!exist) {
+        if (first)
+            [new appendString:interest];
+        else
+            [new appendFormat:@";%@", interest];
+    }
+    self.m_Interest.text = new;
+}
+
+- (void) finishInterest: (NSString*) item
+{
+    _basicInfo.intresters = _m_Interest.text;
+    [DBHelper SaveAll];
+    [_m_Interest resignFirstResponder];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     [self reloadPersonalBasicInfo];
     [self UpdateByEditModel];
+    
+    UIHelper* helper = [UIHelper getUIHelper];
+    NSArray* array = [[NSArray alloc] initWithObjects:InterestC count:InterestN];
+    [helper setMultiSelectStrPickerWithSearchForTextField:self.m_Interest :@selector(addInterest:) :@selector(finishInterest:) :self :array];
+}
+
+
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [UIHelper releaseUIHelper];
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,7 +174,9 @@
 
 - (IBAction)SwitchEditMode:(id)sender {
     if (_isEditModel) {
-        
+        _basicInfo.habit = _m_Habit.text;
+        _basicInfo.intrester_note = _m_InterestNote.text;
+        [DBHelper SaveAll];
     }
     _isEditModel = !_isEditModel;
     [self UpdateByEditModel];

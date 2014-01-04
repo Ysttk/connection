@@ -20,6 +20,8 @@ extern NSString* SexC[];
 extern int SexN;
 extern NSString* CityC[];
 extern int CityN;
+extern NSString* InterestC[];
+extern int InterestN;
 
 extern NSDictionary* SetId2SetViewCellIdAndEditViewId;
 extern NSString* ClassKey;

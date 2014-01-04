@@ -2,8 +2,8 @@
 //  PersonalBasicInfo.h
 //  Connection
 //
-//  Created by 寿宝江 on 13-12-23.
-//  Copyright (c) 2013年 Org. All rights reserved.
+//  Created by 寿宝江 on 14-1-4.
+//  Copyright (c) 2014年 Org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSNumber * is_male;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
+@property (nonatomic, retain) NSString * intrester_note;
 @property (nonatomic, retain) PersonalCareer *my_details;
 @property (nonatomic, retain) PersonalFirstTimeRecord *my_first_met_record;
 
