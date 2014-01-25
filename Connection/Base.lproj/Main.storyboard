@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uxy-lH-OZg">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
@@ -313,19 +314,13 @@
                             </tableViewSection>
                             <tableViewSection id="fqM-OL-MQ9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="142" id="YAt-Tk-Jgl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="142" id="YAt-Tk-Jgl">
                                         <rect key="frame" x="0.0" y="224" width="320" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAt-Tk-Jgl" id="pmd-6F-HCi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-nL-WYv">
-                                                    <rect key="frame" x="87" y="7" width="200" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="兴趣爱好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvO-IN-QMe">
                                                     <rect key="frame" x="20" y="11" width="72" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -333,21 +328,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIF-IH-BMt">
-                                                    <rect key="frame" x="65" y="45" width="222" height="96"/>
+                                                    <rect key="frame" x="20" y="33" width="267" height="108"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3D-qs-wza">
-                                                    <rect key="frame" x="40" y="51" width="32" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CA0-dO-Dmj" kind="push" identifier="InterestEdit" id="7pY-4R-oJm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -389,8 +380,7 @@
                         <outlet property="m_Habit" destination="gWE-gz-AVN" id="61K-xo-76b"/>
                         <outlet property="m_HomeCell" destination="oLx-Sg-aD1" id="d9Q-G2-HJ5"/>
                         <outlet property="m_HomeIntro" destination="LfD-IB-2Fl" id="Ev6-gP-0dQ"/>
-                        <outlet property="m_Interest" destination="QBf-nL-WYv" id="TJx-Mz-bet"/>
-                        <outlet property="m_InterestNote" destination="VIF-IH-BMt" id="rlX-R1-Adl"/>
+                        <outlet property="m_Interest" destination="VIF-IH-BMt" id="mZT-Iu-Ja4"/>
                         <outlet property="m_StatusBtn" destination="KGg-aY-Q4S" id="Nlk-Ey-9VJ"/>
                     </connections>
                 </tableViewController>
@@ -457,8 +447,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditInterest" id="ZKQ-Jg-jTp">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKQ-Jg-jTp" id="K73-7A-LAp">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="爱好类型" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S55-6r-g0q">
+                                            <rect key="frame" x="35" y="7" width="129" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="兴趣爱好项目" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmd-uI-cka">
+                                            <rect key="frame" x="172" y="7" width="128" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditDating" rowHeight="205" id="eb4-SW-0tQ">
-                                <rect key="frame" x="0.0" y="86" width="320" height="205"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="205"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eb4-SW-0tQ" id="0Yi-Np-jH3">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
@@ -523,7 +535,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditSkill" rowHeight="44" id="JMp-Rv-jiX">
-                                <rect key="frame" x="0.0" y="291" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="335" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JMp-Rv-jiX" id="CDj-Jv-l7l">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -551,7 +563,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditExperience" rowHeight="81" id="RH6-wz-F8t">
-                                <rect key="frame" x="0.0" y="335" width="320" height="81"/>
+                                <rect key="frame" x="0.0" y="379" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RH6-wz-F8t" id="ibO-Fm-3js">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -597,7 +609,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditCareer" rowHeight="51" id="m16-HA-NLj">
-                                <rect key="frame" x="0.0" y="416" width="320" height="51"/>
+                                <rect key="frame" x="0.0" y="460" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m16-HA-NLj" id="eco-8i-C3h">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -632,7 +644,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditHomeMember" rowHeight="76" id="IYx-tU-fak">
-                                <rect key="frame" x="0.0" y="467" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="511" width="320" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IYx-tU-fak" id="Fem-c9-OIZ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
@@ -678,7 +690,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditEducation" rowHeight="82" id="79Y-Qf-t6e">
-                                <rect key="frame" x="0.0" y="543" width="320" height="82"/>
+                                <rect key="frame" x="0.0" y="587" width="320" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="79Y-Qf-t6e" id="b0f-uA-cU4">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
@@ -1311,8 +1323,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="7pY-4R-oJm"/>
         <segue reference="Dj1-lO-UWd"/>
-        <segue reference="BE7-6B-UFX"/>
         <segue reference="jaL-iM-3PJ"/>
     </inferredMetricsTieBreakers>
 </document>

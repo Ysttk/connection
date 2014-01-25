@@ -22,6 +22,10 @@ extern NSString* CityC[];
 extern int CityN;
 extern NSString* InterestC[];
 extern int InterestN;
+extern NSArray* InterestTbl;
+extern int InterestTblDepth;
+extern NSString* InterestTblTitleKey;
+extern NSString* InterestTblDataKey;
 
 extern NSDictionary* SetId2SetViewCellIdAndEditViewId;
 extern NSString* ClassKey;
@@ -34,6 +38,7 @@ extern NSString* DisplayRowId;
 extern NSString* DisplayRowHeigh;
 
 extern NSString* HomeKey;
+extern NSString* InterestKey;
 extern NSString* EducationKey;
 extern NSString* ExperienceKey;
 extern NSString* CareerKey;

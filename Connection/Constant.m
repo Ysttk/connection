@@ -23,6 +23,7 @@ NSString* BuddyTypeC[] = {
     @"同学", @"战友", @"工作", @"生活", @"亲戚", nil
 };
 int BuddyTypeN;
+
 NSString* BuddyCloseC[] = {
     @"一般", @"紧密", nil
 };
@@ -171,6 +172,22 @@ NSString* InterestC[] = {
 };
 int InterestN;
 
+NSArray* InterestTbl;
+int InterestTblDepth;
+NSString* InterestTblTitleKey = @"key";
+NSString* InterestTblDataKey = @"data";
+NSString* _InterestTbl =
+@"[\
+    {\"key\":\"喜欢的运动\", \"data\":\
+        [\"网球\",\
+        \"篮球\"],\
+    },\
+    {\"key\":\"喜欢去的地方\", \"data\":\
+        [\"杭州\",\
+        \"北京\"],\
+    },\
+]";
+
 NSString* ClassKey = @"class";
 NSString* InitKey = @"init_func:";
 NSString* PersistKey = @"persist_func:";
@@ -181,6 +198,7 @@ NSString* DisplayRowId = @"disp_row_id";
 NSString* DisplayRowHeigh = @"disp_row_heigh";
 
 NSString* HomeKey = @"HomeMembers";
+NSString* InterestKey = @"Interests";
 NSString* EducationKey = @"EducationItems";
 NSString* ExperienceKey = @"ExperienceItems";
 NSString* CareerKey = @"CareerFields";
@@ -190,6 +208,7 @@ NSString* DatingKey = @"DatingRecord";
 NSString* _SetId2SetViewCellIdAndEditViewId =
 @"{\
 \"HomeMembers\":{\"class\":\"CHomeMember\",\"save_func:\":\"SaveHomeMember:\", \"disp_row_id\":\"GenericItemDisp\", \"disp_row_heigh\":44, \"init_func:\":\"home_init:\", \"persist_func:\":\"home_persist:\", \"row_heigh\":76, \"row_id\":\"EditHomeMember\"}, \
+\"Interests\":{\"class\":\"CInterest\",\"save_func:\":\"SaveInterest:\",\"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"interest_init:\", \"persist_func:\":\"interest_persist:\", \"row_heigh\":44, \"row_id\":\"EditInterest\"},\
 \"EducationItems\":{\"class\":\"CEducationItem\",\"save_func:\":\"SaveEducation:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"education_init:\", \"persist_func:\":\"education_persist:\", \"row_heigh\":82, \"row_id\":\"EditEducation\"}, \
 \"ExperienceItems\":{\"class\":\"CExperienceItem\",\"save_func:\":\"SaveExperience:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"experience_init:\", \"persist_func:\":\"experience_persist:\", \"row_heigh\":81, \"row_id\":\"EditExperience\"}, \
 \"CareerFields\":{\"class\":\"CCareerField\",\"save_func:\":\"SaveCareer:\", \"disp_row_id\":\"GenericItemDisp\",\"disp_row_heigh\":44, \"init_func:\":\"career_init:\", \"persist_func:\":\"career_persist:\", \"row_heigh\":51, \"row_id\":\"EditCareer\"}, \
@@ -203,6 +222,8 @@ void InitGlobalConstant ()
 {
     NSError* _tmpError;
     SetId2SetViewCellIdAndEditViewId = [[CJSONDeserializer deserializer] deserialize:[_SetId2SetViewCellIdAndEditViewId dataUsingEncoding:NSUTF8StringEncoding] error:&_tmpError];
+    InterestTbl = [[CJSONDeserializer deserializer] deserializeAsArray:[_InterestTbl dataUsingEncoding:NSUTF8StringEncoding] error:&_tmpError];
+    InterestTblDepth = 2;
     
     int count = 0;
     while (HomeRoleC[count] != nil) count++;

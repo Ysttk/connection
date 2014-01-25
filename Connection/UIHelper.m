@@ -366,4 +366,18 @@ static NSMutableArray* helpers;
     [_itemPicker addGestureRecognizer:tapGes];
 }
 
+//unimplemented
+- (void) setMultiColumnSSStrPickerWithSAIForTextField: (UITextField*) textField :(SEL) selectAction :(id) delegate :(NSDictionary*) itemDic :(int) depth
+{
+    _isMultiColumn = YES;
+    _depth = depth;
+    _dictionary = itemDic;
+    
+}
+//unimplemented
+- (void) setMultiColumnMSStrPickerWithSAIForTextField:(UITextField*) textField :(SEL) setItemAction :(SEL) finishAction :(id) delegate :(NSDictionary*) itemDic :(int) depth
+{
+    
+}
+
 @end

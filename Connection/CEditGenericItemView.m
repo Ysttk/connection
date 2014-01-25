@@ -9,6 +9,7 @@
 #import "CEditGenericItemView.h"
 #import "CGenericItemSetView.h"
 #import "CHomeMember.h"
+#import "CInterest.h"
 #import "CEducationItem.h"
 #import "CExperienceItem.h"
 #import "CCareerField.h"
@@ -431,6 +432,73 @@
 {
     NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
     return [self.tableView cellForRowAtIndexPath:path];
+}
+
+/****************CInterest*******************/
+
+- (void) selectKey: (NSString*) key
+{
+    UITableViewCell* cell = [self getFirstRow];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* textField = (UITextField*)views[0];
+    [textField setText:key];
+    [textField resignFirstResponder];
+    textField = (UITextField*)views[1];
+    for (NSDictionary* dic in InterestTbl) {
+        if ([key compare:[dic valueForKey:InterestTblTitleKey]] == NSOrderedSame) {
+            UIHelper* helper = [UIHelper getUIHelper];
+            NSArray* valueItems = [dic valueForKey:InterestTblDataKey];
+            [helper setStrPickerWithSearchForTextField:textField :@selector(selectValueItem:) :self :valueItems];
+            textField.text = valueItems[0];
+            break;
+        }
+    }
+    
+}
+
+- (void) selectValueItem: (NSString*) value
+{
+    UITableViewCell* cell = [self getFirstRow];
+    NSArray* views = cell.contentView.subviews;
+    UITextField* textField = (UITextField*)views[1];
+    textField.text = value;
+    [textField resignFirstResponder];
+}
+
+- (void) interest_init:(UITableViewCell*) cell
+{
+    CInterest* item = (CInterest*) _item;
+    NSArray* views = cell.contentView.subviews;
+    UITextField* view = (UITextField*) views[0];
+    [view setText:item.type];
+    UIHelper* helper = [UIHelper getUIHelper];
+    NSMutableArray* keySet = [[NSMutableArray alloc] init];
+    for (NSDictionary* dic in InterestTbl) {
+        [keySet addObject:[dic valueForKey:InterestTblTitleKey]];
+    }
+    [helper setStrPickerForTextField:view :@selector(selectKey:) :self :keySet];
+    view = (UITextField*) views[1];
+    [view setText:item.name];
+    NSArray* valueItems = nil;
+    for (NSDictionary* dic in InterestTbl) {
+        if ([[dic valueForKey:InterestTblTitleKey] compare:item.type] == NSOrderedSame) {
+            valueItems = [dic valueForKey:InterestTblDataKey];
+            break;
+        }
+    }
+    if (valueItems==nil) valueItems = [[NSArray alloc]init];
+    helper = [UIHelper getUIHelper];
+    [helper setStrPickerWithSearchForTextField:view :@selector(selectValueItem:) :self :valueItems];
+}
+
+- (void) interest_persist: (UITableViewCell*) cell
+{
+    NSArray* views = cell.contentView.subviews;
+    UITextField* textField = views[0];
+    CInterest* item = _item;
+    item.type = textField.text;
+    textField = views[1];
+    item.name = textField.text;
 }
 
 /****************CEducation*****************/

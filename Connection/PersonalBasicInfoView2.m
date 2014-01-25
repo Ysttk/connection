@@ -51,18 +51,22 @@
     [home deserialize:_basicInfo.home_member];
     [_m_HomeIntro setText:[home toString]];
     
-    [_m_InterestNote setText:_basicInfo.intrester_note];
-    [_m_Interest setText:_basicInfo.intresters];
+    CInterestSet* interests = [[CInterestSet alloc] init];
+    [interests deserialize:_basicInfo.intresters];
+    [_m_Interest setText:[interests toUIString]];
+    
     [_m_Habit setText:_basicInfo.habit];
 }
 
 - (void) UpdateByEditModel
 {
     [_m_HomeIntro setEditable:FALSE];
+    [_m_Interest setEditable:FALSE];
     BOOL enable;
     if (_isEditModel) {
         [_m_StatusBtn setTitle:@"完成"];
         _m_HomeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         enable = TRUE;
     } else {
         [_m_StatusBtn setTitle:@"编辑"];
@@ -70,9 +74,9 @@
         enable = FALSE;
     }
     
-    _m_Interest.enabled = enable;
+//    _m_Interest.enabled = enable;
     _m_Habit.editable = enable;
-    _m_InterestNote.editable = enable;
+//    _m_InterestNote.editable = enable;
     
     _m_Habit.delegate = self;
 }
@@ -86,10 +90,18 @@
     [DBHelper SaveAll];
 }
 
+- (void) SaveInterest:(NSArray*) interests
+{
+    CInterestSet* items = [[CInterestSet alloc] init];
+    items.items = [interests mutableCopy];
+    _basicInfo.intresters = [items serialize];
+    [DBHelper SaveAll];
+}
+
 
 - (IBAction)SwitchEditModel:(id)sender {
     if (_isEditModel) {
-        _basicInfo.intresters = _m_Interest.text;
+        //_basicInfo.intresters = _m_Interest.text;
         _basicInfo.habit = _m_Habit.text;
         [DBHelper SaveAll];
     }
@@ -109,40 +121,40 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+//
+//- (void) addInterest: (NSString*) interest
+//{
+//    NSString* current = self.m_Interest.text;
+//    NSArray* items = [current componentsSeparatedByString:@";"];
+//    bool first = true;
+//    bool exist = false;
+//    NSMutableString* new = [[NSMutableString alloc] init];
+//    for (NSString* item in items) {
+//        if ([item compare:@""] == NSOrderedSame) continue;
+//        if ([item compare:interest] != NSOrderedSame) {
+//            if (first) {
+//                [new appendString:item];
+//                first = false;
+//            } else
+//                [new appendFormat:@";%@", item];
+//        } else
+//            exist = true;
+//    }
+//    if (!exist) {
+//        if (first)
+//            [new appendString:interest];
+//        else
+//            [new appendFormat:@";%@", interest];
+//    }
+//    self.m_Interest.text = new;
+//}
 
-- (void) addInterest: (NSString*) interest
-{
-    NSString* current = self.m_Interest.text;
-    NSArray* items = [current componentsSeparatedByString:@";"];
-    bool first = true;
-    bool exist = false;
-    NSMutableString* new = [[NSMutableString alloc] init];
-    for (NSString* item in items) {
-        if ([item compare:@""] == NSOrderedSame) continue;
-        if ([item compare:interest] != NSOrderedSame) {
-            if (first) {
-                [new appendString:item];
-                first = false;
-            } else
-                [new appendFormat:@";%@", item];
-        } else
-            exist = true;
-    }
-    if (!exist) {
-        if (first)
-            [new appendString:interest];
-        else
-            [new appendFormat:@";%@", interest];
-    }
-    self.m_Interest.text = new;
-}
-
-- (void) finishInterest: (NSString*) item
-{
-    _basicInfo.intresters = _m_Interest.text;
-    [DBHelper SaveAll];
-    [_m_Interest resignFirstResponder];
-}
+//- (void) finishInterest: (NSString*) item
+//{
+//    _basicInfo.intresters = _m_Interest.text;
+//    [DBHelper SaveAll];
+//    [_m_Interest resignFirstResponder];
+//}
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -151,9 +163,9 @@
     [self reloadPersonalBasicInfo];
     [self UpdateByEditModel];
     
-    UIHelper* helper = [UIHelper getUIHelper];
-    NSArray* array = [[NSArray alloc] initWithObjects:InterestC count:InterestN];
-    [helper setMultiSelectStrPickerWithSearchForTextField:self.m_Interest :@selector(addInterest:) :@selector(finishInterest:) :self :array];
+//    UIHelper* helper = [UIHelper getUIHelper];
+//    NSArray* array = [[NSArray alloc] initWithObjects:InterestC count:InterestN];
+//    [helper setMultiSelectStrPickerWithSearchForTextField:self.m_Interest :@selector(addInterest:) :@selector(finishInterest:) :self :array];
 }
 
 
@@ -175,7 +187,6 @@
 - (IBAction)SwitchEditMode:(id)sender {
     if (_isEditModel) {
         _basicInfo.habit = _m_Habit.text;
-        _basicInfo.intrester_note = _m_InterestNote.text;
         [DBHelper SaveAll];
     }
     _isEditModel = !_isEditModel;
@@ -193,22 +204,32 @@
 {
     
     _basicInfo.habit = _m_Habit.text;
-    _basicInfo.intrester_note = _m_InterestNote.text;
+    //_basicInfo.intrester_note = _m_InterestNote.text;
     [DBHelper SaveAll];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     UIViewController* dest = [segue destinationViewController];
     if ([dest isKindOfClass:[CGenericItemSetView class]] ) {
-        if ([[segue identifier] compare:@"HomeMemberEdit"] == NSOrderedSame) {
+        if ([[segue identifier] compare:@"HomeMemberEdit"] == NSOrderedSame ||
+            [[segue identifier] compare:@"InterestEdit"] == NSOrderedSame) {
             CGenericItemSetView* destView = (CGenericItemSetView*) dest;
-            //destView.item_class = NSClassFromString(@"CHomeMember");
-            NSDictionary* dic = (NSDictionary*) [SetId2SetViewCellIdAndEditViewId valueForKey:HomeKey];
+            NSString* key;
+            if ([[segue identifier] compare:@"HomeMemberEdit"] == NSOrderedSame) {
+                key = HomeKey;
+                CHomeStructure* home = [[CHomeStructure alloc] init];
+                [home deserialize:_basicInfo.home_member];
+                destView.items = home.members;
+            } else if ([[segue identifier] compare:@"InterestEdit"] == NSOrderedSame) {
+                key = InterestKey;
+                CInterestSet* items = [[CInterestSet alloc] init];
+                [items deserialize:_basicInfo.intresters];
+                destView.items = items.items;
+            }
+            NSDictionary* dic = (NSDictionary*) [SetId2SetViewCellIdAndEditViewId valueForKey:key];
             NSString* className = (NSString*) [dic valueForKey:ClassKey];
             destView.item_class = NSClassFromString(className);
-            destView.item_key = HomeKey;
-            CHomeStructure* home = [[CHomeStructure alloc] init];
-            [home deserialize:_basicInfo.home_member];
-            destView.items = home.members;
+            destView.item_key = key;
+
             destView.parent = self;
         }
     }

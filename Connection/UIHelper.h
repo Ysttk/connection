@@ -35,13 +35,21 @@
 
 @property (nonatomic, assign) NSInteger selectedRow;
 
+//for item picker with multiple columns
+@property (nonatomic, assign) BOOL isMultiColumn;
+@property (nonatomic, assign) int depth;
+@property (nonatomic, retain) NSDictionary* dictionary;
+
 - (void) setDatePickerForTextField: (UITextField*) textField :(SEL)setDateAction :(id) delegate;
 - (void) setStrPickerForTextField: (UITextField*) textField :(SEL) setItemAction :(id) delegate :(NSArray*) array;
 - (void) setStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems;
 - (void) setMultiSelectStrPickerWithSearchForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems;
 - (void) setMultiSelectStrPickerWithSearchAndInputForTextField:(UITextField *)textField :(SEL)setItemAction :(SEL) finishAction :(id)delegate :(NSArray *)strItems;
 
-
+//will be support in next release
+- (void) setMultiColumnMSStrPickerWithSAIForTextField:(UITextField*) textField :(SEL) setItemAction :(SEL) finishAction :(id) delegate :(NSDictionary*) itemDic :(int) depth;
+//will be support in next release
+- (void) setMultiColumnSSStrPickerWithSAIForTextField: (UITextField*) textField :(SEL) selectAction :(id) delegate :(NSDictionary*) itemDic :(int) depth;
 
 + (UIHelper*) getUIHelper;
 + (void) releaseUIHelper;

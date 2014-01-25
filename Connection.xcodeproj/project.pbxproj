@@ -53,6 +53,8 @@
 		16F455F3185F527E0014167E /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F455F2185F527E0014167E /* UIHelper.m */; };
 		16F810AB1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810AA1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m */; };
 		16F810AE186495E000A7EA94 /* DatingRecordSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F810AD186495E000A7EA94 /* DatingRecordSet.m */; };
+		16F9479818939C8900751A90 /* CInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9479718939C8900751A90 /* CInterest.m */; };
+		16F9479B18939C9900751A90 /* CInterestSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9479A18939C9900751A90 /* CInterestSet.m */; };
 		16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC8821859EBF100721A59 /* CEducationItem.m */; };
 		16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC888185A01B600721A59 /* CJSONDeserializer.m */; };
 		16FBC88F185A01B700721A59 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FBC88A185A01B600721A59 /* CJSONSerializer.m */; };
@@ -151,6 +153,10 @@
 		16F810AA1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DatingRecord+UIGenericAdopter.m"; sourceTree = "<group>"; };
 		16F810AC186495E000A7EA94 /* DatingRecordSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatingRecordSet.h; sourceTree = "<group>"; };
 		16F810AD186495E000A7EA94 /* DatingRecordSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatingRecordSet.m; sourceTree = "<group>"; };
+		16F9479618939C8900751A90 /* CInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterest.h; sourceTree = "<group>"; };
+		16F9479718939C8900751A90 /* CInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CInterest.m; sourceTree = "<group>"; };
+		16F9479918939C9900751A90 /* CInterestSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterestSet.h; sourceTree = "<group>"; };
+		16F9479A18939C9900751A90 /* CInterestSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CInterestSet.m; sourceTree = "<group>"; };
 		16FBC8811859EBF100721A59 /* CEducationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducationItem.h; sourceTree = "<group>"; };
 		16FBC8821859EBF100721A59 /* CEducationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEducationItem.m; sourceTree = "<group>"; };
 		16FBC887185A01B600721A59 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJSONDeserializer.h; path = libs/TouchJSON/CJSONDeserializer.h; sourceTree = "<group>"; };
@@ -210,6 +216,10 @@
 				160CF728185B4EC800CDEFCE /* CHomeStructure.m */,
 				160CF72A185B4F0700CDEFCE /* CHomeMember.h */,
 				160CF72B185B4F0700CDEFCE /* CHomeMember.m */,
+				16F9479618939C8900751A90 /* CInterest.h */,
+				16F9479718939C8900751A90 /* CInterest.m */,
+				16F9479918939C9900751A90 /* CInterestSet.h */,
+				16F9479A18939C9900751A90 /* CInterestSet.m */,
 			);
 			name = BasicInfo;
 			sourceTree = "<group>";
@@ -496,6 +506,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Org;
 				TargetAttributes = {
+					16166D5217F4678300AEEC4C = {
+						DevelopmentTeam = J8M63C86J3;
+					};
 					16166D7617F4678300AEEC4C = {
 						TestTargetID = 16166D5217F4678300AEEC4C;
 					};
@@ -553,6 +566,7 @@
 				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
 				160CF732185B533A00CDEFCE /* CSkill.m in Sources */,
 				160CF726185B4B9700CDEFCE /* CExperience.m in Sources */,
+				16F9479B18939C9900751A90 /* CInterestSet.m in Sources */,
 				160CF729185B4EC800CDEFCE /* CHomeStructure.m in Sources */,
 				16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */,
 				16166D6717F4678300AEEC4C /* AppDelegate.m in Sources */,
@@ -569,6 +583,7 @@
 				16F810AB1864956400A7EA94 /* DatingRecord+UIGenericAdopter.m in Sources */,
 				16FBC890185A01B700721A59 /* NSDictionary_JSONExtensions.m in Sources */,
 				160CF75A185C3C7500CDEFCE /* Utils.m in Sources */,
+				16F9479818939C8900751A90 /* CInterest.m in Sources */,
 				16D872C617FE991400561887 /* PersonalActivityView.m in Sources */,
 				160CF738185B55ED00CDEFCE /* CCareerField.m in Sources */,
 				160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */,
@@ -666,7 +681,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -699,7 +714,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -711,10 +726,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connection/Connection-Prefix.pch";
 				INFOPLIST_FILE = "Connection/Connection-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "DAFE437E-DF6E-4061-88ED-3BE6A2FE387E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -724,11 +742,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Connection/Connection-Prefix.pch";
 				INFOPLIST_FILE = "Connection/Connection-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E2435520-C845-4FDB-B0FF-92828362FB75";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
