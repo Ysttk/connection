@@ -12,6 +12,8 @@ extern NSString* HomeRoleC[];
 extern int HomeRoleN;
 extern NSString* SkillLevelC[];
 extern int SkillLevelN;
+extern NSString* CareerTypeC[];
+extern int CareerTypeN;
 extern NSString* BuddyTypeC[];
 extern int BuddyTypeN;
 extern NSString* BuddyCloseC[];

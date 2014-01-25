@@ -374,7 +374,7 @@
     [field setText:item.field];
     [role setText:item.role];
     
-    NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:SkillLevelN];
+    NSArray* array = [[NSArray alloc] initWithObjects:CareerTypeC count:CareerTypeN];
     UIHelper* helper= [UIHelper getUIHelper];
     [helper setStrPickerForTextField:role :@selector(setFieldRole:) :self :array];
 }
@@ -402,17 +402,29 @@
     [birthdayText resignFirstResponder];
 }
 
+- (void) setHomeRole: (NSString*) role
+{
+    UITableViewCell* cell = [self getFirstRow];
+    NSArray* rows = cell.contentView.subviews;
+    UITextField* roleText = rows[1];
+    [roleText setText:role];
+    [roleText resignFirstResponder];
+}
+
 - (void) home_init: (UITableViewCell*) cell
 {
     CHomeMember* item = (CHomeMember*)_item;
     NSArray* views = cell.contentView.subviews;
     UITextField* homeRole = (UITextField*) views[1];
     [homeRole setText:item.role];
+    UIHelper* helper = [UIHelper getUIHelper];
+    NSArray* roleArray = [[NSArray alloc] initWithObjects:HomeRoleC count:HomeRoleN];
+    [helper setStrPickerForTextField:homeRole :@selector(setHomeRole:) :self :roleArray];
     UITextField* homeName = (UITextField*) views[3];
     [homeName setText:item.name];
     UITextField* homeBirthday = (UITextField*) views[5];
     [homeBirthday setText:[Utils getDateString:item.birthday]];
-    UIHelper* helper = [UIHelper getUIHelper];
+    helper = [UIHelper getUIHelper];
     [helper setDatePickerForTextField:homeBirthday :@selector(setHomeBirthday:) :self];
 }
 

@@ -19,6 +19,11 @@ NSString* SkillLevelC[] = {
 };
 int SkillLevelN;
 
+NSString* CareerTypeC[] = {
+    @"作为主业", @"作为副业", nil
+};
+int CareerTypeN;
+
 NSString* BuddyTypeC[] = {
     @"同学", @"战友", @"工作", @"生活", @"亲戚", nil
 };
@@ -246,4 +251,7 @@ void InitGlobalConstant ()
     count = 0;
     while (InterestC[count] != nil) count++;
     InterestN = count;
+    count =0;
+    while (CareerTypeC[count] != nil) count++;
+    CareerTypeN = count;
 }

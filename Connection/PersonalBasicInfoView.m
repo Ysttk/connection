@@ -278,6 +278,7 @@
         _basicInfo.phone = _m_Phone.text;
         _basicInfo.email = _m_Email.text;
         [DBHelper SaveAll];
+        [self reloadPeopleBasicInfo];
     }
     _isEditMode = ! _isEditMode;
     [self UpdateEditMode];
