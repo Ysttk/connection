@@ -17,7 +17,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="3X5-yc-D5T">
+                                <navigationItem title="基本资料-1" id="3X5-yc-D5T">
                                     <barButtonItem key="leftBarButtonItem" title="返回" id="kz5-VC-73o">
                                         <connections>
                                             <action selector="BackClick:" destination="2mi-6W-aY1" id="f1J-UU-y3Z"/>
@@ -267,7 +267,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="3aw-G3-BSx">
+                                <navigationItem title="基本资料-2" id="3aw-G3-BSx">
                                     <barButtonItem key="leftBarButtonItem" title="返回" id="EUL-Qo-B5A">
                                         <connections>
                                             <action selector="BackClick:" destination="7SA-hw-Gmr" id="R22-dH-7Ju"/>
@@ -897,7 +897,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="N2m-8U-032">
+                                <navigationItem title="职业成就" id="N2m-8U-032">
                                     <barButtonItem key="leftBarButtonItem" title="返回" id="WTD-U5-zWN">
                                         <connections>
                                             <action selector="BackClick:" destination="H7P-GF-ZCo" id="QFw-iw-wUA"/>
@@ -1087,7 +1087,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="V9q-8h-DpA">
+                                <navigationItem title="往来记录" id="V9q-8h-DpA">
                                     <barButtonItem key="leftBarButtonItem" title="返回" id="dfK-qD-BsW">
                                         <connections>
                                             <action selector="BackClick:" destination="2wK-7L-KXe" id="7R9-EI-YYK"/>
