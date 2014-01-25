@@ -66,6 +66,10 @@
 
 - (void) updateEditMode
 {
+    _m_Experience.editable = FALSE;
+    _m_Career.editable = FALSE;
+    _m_Skill.editable = FALSE;
+    
     BOOL enable;
     if (_isEditMode) {
         [_m_StatusBtn setTitle:@"完成"];

@@ -252,7 +252,7 @@
     record.purpose = objectField.text;
     NSString* name = [_params valueForKey:@"name"];
     NSMutableString* att = [attendeeField.text mutableCopy];
-    if ([att rangeOfString:name].location == NSNotFound) {
+    if (name!=nil && [att rangeOfString:name].location == NSNotFound) {
         if ([attendeeField.text compare:@""] != NSOrderedSame)
             [att appendString:@";"];
         [att appendString: name];

@@ -67,6 +67,8 @@
     _m_BuddyType.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _m_BuddyCloseType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.navigationController.navigationBar.hidden = NO;
+    
+    [self.tableView reloadData];
 }
 
 - (void) viewWillDisappear:(BOOL)animated

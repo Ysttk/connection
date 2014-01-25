@@ -41,7 +41,7 @@ static const void *CurrentNameKey = "CurrentNameKey";
     NSArray* array = [self.attendee componentsSeparatedByString:
                       @";"];
     bool first = true;
-    for (int i=1; i<[array count]; i++) {
+    for (int i=0; i<[array count]; i++) {
         NSString* name = [array objectAtIndex:i];
         if ([name compare:self.currentName] != NSOrderedSame)
             if (first)
@@ -55,7 +55,8 @@ static const void *CurrentNameKey = "CurrentNameKey";
 
 - (bool) IsRelateToCurrent
 {
-    return ([self.attendee rangeOfString:self.currentName].location != NSNotFound);
+    return (self.currentName == nil) ||
+            ([self.attendee rangeOfString:self.currentName].location != NSNotFound);
 }
 
 

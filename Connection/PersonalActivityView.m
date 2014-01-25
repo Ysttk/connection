@@ -168,6 +168,19 @@
 - (void) SaveDatingRecords:(NSArray*) items
 {
     _datingRecords = [items mutableCopy];
+    NSMutableArray* tmpStore = _datingRecords;
+    [self updateDatingRecordList];
+    for (DatingRecord* r in _datingRecords) {
+        BOOL found = FALSE;
+        for (DatingRecord* r2 in tmpStore)
+            if (r2 == r) {
+                found = TRUE; break;
+            }
+        if (found == FALSE) {
+            [[DBHelper getContext] deleteObject:r];
+        }
+    }
+    _datingRecords = tmpStore;
     [DBHelper SaveAll];
 }
 
