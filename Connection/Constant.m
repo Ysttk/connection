@@ -9,6 +9,8 @@
 #import "Constant.h"
 #import "CJSONDeserializer.h"
 
+NSString* SelectAny = @"所有";
+
 NSString* HomeRoleC[] = {
     @"妻子", @"丈夫", @"儿子", @"爸爸", @"妈妈", @"祖父", @"祖母", nil
 };

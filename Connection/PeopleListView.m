@@ -57,16 +57,20 @@
 {
     [super viewWillAppear:animated];
     UIHelper* helper = [UIHelper getUIHelper];
-    NSArray* array = [[NSArray alloc] initWithObjects:BuddyTypeC count:BuddyTypeN];
+    NSMutableArray* array = [[NSMutableArray alloc] initWithObjects:BuddyTypeC count:BuddyTypeN];
+    [array addObject:SelectAny];
     [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
     helper = [UIHelper getUIHelper];
-    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
+    array = [[NSMutableArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
+    [array addObject:SelectAny];
     [helper setStrPickerForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
 
     _m_BuddyType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _m_BuddyType.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     _m_BuddyCloseType.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.navigationController.navigationBar.hidden = NO;
+   // _m_BuddyCloseType.text = SelectAny;
+    //_m_BuddyType.text = SelectAny;
     
     [self.tableView reloadData];
 }
@@ -108,8 +112,12 @@
     _dispPersonalInfoArray = [[NSMutableArray alloc] init];
     int count = 0;
     for (PersonalBasicInfo* basicInfo in _personalInfoArray) {
-        if ((_buddyType != nil) && ([_buddyType compare:basicInfo.buddy_type]!=NSOrderedSame)) continue;
-        if ((_buddyCloseType!=nil) && ([_buddyCloseType compare:basicInfo.buddy_closer_type]!=NSOrderedSame)) continue;
+        if (([_buddyType compare:SelectAny] != NSOrderedSame) &&
+            (_buddyType != nil) &&
+            ([_buddyType compare:basicInfo.buddy_type]!=NSOrderedSame)) continue;
+        if (([_buddyCloseType compare:SelectAny] != NSOrderedSame) &&
+            (_buddyCloseType!=nil) &&
+            ([_buddyCloseType compare:basicInfo.buddy_closer_type]!=NSOrderedSame)) continue;
         [_dispPersonalInfoArray addObject:basicInfo];
         count++;
     }

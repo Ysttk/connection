@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* SelectAny;
 extern NSString* HomeRoleC[];
 extern int HomeRoleN;
 extern NSString* SkillLevelC[];
