@@ -115,6 +115,7 @@
     [super viewDidLoad];
     _isEditModel = false;
     
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -173,7 +174,7 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [UIHelper releaseUIHelper];
+    [UIHelperBase releaseUIHelper];
 }
 
 - (void)didReceiveMemoryWarning

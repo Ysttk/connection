@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UIHelperBase.h"
+#import "DatePickerHelper.h"
+#import "StrPickerHelper.h"
+#import "StrPickerWithSearchHelper.h"
+#import "MultiSelectStrPickerWithSearchHelper.h"
+#import "MultiSelectStrPickerWithSearch_InputHelper.h"
+
 
 @interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate, UIAlertViewDelegate>
 

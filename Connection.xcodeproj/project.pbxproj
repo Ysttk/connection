@@ -40,6 +40,12 @@
 		163D75B61875A289007DEC13 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 163D75B51875A289007DEC13 /* icon.png */; };
 		163D75B91877BEBC007DEC13 /* PersonalBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D75B81877BEBC007DEC13 /* PersonalBasicInfo.m */; };
 		163F0982181DDED300A28D63 /* PeopleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163F0981181DDED300A28D63 /* PeopleListView.m */; };
+		16876BD218A2465800DDD221 /* DatePickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BD118A2465800DDD221 /* DatePickerHelper.m */; };
+		16876BD518A3C11100DDD221 /* UIHelperBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BD418A3C11100DDD221 /* UIHelperBase.m */; };
+		16876BD818A3C1FB00DDD221 /* StrPickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BD718A3C1FB00DDD221 /* StrPickerHelper.m */; };
+		16876BDB18A3C3E900DDD221 /* StrPickerWithSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BDA18A3C3E900DDD221 /* StrPickerWithSearchHelper.m */; };
+		16876BDE18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */; };
+		16876BE118A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */; };
 		1691F0251850B7A9000C45A8 /* CEducation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691F0241850B7A9000C45A8 /* CEducation.m */; };
 		16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872BF17FE954700561887 /* PersonalBasicInfoView.m */; };
 		16D872C617FE991400561887 /* PersonalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872C517FE991400561887 /* PersonalActivityView.m */; };
@@ -129,6 +135,18 @@
 		163D75B81877BEBC007DEC13 /* PersonalBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfo.m; sourceTree = "<group>"; };
 		163F0980181DDED300A28D63 /* PeopleListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleListView.h; sourceTree = "<group>"; };
 		163F0981181DDED300A28D63 /* PeopleListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleListView.m; sourceTree = "<group>"; };
+		16876BD018A2465800DDD221 /* DatePickerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerHelper.h; sourceTree = "<group>"; };
+		16876BD118A2465800DDD221 /* DatePickerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerHelper.m; sourceTree = "<group>"; };
+		16876BD318A3C11100DDD221 /* UIHelperBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelperBase.h; sourceTree = "<group>"; };
+		16876BD418A3C11100DDD221 /* UIHelperBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelperBase.m; sourceTree = "<group>"; };
+		16876BD618A3C1FB00DDD221 /* StrPickerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrPickerHelper.h; sourceTree = "<group>"; };
+		16876BD718A3C1FB00DDD221 /* StrPickerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrPickerHelper.m; sourceTree = "<group>"; };
+		16876BD918A3C3E900DDD221 /* StrPickerWithSearchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrPickerWithSearchHelper.h; sourceTree = "<group>"; };
+		16876BDA18A3C3E900DDD221 /* StrPickerWithSearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrPickerWithSearchHelper.m; sourceTree = "<group>"; };
+		16876BDC18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiSelectStrPickerWithSearchHelper.h; path = ../MultiSelectStrPickerWithSearchHelper.h; sourceTree = "<group>"; };
+		16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiSelectStrPickerWithSearchHelper.m; path = ../MultiSelectStrPickerWithSearchHelper.m; sourceTree = "<group>"; };
+		16876BDF18A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectStrPickerWithSearch_InputHelper.h; sourceTree = "<group>"; };
+		16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectStrPickerWithSearch_InputHelper.m; sourceTree = "<group>"; };
 		1691F0231850B7A9000C45A8 /* CEducation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducation.h; sourceTree = "<group>"; };
 		1691F0241850B7A9000C45A8 /* CEducation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEducation.m; sourceTree = "<group>"; };
 		16D872BE17FE954700561887 /* PersonalBasicInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfoView.h; sourceTree = "<group>"; };
@@ -349,6 +367,10 @@
 		163F0983181DDEFA00A28D63 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				16876BDC18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.h */,
+				16876BDF18A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.h */,
+				16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */,
+				16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */,
 				163D75A018672C10007DEC13 /* PersonalCareerView.h */,
 				163D75A118672C10007DEC13 /* PersonalCareerView.m */,
 				163F0980181DDED300A28D63 /* PeopleListView.h */,
@@ -368,6 +390,14 @@
 				16F455EE185F23940014167E /* CEditGenericItemView.h */,
 				16F455EF185F23940014167E /* CEditGenericItemView.m */,
 				16F455F1185F527E0014167E /* UIHelper.h */,
+				16876BD318A3C11100DDD221 /* UIHelperBase.h */,
+				16876BD418A3C11100DDD221 /* UIHelperBase.m */,
+				16876BD618A3C1FB00DDD221 /* StrPickerHelper.h */,
+				16876BD718A3C1FB00DDD221 /* StrPickerHelper.m */,
+				16876BD918A3C3E900DDD221 /* StrPickerWithSearchHelper.h */,
+				16876BDA18A3C3E900DDD221 /* StrPickerWithSearchHelper.m */,
+				16876BD018A2465800DDD221 /* DatePickerHelper.h */,
+				16876BD118A2465800DDD221 /* DatePickerHelper.m */,
 				16F455F2185F527E0014167E /* UIHelper.m */,
 			);
 			name = UI;
@@ -566,6 +596,7 @@
 				163F0982181DDED300A28D63 /* PeopleListView.m in Sources */,
 				160CF732185B533A00CDEFCE /* CSkill.m in Sources */,
 				160CF726185B4B9700CDEFCE /* CExperience.m in Sources */,
+				16876BDE18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m in Sources */,
 				16F9479B18939C9900751A90 /* CInterestSet.m in Sources */,
 				160CF729185B4EC800CDEFCE /* CHomeStructure.m in Sources */,
 				16FBC8831859EBF100721A59 /* CEducationItem.m in Sources */,
@@ -584,8 +615,12 @@
 				16FBC890185A01B700721A59 /* NSDictionary_JSONExtensions.m in Sources */,
 				160CF75A185C3C7500CDEFCE /* Utils.m in Sources */,
 				16F9479818939C8900751A90 /* CInterest.m in Sources */,
+				16876BD518A3C11100DDD221 /* UIHelperBase.m in Sources */,
+				16876BDB18A3C3E900DDD221 /* StrPickerWithSearchHelper.m in Sources */,
 				16D872C617FE991400561887 /* PersonalActivityView.m in Sources */,
+				16876BD218A2465800DDD221 /* DatePickerHelper.m in Sources */,
 				160CF738185B55ED00CDEFCE /* CCareerField.m in Sources */,
+				16876BE118A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m in Sources */,
 				160CF73F185BF20B00CDEFCE /* JsonHelper.m in Sources */,
 				160CF723185B485000CDEFCE /* CExperienceItem.m in Sources */,
 				163D7587186712B6007DEC13 /* DateInterval.m in Sources */,
@@ -597,6 +632,7 @@
 				16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */,
 				16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */,
 				16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */,
+				16876BD818A3C1FB00DDD221 /* StrPickerHelper.m in Sources */,
 				160CF749185C2F5900CDEFCE /* PeopleInfoBarController.m in Sources */,
 				16FBC88E185A01B700721A59 /* CJSONDeserializer.m in Sources */,
 				16F455F3185F527E0014167E /* UIHelper.m in Sources */,

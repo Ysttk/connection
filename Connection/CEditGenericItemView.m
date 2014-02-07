@@ -84,8 +84,8 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [UIHelper releaseUIHelper];
-    
+    //[UIHelper releaseUIHelper];
+    [UIHelperBase releaseUIHelper];
 }
 
 - (bool) IsInputOK: (UITableViewCell*) cell
@@ -212,8 +212,10 @@
     [attendeeField setText:record.attendee];
     [noteField setText:record.note];
     
-    UIHelper* helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:dateField :@selector(setDatingDate:) :self];
+    //UIHelper* helper = [UIHelper getUIHelper];
+    //[helper setDatePickerForTextField:dateField :@selector(setDatingDate:) :self];
+    UIHelperBase* baseHelper = [[DatePickerHelper alloc] init:dateField :@selector(setDatingDate:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
     
     NSMutableArray* candidates = [[NSMutableArray alloc] init];
     //try to find out all people name
@@ -231,8 +233,10 @@
             [candidates addObject:[info.name mutableCopy]];
         }
     }
-    helper = [UIHelper getUIHelper];
-    [helper setMultiSelectStrPickerWithSearchAndInputForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
+    //helper = [UIHelper getUIHelper];
+    //[helper setMultiSelectStrPickerWithSearchAndInputForTextField:attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
+    baseHelper = [[MultiSelectStrPickerWithSearch_InputHelper alloc] init: attendeeField :@selector(addAttendee:) :@selector(finishEditAttendee:) :self :candidates];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) dating_persist: (UITableViewCell*) cell
@@ -285,8 +289,10 @@
     [level setText:item.level];
     
     NSArray* array = [[NSArray alloc] initWithObjects:SkillLevelC count:SkillLevelN];
-    UIHelper* helper= [UIHelper getUIHelper];
-    [helper setStrPickerForTextField:level :@selector(setSkillLevel:) :self :array];
+    //UIHelper* helper= [UIHelper getUIHelper];
+    //[helper setStrPickerForTextField:level :@selector(setSkillLevel:) :self :array];
+    UIHelperBase* baseHelper = [[StrPickerHelper alloc] init:level :@selector(setSkillLevel:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) skill_persist: (UITableViewCell*) cell
@@ -331,11 +337,12 @@
     [from setText:[Utils getDateString:item.from]];
     [to setText:[Utils getDateString:item.to]];
     [activity setText:item.description];
-    
-    UIHelper* helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:from :@selector(setExpItemFrom:) :self];
-    helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:to :@selector(setExpItemTo:) :self];
+
+    UIHelperBase* baseHelper = [[DatePickerHelper alloc] init:from :@selector(setExpItemFrom:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
+
+    baseHelper = [[DatePickerHelper alloc] init:to :@selector(setExpItemTo:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) experience_persist:(UITableViewCell*) cell
@@ -375,8 +382,8 @@
     [role setText:item.role];
     
     NSArray* array = [[NSArray alloc] initWithObjects:CareerTypeC count:CareerTypeN];
-    UIHelper* helper= [UIHelper getUIHelper];
-    [helper setStrPickerForTextField:role :@selector(setFieldRole:) :self :array];
+    UIHelperBase* baseHelper = [[StrPickerHelper alloc] init:role :@selector(setFieldRole:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) career_persist: (UITableViewCell*) cell
@@ -417,15 +424,16 @@
     NSArray* views = cell.contentView.subviews;
     UITextField* homeRole = (UITextField*) views[1];
     [homeRole setText:item.role];
-    UIHelper* helper = [UIHelper getUIHelper];
     NSArray* roleArray = [[NSArray alloc] initWithObjects:HomeRoleC count:HomeRoleN];
-    [helper setStrPickerForTextField:homeRole :@selector(setHomeRole:) :self :roleArray];
+    UIHelperBase* baseHelper = [[StrPickerHelper alloc] init:homeRole :@selector(setHomeRole:) :self :roleArray];
+    [UIHelperBase registUIHelper:baseHelper];
+    
     UITextField* homeName = (UITextField*) views[3];
     [homeName setText:item.name];
     UITextField* homeBirthday = (UITextField*) views[5];
     [homeBirthday setText:[Utils getDateString:item.birthday]];
-    helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:homeBirthday :@selector(setHomeBirthday:) :self];
+    baseHelper = [[DatePickerHelper alloc] init:homeBirthday :@selector(setHomeBirthday:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) home_persist: (UITableViewCell*) cell
@@ -483,12 +491,13 @@
     NSArray* views = cell.contentView.subviews;
     UITextField* view = (UITextField*) views[0];
     [view setText:item.type];
-    UIHelper* helper = [UIHelper getUIHelper];
     NSMutableArray* keySet = [[NSMutableArray alloc] init];
     for (NSDictionary* dic in InterestTbl) {
         [keySet addObject:[dic valueForKey:InterestTblTitleKey]];
     }
-    [helper setStrPickerForTextField:view :@selector(selectKey:) :self :keySet];
+    UIHelperBase* baseHelper = [[StrPickerHelper alloc] init:view :@selector(selectKey:) :self :keySet];
+    [UIHelperBase registUIHelper:baseHelper];
+    
     view = (UITextField*) views[1];
     [view setText:item.name];
     NSArray* valueItems = nil;
@@ -499,8 +508,8 @@
         }
     }
     if (valueItems==nil) valueItems = [[NSArray alloc]init];
-    helper = [UIHelper getUIHelper];
-    [helper setStrPickerWithSearchForTextField:view :@selector(selectValueItem:) :self :valueItems];
+    baseHelper = [[StrPickerWithSearchHelper alloc] init:view :@selector(selectValueItem:) :self :valueItems];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) interest_persist: (UITableViewCell*) cell
@@ -543,10 +552,11 @@
     [to setText:[Utils getDateString:item.to]];
     UITextField* school = views[2];
     [school setText:item.school];
-    UIHelper* helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:from :@selector(setEducationFrom:) :self];
-    helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:to :@selector(setEducationTo:) :self];
+    
+    UIHelperBase* baseHelper = [[DatePickerHelper alloc] init:from :@selector(setEducationFrom:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
+    baseHelper = [[DatePickerHelper alloc] init:to :@selector(setEducationTo:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
 }
 
 - (void) education_persist: (UITableViewCell*) cell

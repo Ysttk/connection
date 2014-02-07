@@ -266,6 +266,9 @@
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="LtH-3T-vDA">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textAttributes key="titleTextAttributes">
+                                <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                            </textAttributes>
                             <items>
                                 <navigationItem title="基本资料-2" id="3aw-G3-BSx">
                                     <barButtonItem key="leftBarButtonItem" title="返回" id="EUL-Qo-B5A">
@@ -1330,7 +1333,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Dj1-lO-UWd"/>
-        <segue reference="wwM-or-mXA"/>
+        <segue reference="DNT-MD-q3R"/>
         <segue reference="jaL-iM-3PJ"/>
     </inferredMetricsTieBreakers>
 </document>

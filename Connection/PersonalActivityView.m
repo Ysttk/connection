@@ -56,8 +56,14 @@
     [self updatePeopleActivity];
     [self updateEditMode];
     self.navigationController.navigationBar.hidden = true;
-    UIHelper* helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:_m_FirstDateTime :@selector(setFirstMetDate:) :self];
+    UIHelperBase* baseHelper = [[DatePickerHelper alloc] init: _m_FirstDateTime :@selector(setFirstMetDate:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [UIHelperBase releaseUIHelper];
 }
 
 - (void) updateDatingRecordList

@@ -242,21 +242,25 @@
     [self UpdateEditMode];
     [self reloadPeopleBasicInfo];
     
-    UIHelper* helper = [UIHelper getUIHelper];
-    NSArray* array = [[NSArray alloc] initWithObjects:SexC count:SexN];
-    [helper setStrPickerForTextField:_m_Sex :@selector(setSex:) :self :array];
-    helper = [UIHelper getUIHelper];
-    array = [[NSArray alloc] initWithObjects:CityC count:CityN];
-    [helper setStrPickerForTextField:_m_City :@selector(setCity:) :self :array];
-    array = [[NSArray alloc] initWithObjects:BuddyTypeC count:5];
-    helper = [UIHelper getUIHelper];
-    [helper setStrPickerForTextField:_m_BuddyType :@selector(setBuddyType:) :self :array];
-    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
-    helper = [UIHelper getUIHelper];
-    [helper setStrPickerWithSearchForTextField:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
     
-    helper = [UIHelper getUIHelper];
-    [helper setDatePickerForTextField:_m_Birthday :@selector(setBirthday:) :self];
+    NSArray* array = [[NSArray alloc] initWithObjects:SexC count:SexN];
+    UIHelperBase* baseHelper = [[StrPickerHelper alloc] init:_m_Sex :@selector(setSex:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
+    
+    array = [[NSArray alloc] initWithObjects:CityC count:CityN];
+    baseHelper = [[StrPickerHelper alloc] init:_m_City :@selector(setCity:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
+    
+    array = [[NSArray alloc] initWithObjects:BuddyTypeC count:5];
+    baseHelper = [[StrPickerHelper alloc] init:_m_BuddyType :@selector(setBuddyType:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
+    
+    array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
+    baseHelper = [[StrPickerWithSearchHelper alloc] init:_m_BuddyCloseType :@selector(setBuddyCloseType:) :self :array];
+    [UIHelperBase registUIHelper:baseHelper];
+    
+    baseHelper = [[DatePickerHelper alloc] init:_m_Birthday :@selector(setBirthday:) :self];
+    [UIHelperBase registUIHelper:baseHelper];
     
     
     [_m_Name setDelegate:self];
@@ -267,8 +271,7 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-
-    [UIHelper releaseUIHelper];
+    [UIHelperBase releaseUIHelper];
 }
 
 - (IBAction)StatusButtonClick:(id)sender {
