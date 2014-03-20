@@ -1,14 +1,47 @@
 //
-//  StrPickerWithSearch.m
+//  MultiColumnStrPickerWithSearchAndInput.m
 //  Connection
 //
-//  Created by 寿宝江 on 14-2-6.
+//  Created by 寿宝江 on 14-2-9.
 //  Copyright (c) 2014年 Org. All rights reserved.
 //
 
-#import "StrPickerWithSearchHelper.h"
+#import "MultiColumnStrPickerWithSearch.h"
 
-@implementation StrPickerWithSearchHelper
+@implementation MultiColumnStrPickerWithSearch
+
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return _totalComponts;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    NSMutableArray* targetArray = nil;
+    NSMutableArray* preArray = _items;
+    for (int i=1; i<_totalComponts; i++) {
+        NSNumber* idx = [_selectedRows objectAtIndex:i];
+        preArray = [preArray objectAtIndex:idx.intValue];
+    }
+    targetArray = preArray;
+    return targetArray.count;
+}
+
+
+- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSMutableArray* targetArray = _items;
+    for (int i=1; i<_totalComponts; i++) {
+        NSNumber* idx = [_selectedRows objectAtIndex:i];
+        targetArray = [targetArray objectAtIndex:idx.intValue];
+    }
+    return [targetArray objectAtIndex:row];
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [_selectedRows replaceObjectAtIndex:component withObject:[NSNumber numberWithInt:row]];
+}
 
 - (UIPickerView*) getItemPicker
 {
@@ -55,25 +88,17 @@
     return _pickerToolBar;
 }
 
-- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (IBAction)itemOKClick:(id)sender
 {
-    return 1;
+    NSString* item;
+    if ([_selectedItems count] == 0) return;
+    //item = [_selectedItems objectAtIndex:_selectedRow];
+    [_tmpObj removeFromSuperview];
+    _isEditSearchBar = NO;
+    [_itemSearch resignFirstResponder];
+    [_delegate performSelector:_setAction withObject:item];
 }
 
-- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [_dumpItems count];
-}
-
-- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [_dumpItems objectAtIndex:row];
-}
-
-- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    _selectedRow = row;
-}
 
 - (void) keyboardWillShowNotification:(NSNotification*) sender
 {
@@ -99,66 +124,6 @@
     }
 }
 
-- (BOOL) searchBarShouldBeginEditing:(UISearchBar *)searchBar
-{
-    return YES;
-}
-
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    _isEditSearchBar = YES;
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    UIPickerView* pick = _tmpObj;
-    [pick removeFromSuperview];
-    _isEditSearchBar = NO;  // resignFirstResponder 方法会导致keyboardWillShowNo...方法再次被调用，因此，该条件变量设置一定要放在前面
-    [searchBar resignFirstResponder];
-    [_itemPicker reloadAllComponents];
-}
-
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self updateDisplayItemsByText:searchText];
-}
-
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    _isEditSearchBar = NO;
-    [self updateDisplayItemsByText:nil];
-    [searchBar setText:@""];
-    [searchBar resignFirstResponder];
-    [_tmpObj removeFromSuperview];
-    [_itemPicker reloadAllComponents];
-}
-
-- (void) updateDisplayItemsByText: (NSString*) searchText
-{
-    [_dumpItems removeAllObjects];
-    if (searchText == nil || [searchText compare:@""]==NSOrderedSame)
-        [_dumpItems addObjectsFromArray:_items];
-    else {
-        for (NSString* item in _items) {
-            if ([item rangeOfString:searchText].location != NSNotFound)
-                [_dumpItems addObject:item];
-        }
-    }
-    [_itemPicker reloadAllComponents];
-    [_tmpObj reloadAllComponents];
-}
-
-- (IBAction)itemOKClick:(id)sender
-{
-    NSString* item;
-    if ([_dumpItems count] == 0) return;
-    item = [_dumpItems objectAtIndex:_selectedRow];
-    [_tmpObj removeFromSuperview];
-    _isEditSearchBar = NO;
-    [_itemSearch resignFirstResponder];
-    [_delegate performSelector:_setAction withObject:item];
-}
-
 - (id) init:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems
 {
     self = [super init];
@@ -171,8 +136,10 @@
     _delegate = delegate;
     _setAction = setItemAction;
     _items = [strItems mutableCopy];
-    _dumpItems = [[NSMutableArray alloc] initWithArray:_items];
+    _selectedItems = [[NSMutableArray alloc] initWithArray:_items];
     return self;
 }
+
+
 
 @end

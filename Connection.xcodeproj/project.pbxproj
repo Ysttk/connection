@@ -46,6 +46,7 @@
 		16876BDB18A3C3E900DDD221 /* StrPickerWithSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BDA18A3C3E900DDD221 /* StrPickerWithSearchHelper.m */; };
 		16876BDE18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */; };
 		16876BE118A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */; };
+		16876BE418A7755900DDD221 /* MultiColumnStrPickerWithSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 16876BE318A7755900DDD221 /* MultiColumnStrPickerWithSearch.m */; };
 		1691F0251850B7A9000C45A8 /* CEducation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1691F0241850B7A9000C45A8 /* CEducation.m */; };
 		16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872BF17FE954700561887 /* PersonalBasicInfoView.m */; };
 		16D872C617FE991400561887 /* PersonalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D872C517FE991400561887 /* PersonalActivityView.m */; };
@@ -147,8 +148,11 @@
 		16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiSelectStrPickerWithSearchHelper.m; path = ../MultiSelectStrPickerWithSearchHelper.m; sourceTree = "<group>"; };
 		16876BDF18A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectStrPickerWithSearch_InputHelper.h; sourceTree = "<group>"; };
 		16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectStrPickerWithSearch_InputHelper.m; sourceTree = "<group>"; };
+		16876BE218A7755900DDD221 /* MultiColumnStrPickerWithSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiColumnStrPickerWithSearch.h; sourceTree = "<group>"; };
+		16876BE318A7755900DDD221 /* MultiColumnStrPickerWithSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiColumnStrPickerWithSearch.m; sourceTree = "<group>"; };
 		1691F0231850B7A9000C45A8 /* CEducation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEducation.h; sourceTree = "<group>"; };
 		1691F0241850B7A9000C45A8 /* CEducation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEducation.m; sourceTree = "<group>"; };
+		16A6ED9C18AF70D100F8A03D /* Connection 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Connection 2.xcdatamodel"; sourceTree = "<group>"; };
 		16D872BE17FE954700561887 /* PersonalBasicInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalBasicInfoView.h; sourceTree = "<group>"; };
 		16D872BF17FE954700561887 /* PersonalBasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicInfoView.m; sourceTree = "<group>"; };
 		16D872C417FE991400561887 /* PersonalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalActivityView.h; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				16876BD018A2465800DDD221 /* DatePickerHelper.h */,
 				16876BD118A2465800DDD221 /* DatePickerHelper.m */,
 				16F455F2185F527E0014167E /* UIHelper.m */,
+				16876BE218A7755900DDD221 /* MultiColumnStrPickerWithSearch.h */,
+				16876BE318A7755900DDD221 /* MultiColumnStrPickerWithSearch.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				16166D6317F4678300AEEC4C /* main.m in Sources */,
 				160CF72C185B4F0700CDEFCE /* CHomeMember.m in Sources */,
 				16F455ED185F236C0014167E /* CGenericItemSetView.m in Sources */,
+				16876BE418A7755900DDD221 /* MultiColumnStrPickerWithSearch.m in Sources */,
 				16D872C017FE954700561887 /* PersonalBasicInfoView.m in Sources */,
 				16E3844F180A97EB007CC843 /* Connection.xcdatamodeld in Sources */,
 				16876BD818A3C1FB00DDD221 /* StrPickerHelper.m in Sources */,
@@ -868,9 +875,10 @@
 		16E3844D180A97EB007CC843 /* Connection.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				16A6ED9C18AF70D100F8A03D /* Connection 2.xcdatamodel */,
 				16E3844E180A97EB007CC843 /* Connection.xcdatamodel */,
 			);
-			currentVersion = 16E3844E180A97EB007CC843 /* Connection.xcdatamodel */;
+			currentVersion = 16A6ED9C18AF70D100F8A03D /* Connection 2.xcdatamodel */;
 			path = Connection.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
