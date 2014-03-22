@@ -371,10 +371,7 @@
 		163F0983181DDEFA00A28D63 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				16876BDC18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.h */,
-				16876BDF18A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.h */,
-				16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */,
-				16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */,
+				16C17C3018DD80F6007A7066 /* UIHelper */,
 				163D75A018672C10007DEC13 /* PersonalCareerView.h */,
 				163D75A118672C10007DEC13 /* PersonalCareerView.m */,
 				163F0980181DDED300A28D63 /* PeopleListView.h */,
@@ -393,6 +390,27 @@
 				16F455EC185F236C0014167E /* CGenericItemSetView.m */,
 				16F455EE185F23940014167E /* CEditGenericItemView.h */,
 				16F455EF185F23940014167E /* CEditGenericItemView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		1691F0221850B74A000C45A8 /* BasicDataCluster */ = {
+			isa = PBXGroup;
+			children = (
+				160CF73C185B58F300CDEFCE /* Session */,
+				160CF73A185B58C500CDEFCE /* BasicInfo */,
+				160CF73B185B58DC00CDEFCE /* CareerInfo */,
+			);
+			name = BasicDataCluster;
+			sourceTree = "<group>";
+		};
+		16C17C3018DD80F6007A7066 /* UIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				16876BDC18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.h */,
+				16876BDF18A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.h */,
+				16876BE018A4A4F300DDD221 /* MultiSelectStrPickerWithSearch_InputHelper.m */,
+				16876BDD18A476E400DDD221 /* MultiSelectStrPickerWithSearchHelper.m */,
 				16F455F1185F527E0014167E /* UIHelper.h */,
 				16876BD318A3C11100DDD221 /* UIHelperBase.h */,
 				16876BD418A3C11100DDD221 /* UIHelperBase.m */,
@@ -406,17 +424,7 @@
 				16876BE218A7755900DDD221 /* MultiColumnStrPicker.h */,
 				16876BE318A7755900DDD221 /* MultiColumnStrPicker.m */,
 			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		1691F0221850B74A000C45A8 /* BasicDataCluster */ = {
-			isa = PBXGroup;
-			children = (
-				160CF73C185B58F300CDEFCE /* Session */,
-				160CF73A185B58C500CDEFCE /* BasicInfo */,
-				160CF73B185B58DC00CDEFCE /* CareerInfo */,
-			);
-			name = BasicDataCluster;
+			name = UIHelper;
 			sourceTree = "<group>";
 		};
 		16D872CA17FFA24500561887 /* UI_Utils */ = {
