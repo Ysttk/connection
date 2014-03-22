@@ -8,7 +8,7 @@
 
 #import "UIHelperBase.h"
 
-@interface MultiColumnStrPickerWithSearch : UIHelperBase <UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate>
+@interface MultiColumnStrPicker : UIHelperBase <UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate>
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, assign) SEL setAction;
 
@@ -23,10 +23,11 @@
 //for item picker with search bar
 @property (nonatomic, retain) NSMutableArray* selectedItems;
 @property (nonatomic, assign) NSInteger totalComponts;
-@property (nonatomic, retain) UISearchBar* itemSearch;
-@property (nonatomic, assign) bool isEditSearchBar;
 
-@property (nonatomic, retain) UIPickerView* tmpObj;
 
-@property (nonatomic, assign) NSMutableArray* selectedRows;
+@property (nonatomic, retain) NSMutableArray* selectedRows;
+
+
+
+- (id) init:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems :(int)depth;
 @end

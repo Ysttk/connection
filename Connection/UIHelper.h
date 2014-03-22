@@ -14,6 +14,7 @@
 #import "StrPickerWithSearchHelper.h"
 #import "MultiSelectStrPickerWithSearchHelper.h"
 #import "MultiSelectStrPickerWithSearch_InputHelper.h"
+#import "MultiColumnStrPicker.h"
 
 
 @interface UIHelper : NSObject <UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UISearchBarDelegate, UIAlertViewDelegate>
