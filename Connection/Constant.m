@@ -179,6 +179,7 @@ NSString* InterestC[] = {
 };
 int InterestN;
 
+
 NSArray* InterestTbl;
 int InterestTblDepth;
 NSString* InterestTblTitleKey = @"key";
@@ -186,12 +187,28 @@ NSString* InterestTblDataKey = @"data";
 NSString* _InterestTbl =
 @"[\
     {\"key\":\"喜欢的运动\", \"data\":\
-        [\"网球\",\
-        \"篮球\"],\
+        [\
+            {\"key\":\"网球\",\"data\":\
+                [\"左手握拍\",\
+                \"右手握拍\"]\
+            },\
+            {\"key\":\"篮球\",\"data\":\
+                [\"单手运球\",\
+                \"双手运球\"]\
+            },\
+        ],\
     },\
     {\"key\":\"喜欢去的地方\", \"data\":\
-        [\"杭州\",\
-        \"北京\"],\
+        [\
+            {\"key\":\"杭州\",\"data\":\
+                [\"上城区\",\
+                \"下城区\"]\
+            },\
+            {\"key\":\"北京\",\"data\":\
+                [\"崇文区\",\
+                \"宣武区\"]\
+            },\
+        ],\
     },\
 ]";
 

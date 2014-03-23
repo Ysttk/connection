@@ -20,14 +20,16 @@
 
 @property (nonatomic, retain) UIPickerView* itemPicker;
 @property (nonatomic, retain) NSMutableArray* items;
-//for item picker with search bar
-@property (nonatomic, retain) NSMutableArray* selectedItems;
+
 @property (nonatomic, assign) NSInteger totalComponts;
 
 
 @property (nonatomic, retain) NSMutableArray* selectedRows;
 
+@property (nonatomic, retain) NSString* DataKey;
+@property (nonatomic, retain) NSString* KeyKey;
 
 
-- (id) init:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems :(int)depth;
+
+- (id) init:(UITextField *)textField :(SEL)setItemAction :(id)delegate :(NSArray *)strItems :(int)depth :(NSString*) aKeyKey :(NSString*)aDataKey;
 @end
