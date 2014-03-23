@@ -252,8 +252,8 @@
     [UIHelperBase registUIHelper:baseHelper];
     
     array = [[NSArray alloc] initWithObjects:BuddyTypeC count:5];
-   // baseHelper = [[StrPickerHelper alloc] init:_m_BuddyType :@selector(setBuddyType:) :self :array];
-    baseHelper = [[MultiColumnStrPicker alloc] init:_m_BuddyType :@selector(setBuddyType:) :self :InterestTbl :InterestTblDepth :InterestTblTitleKey :InterestTblDataKey];
+    baseHelper = [[StrPickerHelper alloc] init:_m_BuddyType :@selector(setBuddyType:) :self :array];
+    //baseHelper = [[MultiColumnStrPicker alloc] init:_m_BuddyType :@selector(setBuddyType:) :self :InterestTbl :InterestTblDepth :InterestTblTitleKey :InterestTblDataKey];
     [UIHelperBase registUIHelper:baseHelper];
     
     array = [[NSArray alloc] initWithObjects:BuddyCloseC count:BuddyCloseN];
