@@ -89,19 +89,22 @@
 - (IBAction)itemOKClick:(id)sender
 {
     NSString* item;
+    NSMutableArray* itemSet = [[NSMutableArray alloc] init];
 
     NSArray* set = _items;
     for (int idx=0; idx<_totalComponts-1; idx++) {
         NSNumber* number = [_selectedRows objectAtIndex:idx];
         int i = number.intValue;
         NSDictionary* dic = [set objectAtIndex:i];
+        [itemSet addObject:[dic objectForKey:_KeyKey]];
         set = [dic objectForKey:_DataKey];
     }
     NSNumber* number = [_selectedRows objectAtIndex:_totalComponts-1];
     int i = number.intValue;
     item = [set objectAtIndex:i];
+    [itemSet addObject:item];
 
-    [_delegate performSelector:_setAction withObject:item];
+    [_delegate performSelector:_setAction withObject:itemSet];
 }
 
 
